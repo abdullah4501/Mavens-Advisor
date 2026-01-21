@@ -110,7 +110,7 @@ const TestimonialsSection = () => {
               <Swiper
                 modules={[Navigation]}
                 loop
-                speed={1500}
+                speed={1200}
                 watchOverflow={false}
                 navigation={{
                   prevEl: '.swiper-button-prev-custom',
