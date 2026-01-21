@@ -48,7 +48,7 @@ const TeamSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <div className="grid grid-cols-12 gap-8 mb-16">
+          <div className="grid grid-cols-12 gap-y-8 mb-16">
             {/* Left side - Badge and Title */}
             <div className='col-span-10 lg:col-span-5 md:col-span-6'>
               <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">

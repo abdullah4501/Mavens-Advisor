@@ -18,7 +18,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className='flex container'>
+      <div className='flex container flex-col sm:flex-row'>
         <div className="relative container mx-auto px-4 lg:px-8 pt-32 pb-20">
           <div className="max-w-2xl ">
             {/* Main Heading */}
