@@ -37,7 +37,7 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen bg-navy py-20 overflow-hidden">
+    <section className="relative min-h-screen bg-navy py-20 overflow-hidden our-process-section-one">
       {/* Top right corner gradient decoration */}
       <div className="absolute top-0 right-0 w-48 h-32">
         <div className="absolute top-0 right-0 w-24 h-16 bg-gray-decorative-light opacity-60" />
@@ -45,44 +45,41 @@ const ProcessSection = () => {
         <div className="absolute top-16 right-0 w-24 h-16 bg-gray-decorative opacity-80" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-20">
+      <div className="container">
         {/* Header Section */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-12 gap-8 mb-16">
           {/* Left side - Badge and Title */}
-          <div>
+          <div className='col-span-10 md:col-span-5'>
               <span className="inline-block bg-gold text-[#fff] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
-                Why Choose Us
+                Our Business Impact
               </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              Successful Financial<br />Control Process
+              Successful Financial Control Process
             </h2>
           </div>
 
           {/* Right side - Description */}
-          <div className="flex items-end lg:pl-12">
-            <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
+          <div className="flex items-end lg:pl-12 col-span-12 md:col-span-5">
+            <p className="text-white/80 leading-relaxed max-w-lg">
               Stay organized and focused on growth while we handle your day financial record Gravida urna vehicula volutpat velit sed imperdiet.
             </p>
           </div>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start relative">
+        <div className="grid grid-cols-12 gap-4 items-start relative">
           {/* Left Decorative Squares */}
-          <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8">
-            <div className="relative w-40 h-48">
-              <div className="absolute top-0 left-0 w-20 h-24 bg-gray-decorative opacity-70" />
-              <div className="absolute top-0 left-20 w-20 h-24 bg-gray-decorative-light opacity-50" />
-              <div className="absolute top-24 left-8 w-20 h-24 bg-gray-decorative opacity-90" />
+          <div className="hidden md:flex col-span-3 h-full items-end">
+            <div className=" relative w-40 h-48 des-box-left">
             </div>
           </div>
 
           {/* Steps List */}
-          <div className="lg:col-span-5 lg:col-start-3 space-y-2">
+          <div className="col-span-12 order-2 md:order-1 md:col-span-5  space-y-2">
             {steps.map((step, index) => (
               <div
                 key={step.number}
-                className="flex gap-6 cursor-pointer py-4 group"
+                className="flex gap-3 md:gap-6 cursor-pointer py-4 group"
                 onMouseEnter={() => setActiveStep(index)}
               >
                 {/* Number */}
@@ -93,9 +90,9 @@ const ProcessSection = () => {
                 </span>
 
                 {/* Content with vertical line */}
-                <div className="relative pl-6">
+                <div className="relative pl-1">
                   
-                  <h4 className={`text-xl font-bold mb-2 transition-colors duration-300 ${
+                  <h4 className={`md:text-xl text-[18px] font-bold mb-2 transition-colors duration-300 ${
                     activeStep === index ? 'text-[#628fff]' : 'text-white/50'
                   }`}>
                     {step.title}
@@ -109,7 +106,7 @@ const ProcessSection = () => {
           </div>
 
           {/* Image Section */}
-          <div className="lg:col-span-5 lg:col-start-8">
+          <div className="col-span-12 md:col-span-4 flex order-1 md:order-2 md:h-[50%] lg:h-[75%]">
             <div className="relative rounded-lg overflow-hidden aspect-[4/3]">
               <AnimatePresence mode="wait">
                 <motion.img

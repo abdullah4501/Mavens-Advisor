@@ -375,9 +375,52 @@ body {
   top: 30px;
   margin-top: 10px;
 }
+
 .vertical-line.active::after {
   background-color: #628fff;
 }
+
+.des-box-left::before,
+.des-box-left::after {
+  content: '';
+  position: absolute;
+  width: 212px;
+  height: 106px;
+  left: 60px;
+  right: inherit;
+  transform: rotate(90deg);
+  bottom: 50px;
+  background-color: #ffffff1a;
+}
+
+.our-process-section-one::before,
+.our-process-section-one::after {
+  content: '';
+  position: absolute;
+  width: 212px;
+  height: 106px;
+  left: inherit;
+  right: 0;
+  top: 0;
+  background-color: #ffffff1a;
+}
+
+.des-box-left::before {
+  height: 212px;
+  width: 106px;
+}
+
+.our-process-section-one::before {
+  height: 212px;
+  width: 106px;
+}
+
+.team-section-one {
+  background-image: url('./assets/team-bg-pattarn.png');
+  background-repeat: no-repeat;
+  background-position: 97% 90%;
+}
+
 
 @keyframes ripple {
   from {
@@ -398,6 +441,36 @@ body {
 @media screen and (max-width: 1023.98px) {
   .service-right {
     padding: 80px 30px 20px;
+  }
+
+  .des-box-left::before {
+    height: 150px !important;
+    width: 60px !important;
+  }
+
+  .des-box-left::after {
+    width: 150px !important;
+    height: 60px !important;
+  }
+
+  .our-process-section-one::before {
+    width: 55px;
+    height: 140px;
+  }
+
+  .our-process-section-one::after {
+    width: 140px;
+    height: 55px;
+  }
+
+  .service-grid-img img {
+    border-radius: 16px 0 0 16px;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .service-grid-img img {
+    border-radius: 16px 16px 0 0;
   }
 }
 

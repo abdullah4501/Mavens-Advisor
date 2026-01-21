@@ -1,114 +1,162 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Linkedin, Twitter } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import teamMember1 from '@/assets/team-member-1.jpg';
-import teamMember2 from '@/assets/team-member-2.jpg';
-import teamMember3 from '@/assets/team-member-3.jpg';
-import handshakeImage from '@/assets/handshake.jpg';
+import tm1 from '@/assets/team-01.jpg';
+import tm2 from '@/assets/team-02.jpg';
+import tm3 from '@/assets/team-03.jpg';
+import tm4 from '@/assets/team-04.jpg';
+import tm5 from '@/assets/team-05.jpg';
+import tm6 from '@/assets/team-06.jpg';
 
 const TeamSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const teamMembers = [
     {
-      image: teamMember1,
-      name: 'Robert Howell',
-      position: 'Senior Financial Advisor',
+      name: "Bryson Tiller",
+      position: "BUSINESS MANAGER",
+      image: tm1,
     },
     {
-      image: teamMember2,
-      name: 'Kyler Conner',
-      position: 'Investment Specialist',
+      name: "Walker Scobell",
+      position: "LEGAL OFFICER",
+      image: tm2,
     },
     {
-      image: teamMember3,
-      name: 'Marcus Chen',
-      position: 'Tax Consultant',
+      name: "Jacob Elordi",
+      position: "FINANCE ADVISOR",
+      image: tm3,
+    },
+    {
+      name: "Justin Novak",
+      position: "TAX EXAMINER",
+      image: tm4,
+    },
+    {
+      name: "Myles Evander",
+      position: "GENERAL MANAGER",
+      image: tm5,
     },
   ];
 
   return (
-    <section className="section-padding bg-cream" ref={ref}>
+    <section className="section-padding team-section-one" ref={ref}>
       <div className="container mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-16"
         >
-          <span className="text-gold font-semibold text-sm uppercase tracking-wider mb-4 block">
-            Our Team
-          </span>
-          <h2 className="text-4xl md:text-5xl  font-bold text-navy mb-6 leading-tight">
-            Trusted guidance for lasting financial growth.
-          </h2>
+          <div className="grid grid-cols-12 gap-8 mb-16">
+            {/* Left side - Badge and Title */}
+            <div className='col-span-10 lg:col-span-5 md:col-span-6'>
+              <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
+                Our Export
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-navy leading-tight">
+                Trusted guidance for
+                lasting financial
+                growth.
+              </h2>
+            </div>
+
+            {/* Right side - Description */}
+            <div className="flex items-end lg:pl-12 col-span-12 md:col-span-6">
+              <p className="text-navy/50 font-semibold leading-relaxed max-w-lg">
+                Stay organized and focused on growth while we handle your day financial record Gravida urna vehicula volutpat velit sed imperdiet.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {/* Featured Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl overflow-hidden shadow-card lg:row-span-2"
-          >
-            <img
-              src={handshakeImage}
-              alt="Team Collaboration"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </motion.div>
-
-          {/* Team Members */}
-          {teamMembers.map((member, index) => (
-            <motion.div
+        <div className="grid grid-cols-12 gap-y-12">
+          {teamMembers.slice(0, 3).map((member, index) => (
+            <motion.a
               key={member.name}
+              href="#"
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-              className="group"
+              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col flex-row gap-5 group"
             >
-              <div className="relative rounded-2xl overflow-hidden mb-4">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                {/* Social Icons Overlay */}
-                <div className="absolute inset-0 bg-navy/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gold transition-colors">
-                    <Linkedin className="w-5 h-5 text-navy" />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gold transition-colors">
-                    <Twitter className="w-5 h-5 text-navy" />
-                  </a>
+              <div className="relative flex-shrink-0">
+                <div className="w-40 h-52 rounded-md overflow-hidden ">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
+                  />
                 </div>
               </div>
-              <h4 className="text-lg font-semibold text-navy">{member.name}</h4>
-              <p className="text-muted-foreground text-sm">{member.position}</p>
-            </motion.div>
+
+              <div>
+                <h4 className="text-xl font-semibold text-slate-800 mb-1 transition-colors duration-300 hover:text-gold">
+                  {member.name}
+                </h4>
+                <p className="text-xs tracking-widest font-semibold text-slate-500 uppercase">
+                  {member.position}
+                </p>
+              </div>
+            </motion.a>
           ))}
+          <div className='hidden lg:block col-span-1'>
+
+          </div>
+          {teamMembers.slice(3, 5).map((member, index) => (
+            <motion.a
+              key={member.name}
+              href="#"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col flex-row gap-5 group"
+            >
+              <div className="relative flex-shrink-0">
+                <div className="w-40 h-52 rounded-md overflow-hidden ">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-semibold text-slate-800 mb-1 transition-colors duration-300 hover:text-gold">
+                  {member.name}
+                </h4>
+                <p className="text-xs tracking-widest font-semibold text-slate-500 uppercase">
+                  {member.position}
+                </p>
+              </div>
+            </motion.a>
+          ))}
+
+          <div className="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 flex items-center justify-center">
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex justify-center"
+            >
+              <motion.a
+                href="#team"
+                className="inline-flex items-center bg-navy text-white px-4 py-3 text-[15px] rounded-lg font-medium hover:scale-105 transition"
+                whileHover={{ scale: 1.05, gap: '12px' }}
+                whileTap={{ scale: 0.95 }}
+              >
+                See All Advisors
+                <span className="bg-white text-black w-8 h-8 rounded-full flex items-center justify-center ml-3">
+                  <ArrowRight size={18} />
+                </span>
+              </motion.a>
+            </motion.div>
+          </div>
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex justify-center"
-        >
-          <motion.a
-            href="#team"
-            className="inline-flex items-center gap-2 bg-navy text-white px-8 py-4 rounded-full font-medium hover:bg-gold hover:text-navy transition-colors duration-300"
-            whileHover={{ scale: 1.05, gap: '12px' }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View All Team
-            <ArrowRight className="w-5 h-5" />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

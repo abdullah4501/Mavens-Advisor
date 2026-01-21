@@ -50,16 +50,7 @@ const ServicesGrid = () => {
                                 key={idx}
                                 onMouseEnter={() => setActiveIndex(idx)}
                                 style={{ "--offset": `${offset}px` } as React.CSSProperties}
-                                className="
-                                relative cursor-pointer
-                                grid grid-cols-2 
-                                lg:block
-
-                                lg:translate-x-[var(--offset)]
-                                transition-transform duration-700
-                                ease-[cubic-bezier(.22,1,.36,1)]
-                                "
-
+                                className="service-grid-img relative cursor-pointer grid grid-cols-1 md:grid-cols-2 lg:block lg:translate-x-[var(--offset)] transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
                             >
                                 {/* IMAGE */}
                                 <img
@@ -72,7 +63,7 @@ const ServicesGrid = () => {
                                 <div
                                     className={`
                                         lg:absolute static rounded-sm top-0 lg:-ml-[1px] lg:left-full h-full w-full lg:w-[280px]
-                                        bg-white  p-8 flex flex-col justify-center ${activeIndex === idx ? "lg:opacity-100 lg:translate-x-0 lg:transition-none shadow-[0_20px_60px_0_rgba(0,0,0,0.08)]" : "lg:opacity-0 lg:translate-x-12 lg:transition-all lg:duration-700 lg:ease-[cubic-bezier(.22,1,.36,1)]"}
+                                        bg-white  p-8 flex flex-col justify-center shadow-[0_20px_60px_0_rgba(0,0,0,0.08)] ${activeIndex === idx ? "lg:opacity-100 lg:translate-x-0 lg:transition-none " : "lg:opacity-0 lg:translate-x-12 lg:transition-all lg:duration-700 lg:ease-[cubic-bezier(.22,1,.36,1)]"}
                                     `}
                                 >
 
