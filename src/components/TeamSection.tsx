@@ -63,7 +63,7 @@ const TeamSection = () => {
 
             {/* Right side - Description */}
             <div className="flex items-end lg:pl-12 col-span-12 md:col-span-6">
-              <p className="text-navy-light/50 font-semibold leading-relaxed max-w-lg">
+              <p className="text-navy-light/50 font-semibold ">
                 Stay organized and focused on growth while we handle your day financial record Gravida urna vehicula volutpat velit sed imperdiet.
               </p>
             </div>
