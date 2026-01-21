@@ -83,7 +83,7 @@ const StrategiesSection = () => {
 
               <a
                 href="#"
-                className="inline-flex items-center gap-3 bg-navy text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
+                className="inline-flex items-center gap-3 bg-navy-light text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
               >
                 Discover More
                 <span className="bg-white text-black w-8 h-8 rounded-full flex items-center justify-center">

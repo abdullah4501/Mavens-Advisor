@@ -45,8 +45,8 @@ const Index = () => {
               >
                 <stat.icon className="w-8 h-8 text-gold" />
                 <div>
-                  <span className="block text-2xl font-bold text-[#1e3238]">{stat.value}</span>
-                  <span className="text-[#1e3238] text-sm">{stat.label}</span>
+                  <span className="block text-2xl font-bold text-navy-light">{stat.value}</span>
+                  <span className="text-navy-light text-sm">{stat.label}</span>
                 </div>
               </motion.div>
             ))}
@@ -61,7 +61,6 @@ const Index = () => {
       <ProcessSection />
       <TeamSection />
       <TestimonialsSection />
-      <StatsSection />
       <BlogSection />
       <Footer />
     </div>

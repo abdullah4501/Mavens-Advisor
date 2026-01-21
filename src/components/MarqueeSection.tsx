@@ -11,7 +11,7 @@ const MarqueeSection = () => {
   ];
 
   return (
-    <section className="py-8 bg-navy overflow-hidden">
+    <section className="py-8 bg-navy-light overflow-hidden">
       <div className="flex">
         <motion.div
           className="flex items-center gap-12 animate-marquee whitespace-nowrap"

@@ -57,7 +57,7 @@ const WhyChooseSection = () => {
                 <span className="inline-block bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-6">
                   Our Services
                 </span>
-                <h2 className="text-4xl md:text-5xl  font-bold text-navy mb-6">
+                <h2 className="text-4xl md:text-5xl  font-bold text-navy-light mb-6">
                   Why choose us as your accountant consultant?
                 </h2>
               </motion.div>

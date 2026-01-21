@@ -33,8 +33,8 @@ const BlogSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-white" ref={ref} id="blog">
-      <div className="container mx-auto">
+    <section className="section-padding px-0 bg-white" ref={ref} id="blog">
+      <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -42,60 +42,55 @@ const BlogSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-gold font-semibold text-sm uppercase tracking-wider mb-4 block">
-            Latest Blog
+          <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
+            Fresh News
           </span>
-          <h2 className="text-4xl md:text-5xl  font-bold text-navy">
-            Articles & blog posts with useful information
+          <h2 className="text-4xl md:text-5xl font-bold text-navy-light">
+            Articles & blog posts with<br />useful information
           </h2>
         </motion.div>
 
         {/* Blog Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post, index) => (
             <motion.article
               key={post.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="group cursor-pointer"
+              className="bg-white rounded-md overflow-hidden shadow-[0_9px_23.3px_0_rgba(0,0,0,0.09)] transition-all duration-300 group cursor-pointer"
             >
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden mb-6">
+              <div className="relative h-[240px] overflow-hidden">
                 <img
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <span className="absolute top-4 left-4 bg-gold text-navy text-xs font-semibold px-3 py-1 rounded-full">
+
+                {/* Category badge (BOTTOM LEFT like UI) */}
+                <span className="absolute bottom-4 left-4 bg-gold text-white text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wide">
                   {post.category}
                 </span>
               </div>
 
               {/* Content */}
-              <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
-                <Calendar className="w-4 h-4" />
-                <span>{post.date}</span>
+              <div className="p-6">
+                <h3 className="text-[22px] font-bold text-navy-light mb-6 leading-snug">
+                  {post.title}
+                </h3>
+
+                {/* Meta */}
+                <div className="flex items-center gap-3 text-xs text-slate-400 uppercase tracking-wide">
+                  <span className='font-bold'>{post.date}</span>
+                  <span className="w-1 h-1 bg-slate-700 rounded-full" />
+                  <span className='font-bold'>By Gudfin</span>
+                </div>
               </div>
-
-              <h3 className="text-xl font-semibold text-navy group-hover:text-gold transition-colors mb-3 leading-tight">
-                {post.title}
-              </h3>
-
-              <p className="text-muted-foreground text-sm mb-4">
-                {post.excerpt}
-              </p>
-
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-gold font-medium text-sm group-hover:gap-3 transition-all"
-              >
-                Read More
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </motion.article>
           ))}
         </div>
+
       </div>
     </section>
   );

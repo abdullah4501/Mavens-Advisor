@@ -32,7 +32,7 @@ const StatisticsSection = () => {
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-5xl font-bold text-navy leading-tight mb-[60px]">
+              <h2 className="text-5xl font-bold text-navy-light leading-tight mb-[60px]">
                 Amazing accounting statistics show the power of numbers.
               </h2>
 

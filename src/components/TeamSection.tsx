@@ -54,7 +54,7 @@ const TeamSection = () => {
               <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
                 Our Export
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-navy leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-navy-light leading-tight">
                 Trusted guidance for
                 lasting financial
                 growth.
@@ -63,7 +63,7 @@ const TeamSection = () => {
 
             {/* Right side - Description */}
             <div className="flex items-end lg:pl-12 col-span-12 md:col-span-6">
-              <p className="text-navy/50 font-semibold leading-relaxed max-w-lg">
+              <p className="text-navy-light/50 font-semibold leading-relaxed max-w-lg">
                 Stay organized and focused on growth while we handle your day financial record Gravida urna vehicula volutpat velit sed imperdiet.
               </p>
             </div>
@@ -79,7 +79,7 @@ const TeamSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col flex-row gap-5 group"
+              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col lg:flex-row gap-5 group"
             >
               <div className="relative flex-shrink-0">
                 <div className="w-40 h-52 rounded-md overflow-hidden ">
@@ -111,7 +111,7 @@ const TeamSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col flex-row gap-5 group"
+              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col lg:flex-row gap-5 group"
             >
               <div className="relative flex-shrink-0">
                 <div className="w-40 h-52 rounded-md overflow-hidden ">
@@ -144,7 +144,7 @@ const TeamSection = () => {
             >
               <motion.a
                 href="#team"
-                className="inline-flex items-center bg-navy text-white px-4 py-3 text-[15px] rounded-lg font-medium hover:scale-105 transition"
+                className="inline-flex items-center bg-navy-light text-white px-4 py-3 text-[15px] rounded-lg font-medium hover:scale-105 transition"
                 whileHover={{ scale: 1.05, gap: '12px' }}
                 whileTap={{ scale: 0.95 }}
               >
