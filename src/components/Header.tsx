@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Phone, ArrowRight, Search } from 'lucide-react';
+import { Menu, X, Phone, ArrowRight, Search } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 const Header = () => {
@@ -16,50 +16,53 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: 'Home', href: '#' },
-    { label: 'Pages', href: '#pages' },
-    { label: 'Services', href: '#services' },
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Blog', href: '#blog' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Home', href: '#', isActive: true },
+    { label: 'Pages', href: '#pages', isActive: false },
+    { label: 'Services', href: '#services', isActive: false },
+    { label: 'Portfolio', href: '#portfolio', isActive: false },
+    { label: 'Blog', href: '#blog', isActive: false },
+    { label: 'Contact Us', href: '#contact', isActive: false },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       <div
-        className={`${isScrolled ? '' : 'container'}  transition-all duration-300 ${
+        className={`${isScrolled ? '' : 'md:container px-2'} transition-all duration-300 ${
           isScrolled ? 'py-0' : 'py-5'
         }`}
       >
         <div
-          className={`flex items-center justify-between transition-all duration-300 px-6 py-4 ${
+          className={`flex items-center justify-between transition-all duration-300 px-4 xl:px-6 py-4 ${
             isScrolled
-              ? 'bg-white shadow-[0_2px_5px_rgb(0_0_0_/_8%)]'
+              ? 'bg-[#fffffff7] shadow-[0_2px_5px_rgb(0_0_0_/_8%)]'
               : 'border rounded-md border-[#7C898D] bg-[linear-gradient(180deg,#ECF0F429_0%,#7C898D85_100%)]'
           }`}
         >
           {/* LEFT */}
-          <div className="flex items-center gap-6">
-            <img src={logo} alt="logo" className="h-10" />
+          <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
+            <div className="h-10 w-full flex items-center">
+              <img src={logo} alt="logo" className="h-10" />
+            </div>
 
             {!isScrolled && (
-              <div className="hidden lg:flex items-center gap-2 text-white text-sm">
-                <span className="text-gold">Book a call</span>
-                <Phone className="w-4 h-4 text-gold" />
-                <span>14408482222</span>
+              <div className="hidden xl:flex items-center gap-2 text-white text-sm whitespace-nowrap">
+                <span className="text-white/80 text-[14px] font-bold">Book a call</span>
+                <span className='px-3 py-3 ml-2 rounded-full bg-gold'>
+                  <Phone className="w-4 h-4 text-white flex-shrink-0" />
+                </span>
+                <span className='font-bold'>14408482222</span>
               </div>
             )}
           </div>
 
           {/* NAV */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-8 flex-shrink min-w-0">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-sm font-medium transition-colors ${
-                  isScrolled ? 'text-navy' : 'text-white'
-                } hover:text-gold`}
+                className={`text-xs xl:text-sm font-medium transition-colors whitespace-nowrap hover:text-gold ${item.isActive ? 'text-gold' : isScrolled ? 'text-navy' : 'text-white'}`}
+
               >
                 {item.label}
               </a>
@@ -67,13 +70,13 @@ const Header = () => {
           </nav>
 
           {/* RIGHT */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
             {isScrolled ? (
               <>
                 <Search className="w-5 h-5 text-navy cursor-pointer" />
 
                 <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-sm text-navy leading-tight">
@@ -87,11 +90,11 @@ const Header = () => {
             ) : (
               <a
                 href="#contact"
-                className="bg-gold text-white px-6 py-3 rounded-md flex items-center gap-3 font-medium"
+                className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
               >
-                Get In Touch
-                <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <ArrowRight size={18} className="text-black" />
+                <span className="">Get In Touch</span>
+                <span className="w-7 h-7 xl:w-8 xl:h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                  <ArrowRight size={16} className="text-black" />
                 </span>
               </a>
             )}

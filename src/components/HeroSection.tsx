@@ -1,75 +1,176 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Play, } from 'lucide-react';
-import heroImage from '@/assets/hero-advisor.jpg';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+import heroImage1 from '@/assets/hero-advisor.jpg';
+import heroImage2 from '@/assets/slider1-01.jpg';
+import heroImage3 from '@/assets/slider1-02.jpg';
+
+import 'swiper/css';
+
+const slides = [
+  {
+    title: ['Business', 'Advisor'],
+    description: 'Transform your financial strategy with our expert consulting team. We craft solutions tailored to your business.',
+    image: heroImage1,
+  },
+  {
+    title: ['Strategic', 'Planning'],
+    description: 'Build sustainable growth with data-driven strategies and expert guidance for your enterprise success.',
+    image: heroImage2,
+  },
+  {
+    title: ['Growth', 'Solutions'],
+    description: 'Accelerate your business potential with innovative approaches and industry-leading expertise.',
+    image: heroImage3,
+  },
+];
 
 const HeroSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<SwiperType | null>(null);
 
+  const handlePaginationClick = (index: number) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index);
+    }
+  };
 
   return (
     <section className="relative min-h-[98vh] overflow-hidden flex items-center">
-      {/* Background Image */}
+      {/* Background Images with Fade */}
       <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Business Advisor"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/10 via-navy/15 " />
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+            style={{ opacity: activeIndex === index ? 1 : 0 }}
+          >
+            <img
+              src={slide.image}
+              alt={slide.title.join(' ')}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/10 via-navy/15" />
       </div>
 
-      {/* Content */}
-      <div className='flex container flex-col sm:flex-row'>
+      {/* Content Container */}
+      <div className='flex container flex-col sm:flex-row relative z-10'>
         <div className="relative container mx-auto px-4 lg:px-8 pt-32 pb-20">
-          <div className="max-w-2xl ">
-            {/* Main Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-[170px] font-bold text-white leading-tight mb-6"
-            >
-              Business
-              <br />
-              <span >Advisor</span>
-            </motion.h1>
-
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap gap-4"
-            >
-              <motion.a
-                href="#contact"
-                className="btn-primary text-md flex gap-3 items-center"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+          <div className="">
+            {/* Main Heading with fade animation */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`title-${activeIndex}`}
+                initial={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' }}
+                animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+                exit={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' }}
+                transition={{ duration: 1, ease: [0.5, 0.5, 0, 1] }}
+                className="overflow-hidden"
               >
-                Discover More
-                <span className='w-8 h-8 bg-white rounded-full flex items-center justify-center'>
-                  <ArrowRight color="black" size={20} />
-                </span>
-              </motion.a>
-              {/* Description */}
+                <h1 className="text-5xl md:text-8xl lg:text-[150px] font-bold text-white leading-tight mb-6">
+                  {slides[activeIndex].title[0]}
+                  <br />
+                  <span>{slides[activeIndex].title[1]}</span>
+                </h1>
+              </motion.div>
+            </AnimatePresence>
 
-            </motion.div>
+
+
+
+            {/* CTA Button with fade */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`cta-${activeIndex}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="flex flex-wrap gap-4"
+              >
+                <motion.a
+                  href="#contact"
+                  className="btn-primary text-md flex gap-3 items-center"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Discover More
+                  <span className='w-8 h-8 bg-white rounded-full flex items-center justify-center'>
+                    <ArrowRight color="black" size={20} />
+                  </span>
+                </motion.a>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-white text-[20px] leading-[30px] font-[500] z-10 self-end text-end "
-        >
-          
-        Transform your financial strategy with our expert consulting
-        team. We craft solutions tailored to your business.
-        </motion.p>
+
+        {/* Description */}
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={`desc-${activeIndex}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="text-white text-[16px] md:text-[20px] leading-[30px] font-[500] z-10 self-end text-end"
+          >
+            {slides[activeIndex].description}
+          </motion.p>
+        </AnimatePresence>
+      </div>
+
+      {/* Hidden Swiper for auto-rotation timing */}
+      <Swiper
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        onSlideChange={(swiper) => {
+          setActiveIndex(swiper.realIndex);
+        }}
+        className="!absolute !w-0 !h-0 !overflow-hidden"
+      >
+        {slides.map((_, index) => (
+          <SwiperSlide key={index} />
+        ))}
+      </Swiper>
+
+      {/* Custom Pagination - Matching Reference UI */}
+      <div className="absolute bottom-16 left-4 lg:left-24 z-20 flex items-center">
+        {slides.map((_, index) => (
+          <div key={index} className="flex items-center">
+            <button
+              onClick={() => handlePaginationClick(index)}
+              className={`text-sm font-medium transition-all duration-300 ${activeIndex === index ? 'text-white' : 'text-white/50'
+                }`}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </button>
+            {index < slides.length - 1 && (
+              <div className="mx-3 w-10 h-[1px] bg-white/30 relative">
+                {activeIndex === index && (
+                  <motion.div
+                    className="absolute top-0 left-0 h-full bg-white"
+                    initial={{ width: 0 }}
+                    animate={{ width: '100%' }}
+                    transition={{ duration: 5, ease: 'linear' }}
+                    key={`progress-${activeIndex}`}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );
