@@ -129,7 +129,7 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-accent text-white px-6 py-5 rounded-[5px] font-medium transition-all duration-300 hover:shadow-gold hover:scale-105;
+    @apply bg-accent text-white text-[15px] pr-[15px] pl-[25px] py-[14px] rounded-[5px]  transition-all duration-300 hover:shadow-gold hover:scale-105;
   }
 
   .btn-outline {

@@ -97,13 +97,13 @@ const HeroSection = () => {
               >
                 <motion.a
                   href="#contact"
-                  className="btn-primary text-md flex gap-3 items-center"
+                  className="btn-primary mt-4 flex gap-3 items-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Discover More
-                  <span className='w-8 h-8 bg-white rounded-full flex items-center justify-center'>
-                    <ArrowRight color="black" size={20} />
+                  <span className='w-7 h-7 bg-white rounded-full flex items-center justify-center'>
+                    <ArrowRight color="black" size={18} />
                   </span>
                 </motion.a>
               </motion.div>

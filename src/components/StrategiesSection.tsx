@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -8,9 +10,33 @@ import infobox from "@/assets/infobox-img.png";
 
 const StrategiesSection = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+  const [value, setValue] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started) {
+          setStarted(true);
+          animate(count, 25, {
+            duration: 1.2,
+            ease: "easeOut",
+            onUpdate: (v) => setValue(Math.round(v)),
+          });
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [started]);
+
 
   return (
-    <section className="py-28" ref={ref}>
+    <section className="py-28" >
       <div className="container mx-auto grid lg:grid-cols-2 gap-20 ">
 
         {/* LEFT IMAGE GROUP – FIXED */}
@@ -71,7 +97,7 @@ const StrategiesSection = () => {
           {/* Stats row */}
           <div className="grid grid-cols-2 items-center gap-10 ywe-stats">
             <div className="text-center">
-              <div className="text-gold text-[8rem] font-bold leading-none">25<sup>+</sup></div>
+              <div ref={ref} className="text-gold text-[8rem] font-bold leading-none">{value}<sup>+</sup></div>
               <p className="mt-2 font-bold">Years of working<br />experience</p>
             </div>
 
