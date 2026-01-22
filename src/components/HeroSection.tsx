@@ -34,9 +34,11 @@ const HeroSection = () => {
 
   const handlePaginationClick = (index: number) => {
     if (swiperRef.current) {
-      swiperRef.current.slideTo(index);
+      swiperRef.current.slideToLoop(index);
+      swiperRef.current.autoplay?.start(); // keep autoplay alive
     }
   };
+
 
   return (
     <section className="relative min-h-[98vh] overflow-hidden flex items-center">
@@ -128,17 +130,22 @@ const HeroSection = () => {
       <Swiper
         modules={[Autoplay]}
         autoplay={{
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+          stopOnLastSlide: false,
+          waitForTransition: true,
         }}
-        loop={true}
+        loop
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
+          swiper.autoplay?.start(); // ensure running on mount
         }}
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex);
+          swiper.autoplay?.start(); // ensure it resumes after any change
         }}
-        className="!absolute !w-0 !h-0 !overflow-hidden"
+        className="!absolute !left-[-9999px] !top-0 !w-[1px] !h-[1px] !opacity-0 !pointer-events-none"
       >
         {slides.map((_, index) => (
           <SwiperSlide key={index} />
