@@ -189,7 +189,7 @@ const Footer = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 30 }}
                     transition={{ duration: 0.3 }}
-                    className="fixed border border-white z-50 bottom-6 right-10 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-white hover:bg-[#2563eb] transition-colors ml-4"
+                    className="fixed z-50 bottom-6 right-10 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-white hover:bg-[#2563eb] transition-colors ml-4"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
