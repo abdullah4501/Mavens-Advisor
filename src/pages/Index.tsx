@@ -13,6 +13,9 @@ import BlogSection from '@/components/BlogSection';
 import Footer from '@/components/Footer';
 import { Users, Award, Briefcase, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ServiceSection2 from '@/components/ServicesSection2';
+import ServiceSection3 from '@/components/ServiceSection3';
+import WhyChooseSection2 from '@/components/WhyChooseSection2';
 
   const stats = [
     { icon: Users, value: '200+', label: 'Expert Consultants' },
@@ -57,7 +60,10 @@ const Index = () => {
       <WhyChooseSection />
       <MarqueeSection />
       <StatisticsSection />
+      <ServiceSection2 />
+      <WhyChooseSection2 />
       <VideoSection />
+      <ServiceSection3 />
       <ProcessSection />
       <TeamSection />
       <TestimonialsSection />

@@ -5,6 +5,7 @@ import processBasicResearch from '@/assets/processbox-img-01.png';
 import processDiscovery from '@/assets/processbox-img-02.png';
 import processBuildPlan from '@/assets/processbox-img-03.png';
 import processExecute from '@/assets/processbox-img-04.png';
+import AnimatedHeading from './AnimatedHeading';
 
 const ProcessSection = () => {
   const [activeStep, setActiveStep] = useState(3); // Default to Execute (index 3) as shown in design
@@ -50,12 +51,16 @@ const ProcessSection = () => {
         <div className="grid grid-cols-12 gap-8 mb-16">
           {/* Left side - Badge and Title */}
           <div className='col-span-10 md:col-span-5'>
-              <span className="inline-block bg-gold text-[#fff] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
-                Our Business Impact
-              </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              Successful Financial Control Process
-            </h2>
+            <span className="inline-block bg-gold text-[#fff] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
+              Our Business Impact
+            </span>
+            <AnimatedHeading
+              text="Successful Financial Control Process"
+              className="text-4xl md:text-5xl font-[700] font-bold text-white leading-tight"
+              duration={0.6}
+              stagger={0.01}
+              startDelay={0.6}
+            />
           </div>
 
           {/* Right side - Description */}
@@ -83,18 +88,16 @@ const ProcessSection = () => {
                 onMouseEnter={() => setActiveStep(index)}
               >
                 {/* Number */}
-                <span className={`text-2xl relative font-bold  transition-colors duration-300 vertical-line ${
-                  activeStep === index ? 'active text-[#628fff]' : 'text-white/50'
-                }`}>
+                <span className={`text-2xl relative font-bold  transition-colors duration-300 vertical-line ${activeStep === index ? 'active text-[#628fff]' : 'text-white/50'
+                  }`}>
                   {step.number}
                 </span>
 
                 {/* Content with vertical line */}
                 <div className="relative pl-1">
-                  
-                  <h4 className={`md:text-xl text-[18px] font-bold mb-2 transition-colors duration-300 ${
-                    activeStep === index ? 'text-[#628fff]' : 'text-white/50'
-                  }`}>
+
+                  <h4 className={`md:text-xl text-[18px] font-bold mb-2 transition-colors duration-300 ${activeStep === index ? 'text-[#628fff]' : 'text-white/50'
+                    }`}>
                     {step.title}
                   </h4>
                   <p className="text-muted-foreground font-semibold text-sm leading-relaxed max-w-xs">

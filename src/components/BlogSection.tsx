@@ -4,6 +4,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import strategyImage from '@/assets/strategy-meeting.jpg';
 import analyticsImage from '@/assets/analytics.jpg';
 import teamMeetingImage from '@/assets/team-meeting.jpg';
+import AnimatedHeading from './AnimatedHeading';
 
 const BlogSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -45,9 +46,14 @@ const BlogSection = () => {
           <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
             Fresh News
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy-light">
-            Articles & blog posts with<br />useful information
-          </h2>
+          <AnimatedHeading
+            text="Articles & blog posts with useful information"
+            className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
+            duration={0.6}
+            stagger={0.01}
+            startDelay={0.6}
+            center={true}
+          />
         </motion.div>
 
         {/* Blog Grid */}

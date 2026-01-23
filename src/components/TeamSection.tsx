@@ -7,6 +7,7 @@ import tm3 from '@/assets/team-03.jpg';
 import tm4 from '@/assets/team-04.jpg';
 import tm5 from '@/assets/team-05.jpg';
 import tm6 from '@/assets/team-06.jpg';
+import AnimatedHeading from './AnimatedHeading';
 
 const TeamSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -54,11 +55,13 @@ const TeamSection = () => {
               <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
                 Our Export
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-navy-light leading-tight">
-                Trusted guidance for
-                lasting financial
-                growth.
-              </h2>
+              <AnimatedHeading
+                text="Trusted guidance for lasting financial growth."
+                className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
+                duration={0.6}
+                stagger={0.01}
+                startDelay={0.6}
+              />
             </div>
 
             {/* Right side - Description */}

@@ -5,6 +5,7 @@ import img2 from "@/assets/team-meeting.jpg";
 import img3 from "@/assets/businesswoman.jpg";
 import BarChart from "./BarChart";
 import ServicesGrid from "./ServicesGrid";
+import AnimatedHeading from "./AnimatedHeading";
 
 const StatisticsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -32,11 +33,15 @@ const StatisticsSection = () => {
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-5xl font-bold text-navy-light leading-tight mb-[60px]">
-                Amazing accounting statistics show the power of numbers.
-              </h2>
+              <AnimatedHeading
+                text="Amazing accounting statistics show the power of numbers."
+                className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
+                duration={0.6}
+                stagger={0.01}
+                startDelay={0.3}
+              />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12">
                 {/* LEFT GRAPH AREA */}
                 <div className="relative  ">
                   <BarChart />

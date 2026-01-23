@@ -41,7 +41,7 @@ const Header = () => {
         >
           {/* LEFT */}
           <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
-            <div className="h-10 w-full flex items-center">
+            <div className="h-12 w-full flex items-center">
               <img src={isScrolled ? logo : logoWhite} alt="logo" className="h-10" />
             </div>
 

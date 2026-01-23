@@ -7,12 +7,12 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import worldMapImage from "@/assets/map.png";
 import businessWomanImage from "@/assets/contact-image.webp";
-import { Autoplay } from 'swiper/modules'
 import logo1 from '@/assets/client-white-01.png';
 import logo2 from '@/assets/client-white-02.png';
 import logo3 from '@/assets/client-white-03.png';
 import logo5 from '@/assets/client-white-05.png';
 import logo6 from '@/assets/client-white-06.png';
+import AnimatedHeading from './AnimatedHeading';
 
 
 const TestimonialsSection = () => {
@@ -76,9 +76,14 @@ const TestimonialsSection = () => {
             <span className="inline-block bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-6">
               Testimonials
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-light">
-              What our customers say?
-            </h2>
+            <AnimatedHeading
+              text="What our customers say?"
+              className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
+              duration={0.6}
+              stagger={0.01}
+              startDelay={0.6}
+              center={true}
+            />
           </motion.div>
 
           <div className="grid grid-cols-12 gap-6 items-stretch">
