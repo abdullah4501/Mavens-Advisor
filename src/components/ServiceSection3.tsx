@@ -2,16 +2,17 @@ import serviceBg from '@/assets/industry-bg-1.jpg';
 import 'swiper/css'
 import 'swiper/css/navigation'
 import MarqueeSection from "./MarqueeSection";
-import { 
-  HeartPulse, 
-  Cpu, 
-  Factory, 
-  Store, 
-  Home, 
-  Handshake, 
-  Rocket, 
-  ShoppingCart 
+import {
+    HeartPulse,
+    Cpu,
+    Factory,
+    Store,
+    Home,
+    Handshake,
+    Rocket,
+    ShoppingCart
 } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 
 const services = [
     {
@@ -64,16 +65,21 @@ const ServiceSection3 = () => {
 
                 {/* Content */}
                 <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 text-center">
-                    <h2 className="text-white font-semibold leading-tight mx-auto max-w-4xl text-[24px] md:text-[28px] lg:text-[32px]">
-                        Industries We Serve Tailored Financial Solutions for Your Sector’s Unique Needs
-                    </h2>
+                    <AnimatedHeading
+                        text="Industries We Serve Tailored Financial Solutions for Your Sector’s Unique Needs"
+                        className="text-4xl md:text-5xl font-[700] text-white leading-tight"
+                        duration={0.6}
+                        stagger={0.01}
+                        startDelay={0.3}
+                        center={true}
+                    />
                 </div>
 
                 {/* Services cards */}
                 <div className="relative w-full z-20 group/slider mt-[350px] my-5">
                     <div className="flex flex-wrap gap-2 lg:px-4 md:px-2 px-1">
                         {services.map((service) => (
-                           <div className="service-3-card group flex flex-col items-start h-full">
+                            <div className="service-3-card group flex flex-col items-start h-full">
                                 <div className="mb-4 text-gold px-3 py-2 bg-white/70 rounded-full">
                                     <service.icon className="w-[20px] h-[25px]" strokeWidth={2} />
                                 </div>

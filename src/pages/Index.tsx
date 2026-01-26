@@ -62,7 +62,9 @@ const Index = () => {
       <StatisticsSection />
       <ServiceSection2 />
       <WhyChooseSection2 />
-      <VideoSection />
+      <div className='relative'>
+        <VideoSection/>
+      </div>
       <ServiceSection3 />
       <ProcessSection />
       <TeamSection />

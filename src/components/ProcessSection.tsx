@@ -59,7 +59,7 @@ const ProcessSection = () => {
               className="text-4xl md:text-5xl font-[700] font-bold text-white leading-tight"
               duration={0.6}
               stagger={0.01}
-              startDelay={0.6}
+              startDelay={0.3}
             />
           </div>
 

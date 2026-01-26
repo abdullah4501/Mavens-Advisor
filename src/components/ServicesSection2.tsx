@@ -38,7 +38,7 @@ const services = [
         title: "Business Advisory",
         description: "Strategic guidance to help you navigate challenges and seize opportunities.",
         icon: LineChart,
-    }
+    },
 ];
 
 const ServiceSection2 = () => {
@@ -69,13 +69,13 @@ const ServiceSection2 = () => {
                 {/* Services cards */}
                 <div className="relative w-full z-20 group/slider">
                     <button
-                        className="opacity-100 md:opacity-0 group-hover/slider:opacity-100 transition transition-all duration-500 flex service-prev absolute left-0 bottom-24 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-navy-light backdrop-blur items-center justify-center hover:bg-gold "
+                        className="opacity-100 md:opacity-0 transition transition-all duration-500 flex service-prev absolute left-0 bottom-24 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-navy-light backdrop-blur items-center justify-center hover:bg-gold "
                     >
                         <MoveLeft className=" text-white" size={12} />
                     </button>
 
                     <button
-                        className="opacity-100 md:opacity-0 group-hover/slider:opacity-100 transition transition-all duration-500 flex service-next absolute right-0 bottom-24 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-navy-light backdrop-blur items-center justify-center hover:bg-gold "
+                        className="opacity-100 md:opacity-0 transition transition-all duration-500 flex service-next absolute right-0 bottom-24 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-navy-light backdrop-blur items-center justify-center hover:bg-gold "
                     >
                         <MoveRight className="text-white" size={12} />
                     </button>
@@ -92,33 +92,58 @@ const ServiceSection2 = () => {
                         breakpoints={{
                             640: { slidesPerView: 1 },
                             768: { slidesPerView: 2 },
-                            1024: { slidesPerView: 3.75 },
+                            1024: { slidesPerView: 4 },
                         }}
                     >
                         {services.map((service, index) => (
                             <SwiperSlide key={index}>
-                                <div className="service-2-card group flex flex-col items-start w-full h-full">
-                                    <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
-                                        <service.icon className="w-[40px] h-[50px]" strokeWidth={2} />
+                                <div className="flex flex-col gap-6">
+                                    <div className="mb-5 service-2-card-top group flex flex-col items-start w-full h-full min-h-auto md:min-h-[365px] max-h-auto md:max-h-[390px]">
+                                        <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
+                                            <service.icon className="w-[40px] h-[50px]" strokeWidth={2} />
+                                        </div>
+
+                                        <h3 className="font-bold text-white text-[20px] ">
+                                            {service.title}
+                                        </h3>
+
+                                        <p className="text-sm text-white/90 font-medium mb-[15px]">
+                                            {service.description}
+                                        </p>
+
+                                        <a
+                                            href="#"
+                                            className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
+                                        >
+                                            Discover More
+                                            <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
+                                                <ArrowRight size={18} />
+                                            </span>
+                                        </a>
                                     </div>
+                                    <div className="service-2-card group flex flex-col items-start w-full h-full min-h-auto md:min-h-[535px]">
+                                        <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
+                                            <service.icon className="w-[40px] h-[50px]" strokeWidth={2} />
+                                        </div>
 
-                                    <h3 className="font-bold text-white text-[20px] -translate-y-[90px] group-hover:translate-y-0 transition-transform duration-500">
-                                        {service.title}
-                                    </h3>
+                                        <h3 className="font-bold text-white text-[20px] -translate-y-[90px] group-hover:translate-y-0 transition-transform duration-500">
+                                            {service.title}
+                                        </h3>
 
-                                    <p className="text-sm text-white/90 font-medium mb-[45px]">
-                                        {service.description}
-                                    </p>
+                                        <p className="text-sm text-white/90 font-medium mb-[45px]">
+                                            {service.description}
+                                        </p>
 
-                                    <a
-                                        href="#"
-                                        className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
-                                    >
-                                        Discover More
-                                        <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
-                                            <ArrowRight size={18} />
-                                        </span>
-                                    </a>
+                                        <a
+                                            href="#"
+                                            className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
+                                        >
+                                            Discover More
+                                            <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
+                                                <ArrowRight size={18} />
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </SwiperSlide>
                         ))}

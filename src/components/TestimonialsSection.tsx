@@ -81,7 +81,7 @@ const TestimonialsSection = () => {
               className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
               duration={0.6}
               stagger={0.01}
-              startDelay={0.6}
+              startDelay={0.3}
               center={true}
             />
           </motion.div>
