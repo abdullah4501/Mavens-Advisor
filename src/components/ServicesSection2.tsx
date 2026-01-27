@@ -98,12 +98,12 @@ const ServiceSection2 = () => {
                         {services.map((service, index) => (
                             <SwiperSlide key={index}>
                                 <div className="flex flex-col gap-6">
-                                    <div className="mb-5 service-2-card-top group flex flex-col items-start w-full h-full min-h-auto md:min-h-[365px] max-h-auto md:max-h-[390px]">
+                                    <div className="service-2-card-top group flex flex-col items-start w-full h-full min-h-auto min-h-auto md:min-h-[535px]">
                                         <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
                                             <service.icon className="w-[40px] h-[50px]" strokeWidth={2} />
                                         </div>
 
-                                        <h3 className="font-bold text-white text-[20px] ">
+                                        <h3 className="font-bold text-white text-[20px] -translate-y-[90px] group-hover:translate-y-0 transition-transform duration-500">
                                             {service.title}
                                         </h3>
 

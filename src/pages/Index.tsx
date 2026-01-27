@@ -57,14 +57,14 @@ const Index = () => {
         </div>
       </motion.div>
       <StrategiesSection />
-      <WhyChooseSection />
+      <WhyChooseSection2 />
+      <div className='relative'>
+        <WhyChooseSection />
+      </div>
       <MarqueeSection />
       <StatisticsSection />
       <ServiceSection2 />
-      <WhyChooseSection2 />
-      <div className='relative'>
-        <VideoSection/>
-      </div>
+      <VideoSection/>
       <ServiceSection3 />
       <ProcessSection />
       <TeamSection />
