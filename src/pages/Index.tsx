@@ -56,20 +56,22 @@ const Index = () => {
           </div>
         </div>
       </motion.div>
+      
       <StrategiesSection />
-      <WhyChooseSection2 />
-      <div className='relative'>
-        <WhyChooseSection />
-      </div>
+      <WhyChooseSection />
       <MarqueeSection />
       <StatisticsSection />
-      <ServiceSection2 />
       <VideoSection/>
-      <ServiceSection3 />
       <ProcessSection />
       <TeamSection />
       <TestimonialsSection />
       <BlogSection />
+      <WhyChooseSection2 />
+      <div className='relative'>
+        <ServiceSection2 />
+      </div>
+      <ServiceSection3 />
+      
       <Footer />
     </div>
   );

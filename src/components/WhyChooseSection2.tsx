@@ -48,13 +48,6 @@ const features = [
       "Dedicated account managers for personalized service before they become problems.",
     icon: "headphones" as const,
   },
-  {
-    number: 7,
-    title: "Proven Results",
-    description:
-      "Dedicated account managers for personalized service before they become problems.",
-    icon: "headphones" as const,
-  },
 ];
 
 const ITEM_HEIGHT = 180; // Height of each feature item in pixels

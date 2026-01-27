@@ -34,17 +34,12 @@ const services = [
         description: "Strategic guidance to help you navigate challenges and seize opportunities.",
         icon: LineChart,
     },
-    {
-        title: "Business Advisory",
-        description: "Strategic guidance to help you navigate challenges and seize opportunities.",
-        icon: LineChart,
-    },
 ];
 
 const ServiceSection2 = () => {
     return (
         <section className="section-padding">
-            <div className="relative w-full  overflow-hidden">
+            <div className="relative w-full overflow-hidden">
                 {/* Background image */}
                 <img
                     src={serviceBg}
