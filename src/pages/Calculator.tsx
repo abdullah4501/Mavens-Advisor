@@ -40,6 +40,7 @@ const Calculator = () => {
   const [email, setEmail] = useState("");
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Initialize from localStorage
   useEffect(() => {
@@ -152,7 +153,7 @@ const Calculator = () => {
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isFormValid = isEmailValid && userName.trim().length > 1;
 
-  const handleNext = () => {
+  const handleNext = async () => {
     const newErrors: Record<string, string> = {};
 
     if (step === 1) {
@@ -194,7 +195,49 @@ const Calculator = () => {
 
       if (Object.keys(newErrors).length === 0) {
         setErrors({});
-        setStep(4);
+
+        // Save to Database
+        setIsSubmitting(true);
+        const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/';
+        const payload = {
+          userName,
+          email,
+          services: activeServices.map(s => ({
+            id: s.id,
+            name: s.name,
+            quantity: calculations.serviceCosts[s.id]?.quantity || 1,
+            cost: calculations.serviceCosts[s.id]?.cost || 0
+          })),
+          totalCost: calculations.totalCost,
+          totalHours: calculations.totalHours,
+          currency: settings.currency
+        };
+
+        try {
+          const response = await fetch(`${baseUrl.replace(/\/$/, '')}/api/estimates/save`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.message || 'Failed to save estimate');
+          }
+
+          toast.success("Estimate saved successfully!");
+          setStep(4);
+        } catch (error) {
+          console.error("Error saving estimate:", error);
+          toast.error("Could not save estimate to the database, but you can still view it.");
+          // Still proceed to results so user isn't stuck
+          setStep(4);
+        } finally {
+          setIsSubmitting(false);
+        }
       } else {
         setErrors(newErrors);
       }
@@ -363,6 +406,7 @@ const Calculator = () => {
                 onBack={handleBack}
                 isValid={isFormValid}
                 errors={errors}
+                isSubmitting={isSubmitting}
               />
             )}
 

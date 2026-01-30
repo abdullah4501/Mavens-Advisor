@@ -13,9 +13,20 @@ interface EmailStepProps {
   onBack: () => void;
   isValid: boolean;
   errors?: Record<string, string>;
+  isSubmitting?: boolean;
 }
 
-const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBack, isValid, errors }: EmailStepProps) => {
+const EmailStep = ({
+  name,
+  email,
+  onNameChange,
+  onEmailChange,
+  onContinue,
+  onBack,
+  isValid,
+  errors,
+  isSubmitting
+}: EmailStepProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onContinue();
@@ -111,11 +122,12 @@ const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBac
             </Button>
             <Button
               type="submit"
-              className="rounded-full h-12 px-8 bg-gold hover:opacity-90 transition-opacity shadow-lg"
+              disabled={isSubmitting}
+              className="rounded-full h-12 px-8 bg-gold hover:opacity-90 transition-opacity shadow-lg disabled:opacity-50"
               style={{ boxShadow: "var(--shadow-button)" }}
             >
-              View My Estimate
-              <ArrowRight className="w-5 h-5 ml-2" />
+              {isSubmitting ? "Saving..." : "View My Estimate"}
+              {!isSubmitting && <ArrowRight className="w-5 h-5 ml-2" />}
             </Button>
           </div>
         </motion.div>
