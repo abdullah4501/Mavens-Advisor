@@ -33,9 +33,9 @@ const ServicesGrid = () => {
     const [activeIndex, setActiveIndex] = useState(1);
 
     return (
-        <section className="bg-background">
+        <section className="">
             <div className="overflow-hidden">
-                <div className="py-24 relative grid lg:grid-cols-4 grid-cols-1 gap-6 w-full">
+                <div className=" relative grid lg:grid-cols-4 grid-cols-1 gap-6 w-full">
 
                     {services.map((service, idx) => {
                         const offset =

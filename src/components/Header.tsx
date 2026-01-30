@@ -41,7 +41,7 @@ const Header = () => {
           {/* LEFT */}
           <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
             <div className="h-12 w-full flex items-center">
-              <img src={isScrolled ? logo : logo} alt="logo" className="h-10" /><RollingText text="MavensAdvisor" />
+              <img src={isScrolled ? logo : logo} alt="logo" className="h-8 mr-1" /><RollingText text="Mavens Advisor" />
 
             </div>
 

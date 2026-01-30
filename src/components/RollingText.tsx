@@ -3,7 +3,7 @@ interface RollingTextProps {
   size?: number;
 }
 
-export default function RollingText({ text, size = 24 }: RollingTextProps) {
+export default function RollingText({ text, size = 32 }: RollingTextProps) {
   const lineHeight = Math.round(size * 1.25);
   const mavensCount = 6; 
 

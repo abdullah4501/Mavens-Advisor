@@ -38,7 +38,7 @@ const services = [
 
 const ServiceSection2 = () => {
     return (
-        <section className="section-padding">
+        <section className="">
             <div className="relative w-full overflow-hidden">
                 {/* Background image */}
                 <img
@@ -92,13 +92,13 @@ const ServiceSection2 = () => {
                     >
                         {services.map((service, index) => (
                             <SwiperSlide key={index}>
-                                <div className="flex flex-col gap-6">
+                                <div className="flex flex-col max-h-[760px]">
                                     <div className="service-2-card-top group flex flex-col items-start w-full h-full min-h-auto min-h-auto md:min-h-[535px]">
                                         <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
                                             <service.icon className="w-[40px] h-[50px]" strokeWidth={2} />
                                         </div>
 
-                                        <h3 className="font-bold text-white text-[20px] -translate-y-[90px] group-hover:translate-y-0 transition-transform duration-500">
+                                        <h3 className="font-bold text-white text-[20px] -translate-y-[120px] group-hover:translate-y-0 transition-transform duration-500">
                                             {service.title}
                                         </h3>
 

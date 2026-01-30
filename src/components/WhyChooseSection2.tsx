@@ -48,9 +48,16 @@ const features = [
       "Dedicated account managers for personalized service before they become problems.",
     icon: "headphones" as const,
   },
+  {
+    number: 7,
+    title: "Proven Results",
+    description:
+      "Dedicated account managers for personalized service before they become problems.",
+    icon: "headphones" as const,
+  },
 ];
 
-const ITEM_HEIGHT = 180; // Height of each feature item in pixels
+const ITEM_HEIGHT = 160; // Height of each feature item in pixels
 const VISIBLE_ITEMS = 4; // Number of items visible at once
 
 const WhyChooseSection = () => {
@@ -97,7 +104,7 @@ const WhyChooseSection = () => {
   return (
     <section
       ref={sectionRef}
-      className={`relative bg-background ${isDesktop ? "-mb-[280px]" : ""} "`}
+      className={` pb-0 relative bg-background ${isDesktop ? "-mb-[300px]" : ""} "`}
       style={{
         height: isDesktop
           ? containerHeight
@@ -106,11 +113,11 @@ const WhyChooseSection = () => {
     >
       <div className={isDesktop ? "sticky top-0 flex items-center overflow-hidden" : ""}>
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="section-padding pb-0 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* LEFT (pinned) - No changes as requested */}
             <div className="space-y-8">
-              <span className="inline-block text-muted-foreground font-medium text-sm tracking-wide">
-                Why Choose Limpa?
+              <span className="inline-block bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-6">
+                Why Choose Us
               </span>
 
               <AnimatedHeading
@@ -139,7 +146,7 @@ const WhyChooseSection = () => {
             <div
               className="relative overflow-hidden"
               style={{
-                height: isDesktop ? "100vh" : "auto",
+                height: isDesktop ? "auto" : "auto",
               }}
             >
               <motion.div
@@ -157,7 +164,6 @@ const WhyChooseSection = () => {
                     transition={{
                       duration: 0.5,
                       delay: index * 0.1,
-                      ease: "easeOut"
                     }}
                   >
                     <div className="flex gap-5 py-8 h-full items-start">
