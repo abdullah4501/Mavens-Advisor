@@ -56,7 +56,7 @@ const defaultFixedPriceServices: FixedPriceService[] = [
 const defaultSettings: Settings = {
   services: defaultServices,
   fixedPriceServices: defaultFixedPriceServices,
-  hourlyRate: 40,
+  hourlyRate: 20,
   currency: '$',
   companyName: 'Your Company',
   defaultQuantities: {},
