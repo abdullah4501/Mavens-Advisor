@@ -29,16 +29,14 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       <div
-        className={`${isScrolled ? '' : 'md:container px-2'} transition-all duration-300 ${
-          isScrolled ? 'py-0' : 'py-5'
-        }`}
+        className={`${isScrolled ? 'w-full' : 'max-w-[1440px] mx-auto px-2'} transition-all duration-300 ${isScrolled ? 'py-0' : 'py-5'
+          }`}
       >
         <div
-          className={`flex items-center justify-between transition-all duration-300 px-4 xl:px-6 py-4 ${
-            isScrolled
-              ? 'bg-[#fffffff7] shadow-[0_2px_5px_rgb(0_0_0_/_8%)]'
-              : 'border rounded-md border-[#7C898D] bg-[linear-gradient(180deg,#ECF0F429_0%,#7C898D85_100%)]'
-          }`}
+          className={`flex items-center justify-between transition-all duration-300 px-4 xl:px-6 py-4 ${isScrolled
+            ? 'bg-[#fffffff7] shadow-[0_2px_5px_rgb(0_0_0_/_8%)]'
+            : 'border rounded-md border-[#7C898D] bg-[linear-gradient(180deg,#ECF0F429_0%,#7C898D85_100%)]'
+            }`}
         >
           {/* LEFT */}
           <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
