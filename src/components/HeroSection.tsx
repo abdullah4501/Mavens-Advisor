@@ -96,7 +96,7 @@ const HeroSection = () => {
                 className="flex flex-wrap gap-4"
               >
                 <motion.a
-                  href="#contact"
+                  href="/calculator"
                   className="btn-primary mt-4 flex gap-3 items-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

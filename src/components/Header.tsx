@@ -17,7 +17,7 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: 'Home', href: '#', isActive: true },
+    { label: 'Home', href: '/', isActive: true },
     { label: 'Pages', href: '#pages', isActive: false },
     { label: 'Services', href: '#services', isActive: false },
     { label: 'Portfolio', href: '#portfolio', isActive: false },
@@ -88,7 +88,7 @@ const Header = () => {
               </>
             ) : (
               <a
-                href="#contact"
+                href="/calculator"
                 className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
               >
                 <span className="">Get In Touch</span>

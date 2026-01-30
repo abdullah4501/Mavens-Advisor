@@ -33,7 +33,7 @@ const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBac
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.05 }}
-      className="max-w-lg mx-auto"
+      className="max-w-[1440px] mx-auto"
     >
       <div className="text-center mb-8">
         <h2 className="font-display text-3xl font-bold mb-3">
