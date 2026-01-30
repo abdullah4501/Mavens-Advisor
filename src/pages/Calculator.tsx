@@ -19,6 +19,8 @@ import QuantityInput from "@/components/calculator/QuantityInput";
 import EmailStep from "@/components/calculator/EmailStep";
 import EstimateSummary from "@/components/calculator/EstimateSummary";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import PageBanner from "@/components/PageBanner";
 import { toast } from "sonner";
 
 const STEPS = [
@@ -199,15 +201,19 @@ const Calculator = () => {
   return (
     <div>
       <Header />
+      <PageBanner
+        title="Service Calculator"
+        subtitle="Get a transparent, instant estimate for your business needs."
+      />
 
-      <div className="min-h-screen bg-background">
+      <div className="bg-background">
         {/* Background decoration */}
         <div className="fixed inset-0 pointer-events-none overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 pt-32 pb-12">
+        <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 py-20">
 
           {/* Step Indicator */}
           <motion.div
@@ -373,6 +379,7 @@ const Calculator = () => {
             </motion.div>
           )}
         </div>
+        <Footer />
       </div>
     </div>
   );
