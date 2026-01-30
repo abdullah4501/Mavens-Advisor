@@ -9,6 +9,7 @@ interface QuantityInputProps {
   quantity: string;
   onQuantityChange: (id: string, value: string) => void;
   index: number;
+  error?: string;
 }
 
 const QuantityInput = ({
@@ -17,6 +18,7 @@ const QuantityInput = ({
   quantity,
   onQuantityChange,
   index,
+  error,
 }: QuantityInputProps) => {
   // Convert service name to a more natural question format
   const getQuestion = (name: string) => {
@@ -50,29 +52,41 @@ const QuantityInput = ({
       transition={{ delay: index * 0.05, duration: 0.3 }}
       className="group"
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 bg-card rounded-2xl border border-border/60 hover:border-primary/40 hover:shadow-md transition-all duration-300">
-        <label
-          htmlFor={id}
-          className="font-display font-medium text-lg text-foreground/80 group-hover:text-foreground transition-colors max-w-md leading-snug"
-        >
-          {question}
-        </label>
+      <div className={`flex flex-col gap-2 p-6 bg-card rounded-2xl border transition-all duration-300 ${error ? 'border-destructive shadow-[0_0_15px_-5px_hsl(var(--destructive))]' : 'border-border/60 hover:border-gold/40 hover:shadow-md'}`}>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <label
+            htmlFor={id}
+            className={`font-display font-medium text-lg transition-colors max-w-md leading-snug ${error ? 'text-destructive' : 'text-foreground/80 group-hover:text-foreground'}`}
+          >
+            {question}
+          </label>
 
-        <div className="relative">
-          <Input
-            id={id}
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            value={quantity}
-            onChange={(e) => {
-              const val = e.target.value.replace(/[^0-9]/g, '');
-              onQuantityChange(id, val);
-            }}
-            className="w-full sm:w-32 h-12 text-center sm:text-right bg-muted/40 border-none focus-visible:ring-2 focus-visible:ring-primary/20 font-display font-bold text-xl px-4 rounded-xl transition-all"
-            placeholder="0"
-          />
+          <div className="relative">
+            <Input
+              id={id}
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              value={quantity}
+              onChange={(e) => {
+                const val = e.target.value.replace(/[^0-9]/g, '');
+                onQuantityChange(id, val);
+              }}
+              className={`w-full sm:w-32 h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-xl px-4 rounded-xl transition-all border-2 ${error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
+              placeholder="0"
+            />
+          </div>
         </div>
+
+        {error && (
+          <motion.p
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="text-destructive text-xs font-bold uppercase tracking-wide mt-1"
+          >
+            {error}
+          </motion.p>
+        )}
       </div>
     </motion.div>
   );
