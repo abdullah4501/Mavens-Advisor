@@ -12,20 +12,13 @@ interface EmailStepProps {
   onContinue: () => void;
   onBack: () => void;
   isValid: boolean;
+  errors?: Record<string, string>;
 }
 
-const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBack, isValid }: EmailStepProps) => {
+const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBack, isValid, errors }: EmailStepProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isValid) {
-      onContinue();
-    } else {
-      if (!name.trim()) {
-        toast.error("Please enter your name.");
-      } else if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        toast.error("Please enter a valid email address.");
-      }
-    }
+    onContinue();
   };
 
   return (
@@ -52,9 +45,9 @@ const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBac
           className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg"
           style={{ boxShadow: "var(--shadow-card)" }}
         >
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">
+              <label className={`block text-sm font-medium mb-2 transition-colors ${errors?.userName ? 'text-destructive' : 'text-foreground'}`}>
                 Your Name <span className="text-destructive">*</span>
               </label>
               <div className="relative">
@@ -65,17 +58,26 @@ const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBac
                   value={name}
                   onChange={(e) => onNameChange(e.target.value)}
                   placeholder="John Doe"
-                  className="h-14 pl-5 pr-4 text-lg rounded-xl border-2 border-border focus:border-primary transition-colors"
+                  className={`h-14 pl-5 pr-4 text-lg rounded-xl border-2 transition-colors ${errors?.userName ? 'border-destructive focus:border-destructive shadow-[0_0_15px_-5px_hsl(var(--destructive))]' : 'border-border focus:border-gold'}`}
                 />
+                {errors?.userName && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-destructive text-xs font-bold mt-1.5 uppercase tracking-wide"
+                  >
+                    {errors.userName}
+                  </motion.p>
+                )}
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">
+              <label className={`block text-sm font-medium mb-2 transition-colors ${errors?.email ? 'text-destructive' : 'text-foreground'}`}>
                 Email Address <span className="text-destructive">*</span>
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <Mail className={`absolute left-4 top-14 sm:top-1/2 sm:-translate-y-1/2 w-5 h-5 transition-colors ${errors?.email ? 'text-destructive/60' : 'text-muted-foreground'}`} style={{ top: '28px' }} />
                 <Input
                   name="userEmail"
                   autoComplete="email"
@@ -83,8 +85,17 @@ const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBac
                   value={email}
                   onChange={(e) => onEmailChange(e.target.value)}
                   placeholder="your@email.com"
-                  className="h-14 pl-12 pr-4 text-lg rounded-xl border-2 border-border focus:border-primary transition-colors"
+                  className={`h-14 pl-12 pr-4 text-lg rounded-xl border-2 transition-colors ${errors?.email ? 'border-destructive focus:border-destructive shadow-[0_0_15px_-5px_hsl(var(--destructive))]' : 'border-border focus:border-gold'}`}
                 />
+                {errors?.email && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-destructive text-xs font-bold mt-1.5 uppercase tracking-wide"
+                  >
+                    {errors.email}
+                  </motion.p>
+                )}
               </div>
             </div>
           </div>

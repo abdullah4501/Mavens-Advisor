@@ -39,6 +39,7 @@ const Calculator = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [step, setStep] = useState(1);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Initialize from localStorage
   useEffect(() => {
@@ -115,11 +116,26 @@ const Calculator = () => {
 
   const handleServiceToggle = (id: string, checked: boolean) => {
     setSelectedServices((p) => ({ ...p, [id]: checked }));
+    if (checked) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors.services;
+        return newErrors;
+      });
+    }
   };
 
   const handleQuantityChange = (id: string, val: string) => {
-    if (val === "" || /^\d*$/.test(val))
+    if (val === "" || /^\d*$/.test(val)) {
       setQuantities((p) => ({ ...p, [id]: val }));
+      if (val !== "" && parseInt(val) > 0) {
+        setErrors((prev) => {
+          const newErrors = { ...prev };
+          delete newErrors[id];
+          return newErrors;
+        });
+      }
+    }
   };
 
   const totalSelectedServices = Object.values(selectedServices).filter(
@@ -136,13 +152,12 @@ const Calculator = () => {
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isFormValid = isEmailValid && userName.trim().length > 1;
 
-  const isStep2Valid = settings.services
-    .filter((s) => selectedServices[s.id])
-    .every((s) => (parseFloat(quantities[s.id]) || 0) > 0);
-
   const handleNext = () => {
+    const newErrors: Record<string, string> = {};
+
     if (step === 1) {
       if (totalSelectedServices > 0) {
+        setErrors({});
         const hasHourlyServices = settings.services.some(
           (s) => selectedServices[s.id],
         );
@@ -152,27 +167,36 @@ const Calculator = () => {
           setStep(3);
         }
       } else {
-        toast.error("Please select at least one service to continue.");
+        setErrors({ services: "Please select at least one service to continue." });
       }
     } else if (step === 2) {
-      const missingQuantities = settings.services.filter(
-        (s) =>
-          selectedServices[s.id] && (parseFloat(quantities[s.id]) || 0) <= 0,
-      );
+      settings.services.forEach((s) => {
+        if (selectedServices[s.id] && (parseFloat(quantities[s.id]) || 0) <= 0) {
+          newErrors[s.id] = `${s.name} is required`;
+        }
+      });
 
-      if (missingQuantities.length === 0) {
+      if (Object.keys(newErrors).length === 0) {
+        setErrors({});
         setStep(3);
       } else {
-        const names = missingQuantities.map((s) => s.name).join(", ");
-        toast.error(`Please provide quantity for: ${names}`);
+        setErrors(newErrors);
       }
     } else if (step === 3) {
-      if (isFormValid) {
-        setStep(4);
-      } else if (!userName.trim()) {
-        toast.error("Please enter your name.");
+      if (!userName.trim()) {
+        newErrors.userName = "Name is required";
+      }
+      if (!email.trim()) {
+        newErrors.email = "Email is required";
       } else if (!isEmailValid) {
-        toast.error("Please enter a valid email address.");
+        newErrors.email = "Invalid email address";
+      }
+
+      if (Object.keys(newErrors).length === 0) {
+        setErrors({});
+        setStep(4);
+      } else {
+        setErrors(newErrors);
       }
     }
   };
@@ -243,8 +267,17 @@ const Calculator = () => {
                   <p className="text-muted-foreground">
                     Select the services you need for your project
                   </p>
+                  {errors.services && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-destructive font-medium mt-2"
+                    >
+                      {errors.services}
+                    </motion.p>
+                  )}
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${errors.services ? 'p-2 rounded-2xl border-2 border-destructive/20 bg-destructive/5' : ''}`}>
                   {settings.services.map((service, idx) => (
                     <ServiceCard
                       key={service.id}
@@ -310,6 +343,7 @@ const Calculator = () => {
                           quantity={quantities[service.id] || ""}
                           onQuantityChange={handleQuantityChange}
                           index={idx}
+                          error={errors[service.id]}
                         />
                       ))}
                   </div>
@@ -325,9 +359,10 @@ const Calculator = () => {
                 email={email}
                 onNameChange={setUserName}
                 onEmailChange={setEmail}
-                onContinue={() => setStep(4)}
+                onContinue={handleNext}
                 onBack={handleBack}
                 isValid={isFormValid}
+                errors={errors}
               />
             )}
 
