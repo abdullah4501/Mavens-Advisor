@@ -368,7 +368,7 @@ const Calculator = () => {
 
                 <Button
                   size="lg"
-                  className="rounded-full h-12 px-8 gradient-primary hover:opacity-90 transition-opacity shadow-lg"
+                  className="rounded-full h-12 px-8 bg-gold hover:opacity-90 transition-opacity shadow-lg"
                   style={{ boxShadow: "var(--shadow-button)" }}
                   onClick={handleNext}
                 >

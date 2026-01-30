@@ -100,7 +100,7 @@ const EmailStep = ({ name, email, onNameChange, onEmailChange, onContinue, onBac
             </Button>
             <Button
               type="submit"
-              className="rounded-full h-12 px-8 gradient-primary hover:opacity-90 transition-opacity shadow-lg"
+              className="rounded-full h-12 px-8 bg-gold hover:opacity-90 transition-opacity shadow-lg"
               style={{ boxShadow: "var(--shadow-button)" }}
             >
               View My Estimate

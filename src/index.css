@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 220 20% 97%;
     --foreground: 220 30% 10%;
 
     --card: 0 0% 100%;
@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 30% 10%;
 
-    --primary: 243 75% 59%;
+    --primary: 220 90% 56%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 30% 96%;
@@ -22,7 +22,7 @@
     --muted: 220 20% 95%;
     --muted-foreground: 220 10% 45%;
 
-    --accent: 262 83% 58%;
+    --accent: 211 99% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -30,7 +30,7 @@
 
     --border: 220 20% 88%;
     --input: 220 20% 88%;
-    --ring: 40 70% 55%;
+    --ring: 217 100% 46%;
 
     --radius: 0.5rem;
 
@@ -44,10 +44,16 @@
     --cream: 45 30% 96%;
     --gray-light: 220 15% 94%;
 
+
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(220 50% 12% / 0.95), hsl(220 55% 8% / 0.85));
     --gradient-gold: linear-gradient(135deg, hsl(40 70% 55%), hsl(40 65% 45%));
     --gradient-dark: linear-gradient(180deg, hsl(220 50% 12%), hsl(220 55% 8%));
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(220 90% 56%) 0%, hsl(250 90% 60%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(162 72% 45%) 0%, hsl(180 72% 50%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(220 20% 99%) 0%, hsl(220 20% 97%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
 
     /* Shadows */
     --shadow-soft: 0 4px 20px -2px hsl(220 50% 12% / 0.1);
@@ -97,7 +103,10 @@
 
     --border: 220 35% 22%;
     --input: 220 35% 22%;
-    --ring: 40 70% 55%;
+    --ring: 217 100% 46%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(220 90% 60%) 0%, hsl(250 90% 65%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(30, 35, 50, 0.9) 0%, rgba(30, 35, 50, 0.7) 100%);
 
     --sidebar-background: 220 50% 10%;
     --sidebar-foreground: 0 0% 98%;

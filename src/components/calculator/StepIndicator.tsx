@@ -43,7 +43,7 @@ const StepIndicator = ({ currentStep, totalSteps, steps }: StepIndicatorProps) =
                 {isActive && (
                   <motion.div
                     layoutId="activeStep"
-                    className="absolute inset-0 rounded-2xl gradient-primary"
+                    className="absolute inset-0 rounded-2xl bg-gold"
                     style={{ zIndex: -1 }}
                   />
                 )}
@@ -62,7 +62,7 @@ const StepIndicator = ({ currentStep, totalSteps, steps }: StepIndicatorProps) =
                   initial={{ width: 0 }}
                   animate={{ width: isCompleted ? "100%" : "0%" }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="h-full gradient-accent"
+                  className="h-full bg-gold"
                 />
               </div>
             )}

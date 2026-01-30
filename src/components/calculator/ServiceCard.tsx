@@ -20,8 +20,8 @@ const ServiceCard = ({ id, name, minutesPerJob, isSelected, onToggle, index }: S
       className={`
         group relative p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer overflow-hidden
         ${isSelected
-          ? "border-primary bg-primary text-primary-foreground shadow-lg"
-          : "border-border/40 bg-card hover:border-primary/30 hover:shadow-md"
+          ? "border-gold bg-gold text-primary-foreground shadow-lg"
+          : "border-border/40 bg-card hover:border-gold/30 hover:shadow-md"
         }
       `}
       style={{
@@ -38,8 +38,8 @@ const ServiceCard = ({ id, name, minutesPerJob, isSelected, onToggle, index }: S
           className={`
             shrink-0 w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all duration-200
             ${isSelected
-              ? "border-primary-foreground bg-primary-foreground text-primary"
-              : "border-muted-foreground/30 group-hover:border-primary/50"
+              ? "border-primary-foreground bg-primary-foreground text-gold"
+              : "border-muted-foreground/30 group-hover:border-gold/50"
             }
           `}
         >
@@ -52,7 +52,7 @@ const ServiceCard = ({ id, name, minutesPerJob, isSelected, onToggle, index }: S
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="absolute inset-0 gradient-primary opacity-100"
+          className="absolute inset-0 bg-gold opacity-100"
           style={{ zIndex: 0 }}
         />
       )}

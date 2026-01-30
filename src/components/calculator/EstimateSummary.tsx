@@ -69,7 +69,7 @@ const EstimateSummary = ({
         style={{ boxShadow: "var(--shadow-card)" }}
       >
         {/* Header */}
-        <div className="gradient-primary p-6 text-center">
+        <div className="bg-gold p-6 text-center">
           <Receipt className="w-8 h-8 mx-auto mb-2 text-primary-foreground/80" />
           <h3 className="font-display text-xl font-bold text-primary-foreground">
             Service Estimate
@@ -162,7 +162,7 @@ const EstimateSummary = ({
           </Button>
           <Button
             type="submit"
-            className="rounded-full p-0 h-14 gradient-primary hover:opacity-90 transition-opacity shadow-lg"
+            className="rounded-full p-0 h-14 bg-gold hover:opacity-90 transition-opacity shadow-lg"
             style={{ boxShadow: "var(--shadow-button)" }}
           >
             <a href="https://calendly.com/adeelshaikh/quick-catch-up-with-your-virtual-cfo?month=2026-01"
