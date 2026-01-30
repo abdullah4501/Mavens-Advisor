@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, ArrowRight, Search } from 'lucide-react';
 import logoWhite from '@/assets/logo-white.png';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/mavens-update-3.png';
+import RollingText from './RollingText';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,7 +43,8 @@ const Header = () => {
           {/* LEFT */}
           <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
             <div className="h-12 w-full flex items-center">
-              <img src={isScrolled ? logo : logoWhite} alt="logo" className="h-10" />
+              <img src={isScrolled ? logo : logo} alt="logo" className="h-10" /><RollingText text="MavensAdvisor" />
+
             </div>
 
             {!isScrolled && (

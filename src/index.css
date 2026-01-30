@@ -443,6 +443,7 @@ body {
   transform: translateY(55%);
   transition: all ease 0.5s;
 }
+
 .service-2-card-top {
   padding: 50px 36px 43px;
   border-radius: 20px 20px 0 0;
@@ -457,6 +458,7 @@ body {
 .service-2-card:hover {
   transform: translateY(5%);
 }
+
 .service-2-card-top:hover {
   transform: translateY(60%);
 }
@@ -464,6 +466,7 @@ body {
 .service-2-card h3 {
   margin: 114px 0 20px;
 }
+
 .service-2-card-top h3 {
   margin: 114px 0 20px;
 }
@@ -486,8 +489,51 @@ body {
   backdrop-filter: blur(21px);
   clip-path: polygon(0 0, calc(100% - 77px) 0, 100% 45px, 100% 100%, 0 100%);
   transition: all ease 0.5s;
-   width: calc(50% - 9px);
+  width: calc(50% - 9px);
 
+}
+
+.rolling-text {
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow: hidden;
+  width: max-content;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--font-size);
+  font-weight: 700;
+  line-height: 1.25em;
+
+  user-select: none;
+  cursor: pointer;
+
+}
+
+.text-gold {
+  text-shadow: 0 var(--line-height) 0 #005aeb;
+}
+
+.text-black {
+  text-shadow: 0 var(--line-height) 0 #171717;
+}
+
+.rolling-text span {
+  display: block;
+  white-space: pre;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  will-change: transform;
+
+  /* slower & smoother */
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rolling-text:hover span {
+  transform: translateY(calc(-1 * var(--line-height)));
 }
 
 @keyframes ripple {
@@ -574,8 +620,9 @@ body {
   .service-grid-img img {
     border-radius: 16px 16px 0 0;
   }
+
   .service-3-card {
-    width: 100% ;
+    width: 100%;
   }
 }
 
