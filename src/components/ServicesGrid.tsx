@@ -35,7 +35,7 @@ const ServicesGrid = () => {
     return (
         <section className="">
             <div className="overflow-hidden">
-                <div className=" relative grid lg:grid-cols-4 grid-cols-1 gap-6 w-full">
+                <div className="py-16 relative grid lg:grid-cols-4 grid-cols-1 gap-6 w-full">
 
                     {services.map((service, idx) => {
                         const offset =
