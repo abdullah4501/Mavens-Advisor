@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from "react-router-dom";
 import { ArrowRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -8,7 +9,11 @@ import heroImage1 from '@/assets/hero-advisor.jpg';
 import heroImage2 from '@/assets/slider1-01.jpg';
 import heroImage3 from '@/assets/slider1-02.jpg';
 
+
 import 'swiper/css';
+
+const MotionLink = motion(Link);
+
 
 const slides = [
   {
@@ -95,8 +100,8 @@ const HeroSection = () => {
                 transition={{ duration: 0.4, delay: 0.1 }}
                 className="flex flex-wrap gap-4"
               >
-                <motion.a
-                  href="/calculator"
+                <MotionLink
+                  to="/calculator"
                   className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -105,7 +110,7 @@ const HeroSection = () => {
                   <span className='w-7 h-7 bg-white rounded-full flex items-center justify-center'>
                     <ArrowRight color="black" size={18} />
                   </span>
-                </motion.a>
+                </MotionLink>
               </motion.div>
             </AnimatePresence>
           </div>

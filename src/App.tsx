@@ -9,7 +9,7 @@ import Calculator from "./pages/Calculator";
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-
+import AdminSettings from "./pages/AdminSettings";
 import { SettingsProvider } from "./context/SettingsContext";
 
 const queryClient = new QueryClient();
@@ -42,6 +42,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/calculator" element={<Calculator />} />
+              <Route path="/admin/settings" element={<AdminSettings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

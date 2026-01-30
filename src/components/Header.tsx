@@ -4,6 +4,7 @@ import { Menu, X, Phone, ArrowRight, Search } from 'lucide-react';
 import logoWhite from '@/assets/logo-white.png';
 import logo from '@/assets/mavens-update-3.png';
 import RollingText from './RollingText';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,7 +42,7 @@ const Header = () => {
           {/* LEFT */}
           <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
             <div className="h-12 w-full flex items-center">
-              <img src={isScrolled ? logo : logo} alt="logo" className="h-10" /><RollingText text="MavensAdvisor" />
+              <img src={isScrolled ? logo : logo} alt="logo" className="h-8 mr-1" /><RollingText text="Mavens Advisor" />
 
             </div>
 
@@ -59,14 +60,14 @@ const Header = () => {
           {/* NAV */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-8 flex-shrink min-w-0">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.href}
                 className={`text-xs xl:text-sm font-medium transition-colors whitespace-nowrap hover:text-gold ${item.isActive ? 'text-gold' : isScrolled ? 'text-navy' : 'text-white'}`}
 
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -89,15 +90,15 @@ const Header = () => {
                 </div>
               </>
             ) : (
-              <a
-                href="/calculator"
+              <Link
+                to="/calculator"
                 className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
               >
                 <span className="">Get In Touch</span>
                 <span className="w-7 h-7 xl:w-8 xl:h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                   <ArrowRight size={16} className="text-black" />
                 </span>
-              </a>
+              </Link>
             )}
           </div>
 

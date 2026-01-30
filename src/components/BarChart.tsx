@@ -65,7 +65,7 @@ export const BarChart = () => {
   };
 
   return (
-    <div className="relative w-full max-w-md mx-auto bg-background">
+    <div className="relative w-full max-w-md mx-auto ">
       {/* Legend */}
       <div className="flex justify-center mb-6 text-sm gap-8">
         <span className="flex items-center gap-2">

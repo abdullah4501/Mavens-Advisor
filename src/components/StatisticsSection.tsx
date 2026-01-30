@@ -11,7 +11,7 @@ const StatisticsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-[120px] pb-0 bg-white why-choose-us-section-one">
+    <section ref={ref} className="section-padding  bg-white why-choose-us-section-one">
       <div className="container mx-auto">
 
         {/* TOP SECTION */}

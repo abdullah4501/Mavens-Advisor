@@ -23,13 +23,14 @@ interface Settings {
 
 interface SettingsContextType {
   settings: Settings;
-  updateSettings: (newSettings: Partial<Settings>) => void;
-  addService: (name: string, minutesPerJob: number) => void;
-  updateService: (id: string, updates: Partial<Omit<Service, 'id'>>) => void;
-  removeService: (id: string) => void;
-  addFixedPriceService: (name: string, price: number) => void;
-  updateFixedPriceService: (id: string, updates: Partial<Omit<FixedPriceService, 'id'>>) => void;
-  removeFixedPriceService: (id: string) => void;
+  updateSettings: (newSettings: Partial<Settings>, sync?: boolean) => void;
+  addService: (name: string, minutesPerJob: number, sync?: boolean) => void;
+  updateService: (id: string, updates: Partial<Omit<Service, 'id'>>, sync?: boolean) => void;
+  removeService: (id: string, sync?: boolean) => void;
+  addFixedPriceService: (name: string, price: number, sync?: boolean) => void;
+  updateFixedPriceService: (id: string, updates: Partial<Omit<FixedPriceService, 'id'>>, sync?: boolean) => void;
+  removeFixedPriceService: (id: string, sync?: boolean) => void;
+  isSyncing: boolean;
 }
 
 const defaultServices: Service[] = [
@@ -65,29 +66,73 @@ const defaultSettings: Settings = {
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
 export const SettingsProvider = ({ children }: { children: ReactNode }) => {
-  const [settings, setSettings] = useState<Settings>(() => {
+  const [settings, setSettings] = useState<Settings>(defaultSettings);
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  // Load from localStorage initially for fast start
+  React.useEffect(() => {
     const saved = localStorage.getItem('serviceCalculatorSettings');
     if (saved) {
-      const parsed = JSON.parse(saved);
-      // Migration: handle old format
-      if (!parsed.services) {
-        return { ...defaultSettings, ...parsed };
+      try {
+        setSettings(JSON.parse(saved));
+      } catch (e) {
+        console.error("Error loading local settings", e);
       }
-      return { ...defaultSettings, ...parsed };
     }
-    return defaultSettings;
-  });
+    fetchSettings();
+  }, []);
 
-  const saveSettings = (newSettings: Settings) => {
+  const fetchSettings = async () => {
+    try {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/';
+      const response = await fetch(`${baseUrl.replace(/\/$/, '')}/api/settings`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.settings) {
+          setSettings(data.settings);
+          localStorage.setItem('serviceCalculatorSettings', JSON.stringify(data.settings));
+        }
+      }
+    } catch (error) {
+      console.error("Failed to fetch settings from server", error);
+    }
+  };
+
+  const syncWithServer = async (newSettings: Settings) => {
+    setIsSyncing(true);
+    try {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/';
+      const response = await fetch(`${baseUrl.replace(/\/$/, '')}/api/settings/save`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({ settings: newSettings }),
+      });
+
+      if (!response.ok) throw new Error("Sync failed");
+
+    } catch (error) {
+      console.error("Failed to sync settings with server", error);
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
+  const saveSettings = (newSettings: Settings, sync = false) => {
     localStorage.setItem('serviceCalculatorSettings', JSON.stringify(newSettings));
     setSettings(newSettings);
+    if (sync) {
+      syncWithServer(newSettings);
+    }
   };
 
-  const updateSettings = (newSettings: Partial<Settings>) => {
-    saveSettings({ ...settings, ...newSettings });
+  const updateSettings = (newSettings: Partial<Settings>, sync = false) => {
+    saveSettings({ ...settings, ...newSettings }, sync);
   };
 
-  const addService = (name: string, minutesPerJob: number) => {
+  const addService = (name: string, minutesPerJob: number, sync = false) => {
     const newService: Service = {
       id: Date.now().toString(),
       name,
@@ -96,26 +141,26 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     saveSettings({
       ...settings,
       services: [...settings.services, newService],
-    });
+    }, sync);
   };
 
-  const updateService = (id: string, updates: Partial<Omit<Service, 'id'>>) => {
+  const updateService = (id: string, updates: Partial<Omit<Service, 'id'>>, sync = false) => {
     saveSettings({
       ...settings,
       services: settings.services.map((s) =>
         s.id === id ? { ...s, ...updates } : s
       ),
-    });
+    }, sync);
   };
 
-  const removeService = (id: string) => {
+  const removeService = (id: string, sync = false) => {
     saveSettings({
       ...settings,
       services: settings.services.filter((s) => s.id !== id),
-    });
+    }, sync);
   };
 
-  const addFixedPriceService = (name: string, price: number) => {
+  const addFixedPriceService = (name: string, price: number, sync = false) => {
     const newService: FixedPriceService = {
       id: `fp${Date.now()}`,
       name,
@@ -124,23 +169,23 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     saveSettings({
       ...settings,
       fixedPriceServices: [...settings.fixedPriceServices, newService],
-    });
+    }, sync);
   };
 
-  const updateFixedPriceService = (id: string, updates: Partial<Omit<FixedPriceService, 'id'>>) => {
+  const updateFixedPriceService = (id: string, updates: Partial<Omit<FixedPriceService, 'id'>>, sync = false) => {
     saveSettings({
       ...settings,
       fixedPriceServices: settings.fixedPriceServices.map((s) =>
         s.id === id ? { ...s, ...updates } : s
       ),
-    });
+    }, sync);
   };
 
-  const removeFixedPriceService = (id: string) => {
+  const removeFixedPriceService = (id: string, sync = false) => {
     saveSettings({
       ...settings,
       fixedPriceServices: settings.fixedPriceServices.filter((s) => s.id !== id),
-    });
+    }, sync);
   };
 
   return (
@@ -153,7 +198,8 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
         removeService,
         addFixedPriceService,
         updateFixedPriceService,
-        removeFixedPriceService
+        removeFixedPriceService,
+        isSyncing
       }}
     >
       {children}
