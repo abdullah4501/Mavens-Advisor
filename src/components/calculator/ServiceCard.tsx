@@ -21,7 +21,7 @@ const ServiceCard = ({ id, name, minutesPerJob, isSelected, onToggle, index }: S
         group relative p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer overflow-hidden
         ${isSelected
           ? "border-primary bg-primary text-primary-foreground shadow-lg"
-          : "border-transparent bg-card hover:border-primary/30 hover:shadow-md"
+          : "border-border/40 bg-card hover:border-primary/30 hover:shadow-md"
         }
       `}
       style={{
@@ -36,7 +36,7 @@ const ServiceCard = ({ id, name, minutesPerJob, isSelected, onToggle, index }: S
         </div>
         <div
           className={`
-            shrink-0 w-6 h-6 rounded-lg flex items-center justify-center border-2 transition-all duration-200
+            shrink-0 w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all duration-200
             ${isSelected
               ? "border-primary-foreground bg-primary-foreground text-primary"
               : "border-muted-foreground/30 group-hover:border-primary/50"

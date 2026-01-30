@@ -97,7 +97,7 @@ const HeroSection = () => {
               >
                 <motion.a
                   href="/calculator"
-                  className="btn-primary mt-4 flex gap-3 items-center"
+                  className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
