@@ -76,7 +76,7 @@ const QuantityInput = ({
                 onQuantityChange(id, val);
               }}
               className={`w-full h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-xl px-4 rounded-xl transition-all border-2 ${error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
-              placeholder="0"
+              placeholder="-"
             />
           </div>
         </div>

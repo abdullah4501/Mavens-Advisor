@@ -172,7 +172,7 @@ const Calculator = () => {
     } else if (step === 2) {
       settings.services.forEach((s) => {
         if (selectedServices[s.id] && (parseFloat(quantities[s.id]) || 0) <= 0) {
-          newErrors[s.id] = `${s.name} is required`;
+          newErrors[s.id] = ` required`;
         }
       });
 
