@@ -46,7 +46,7 @@ const HeroSection = () => {
 
 
   return (
-    <section className="relative min-h-[98vh] overflow-hidden flex items-center">
+    <section className="relative min-h-auto lg:min-h-[98vh] overflow-hidden flex items-center">
       {/* Background Images with Fade */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
@@ -124,7 +124,7 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="text-white text-[16px] md:text-[20px] leading-[30px] font-[500] z-10 self-end text-end"
+            className="text-white text-[16px] md:text-[20px] leading-[30px] font-[500] z-10 self-end text-end hidden md:block"
           >
             {slides[activeIndex].description}
           </motion.p>
@@ -158,7 +158,7 @@ const HeroSection = () => {
       </Swiper>
 
       {/* Custom Pagination - Matching Reference UI */}
-      <div className="absolute bottom-16 left-4 lg:left-24 z-20 flex items-center">
+      <div className="absolute bottom-10 left-4    lg:left-24 z-20 flex items-center">
         {slides.map((_, index) => (
           <div key={index} className="flex items-center">
             <button

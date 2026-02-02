@@ -82,7 +82,7 @@ const StrategiesSection = () => {
           />
 
 
-          <p className="text-muted-foreground mb-12 font-semibold mt-6">
+          <p className="text-muted-foreground text-[18px] mb-12 font-medium mt-6">
             We specialize in helping small businesses thrive by providing expert
             guidance in business planning and growth strategy.
           </p>
@@ -111,7 +111,7 @@ const StrategiesSection = () => {
 
               <a
                 href="#"
-                className="inline-flex items-center gap-3 bg-navy-light text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
+                className="inline-flex items-center gap-3 bg-navy-light text-white px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:scale-105 transition"
               >
                 Discover More
                 <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">

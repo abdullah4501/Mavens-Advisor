@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Clock, Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { KeyboardEvent } from "react";
 
 interface QuantityInputProps {
   id: string;
@@ -45,6 +46,35 @@ const QuantityInput = ({
     return `How many monthly ${cleanName} do you have?`;
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      
+      // Try to find a container - form, or a parent container with data attribute, or document
+      const form = e.currentTarget.closest('form');
+      const container = e.currentTarget.closest('[data-quantity-form]') || form || document;
+      
+      // Get all quantity inputs in the container
+      const inputs = Array.from(container.querySelectorAll('input[inputmode="numeric"]')) as HTMLInputElement[];
+      const currentIndex = inputs.indexOf(e.currentTarget);
+      
+      if (currentIndex < inputs.length - 1) {
+        // Move to next input
+        inputs[currentIndex + 1].focus();
+      } else {
+        // No more inputs, focus the Next/Submit button
+        const buttonContainer = form || e.currentTarget.closest('[data-quantity-form]') || document;
+        const nextButton = buttonContainer.querySelector(
+          'button[type="submit"], button[data-next-button], button:last-of-type'
+        ) as HTMLButtonElement;
+        
+        if (nextButton) {
+          nextButton.focus();
+        }
+      }
+    }
+  };
+
   const question = getQuestion(name);
 
   return (
@@ -75,6 +105,7 @@ const QuantityInput = ({
                 const val = e.target.value.replace(/[^0-9]/g, '');
                 onQuantityChange(id, val);
               }}
+              onKeyDown={handleKeyDown}
               className={`w-full h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-xl px-4 rounded-xl transition-all border-2 ${error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
               placeholder="-"
             />

@@ -76,10 +76,10 @@ const ServiceSection2 = () => {
                 <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 text-center">
 
 
-                    <h1 className="text-white font-semibold text-start leading-tight mx-auto max-w-4xl text-[24px] md:text-[28px] lg:text-[32px]">
-                        <small className="text-white text-xs uppercase tracking-[0.25em] mb-6 opacity-90 mx-[70px]">
+                    <h1 className="text-white font-semibold text-start leading-tight text-[24px] md:text-[28px] lg:text-[40px]">
+                        <small className="text-white text-[18px] uppercase tracking-[0.05em] mb-6 font-medium mx-[70px]">
                             Our SERVICES
-                        </small>   Expert accounting and management advice, all in one place. Custom-crafted for the way your business works.
+                        </small>   Expert accounting and management<br />advice, all in one place. Custom-crafted for the way your business works.
                     </h1>
                 </div>
 
@@ -124,8 +124,8 @@ const ServiceSection2 = () => {
 
                                         {/* TOP CARD */}
                                         <div className="service-2-card-top group flex flex-col items-start w-full md:min-h-[455px]">
-                                            <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
-                                                <topService.icon className="w-[40px] h-[50px]" strokeWidth={2} />
+                                            <div className=" mb-4">
+                                                <topService.icon className="w-[50px] h-[50px] text-[#4775ff]" strokeWidth={2} />
                                             </div>
 
                                             <h3 className="font-bold text-white text-[20px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">
@@ -147,8 +147,8 @@ const ServiceSection2 = () => {
                                         {/* BOTTOM CARD */}
                                         {bottomService && (
                                             <div className="service-2-card group flex flex-col items-start w-full md:min-h-[455px]">
-                                                <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
-                                                    <bottomService.icon className="w-[40px] h-[50px]" strokeWidth={2} />
+                                                <div className=" mb-4">
+                                                    <topService.icon className="w-[50px] h-[50px] text-[#4775ff]" strokeWidth={2} />
                                                 </div>
 
                                                 <h3 className="font-bold text-white text-[20px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">

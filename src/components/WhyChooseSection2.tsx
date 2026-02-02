@@ -57,6 +57,7 @@ const features = [
   },
 ];
 
+
 const ITEM_HEIGHT = 160; // Height of each feature item in pixels
 const VISIBLE_ITEMS = 4; // Number of items visible at once
 

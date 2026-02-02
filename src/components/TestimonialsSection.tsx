@@ -199,12 +199,6 @@ const TestimonialsSection = () => {
                   alt="Global Presence Map"
                   className="w-full h-full object-contain"
                 />
-                {/* Map Dots */}
-                <div className="absolute top-[35%] left-[18%] w-2 h-2 bg-amber-500 rounded-full"></div>
-                <div className="absolute top-[25%] left-[48%] w-2 h-2 bg-amber-500 rounded-full"></div>
-                <div className="absolute top-[45%] left-[52%] w-2 h-2 bg-amber-500 rounded-full"></div>
-                <div className="absolute top-[30%] left-[75%] w-2 h-2 bg-amber-500 rounded-full"></div>
-                <div className="absolute top-[55%] left-[80%] w-2 h-2 bg-amber-500 rounded-full"></div>
               </div>
 
               {/* Stats Row */}

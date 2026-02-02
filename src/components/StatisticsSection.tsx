@@ -15,7 +15,7 @@ const StatisticsSection = () => {
       <div className="container mx-auto">
 
         {/* TOP SECTION */}
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-20 items-start mb-24">
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-20 items-start mb-24">
           <div className="col-span-1">
             <motion.div
               initial={{ opacity: 0, x: 50 }}

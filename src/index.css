@@ -180,7 +180,7 @@
   }
 
   .animate-marquee {
-    animation: marquee 30s linear infinite;
+    animation: marquee 60s linear infinite;
   }
 
   .animate-marquee-reverse {
@@ -553,6 +553,20 @@ body {
   transform: translateY(calc(-1 * var(--line-height)));
 }
 
+.bg-stats-bg {
+  padding: 37px 0 16px;
+  background-color: #91D089;
+}
+.funfact-card::before {
+      position: absolute;
+    top: calc(50% + 2px);
+    left: 0;
+    content: "";
+    width: 1px;
+    height: 88px;
+    background-color: rgba(247, 247, 247, 0.5);
+    transform: translateY(-50%);
+}
 @keyframes ripple {
   from {
     opacity: 1;
@@ -597,7 +611,7 @@ body {
 }
 
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1366px) {
   .service-right {
     padding: 0 6% 3.5% 2%;
   }

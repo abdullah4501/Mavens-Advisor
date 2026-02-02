@@ -28,9 +28,9 @@ const ServiceCard = ({ id, name, minutesPerJob, isSelected, onToggle, index }: S
         boxShadow: isSelected ? "var(--shadow-button)" : "var(--shadow-card)",
       }}
     >
-      <div className="relative z-10 flex items-start justify-between gap-4">
+      <div className="relative z-10 flex items-start justify-between gap-4 items-center">
         <div className="flex-1">
-          <h4 className="font-display font-semibold text-base leading-tight mb-2">
+          <h4 className="font-display font-semibold text-base leading-tight">
             {name}
           </h4>
         </div>
