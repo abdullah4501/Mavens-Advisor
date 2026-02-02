@@ -10,6 +10,7 @@ interface QuantityInputProps {
   onQuantityChange: (id: string, value: string) => void;
   index: number;
   error?: string;
+  autoFocus?: boolean;
 }
 
 const QuantityInput = ({
@@ -19,6 +20,7 @@ const QuantityInput = ({
   onQuantityChange,
   index,
   error,
+  autoFocus,
 }: QuantityInputProps) => {
   // Convert service name to a more natural question format
   const getQuestion = (name: string) => {
@@ -61,8 +63,9 @@ const QuantityInput = ({
             {question}
           </label>
 
-          <div className="relative">
+          <div className="relative w-full md:w-[20%]">
             <Input
+              autoFocus={autoFocus}
               id={id}
               type="text"
               inputMode="numeric"
@@ -72,7 +75,7 @@ const QuantityInput = ({
                 const val = e.target.value.replace(/[^0-9]/g, '');
                 onQuantityChange(id, val);
               }}
-              className={`w-full sm:w-32 h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-xl px-4 rounded-xl transition-all border-2 ${error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
+              className={`w-full h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-xl px-4 rounded-xl transition-all border-2 ${error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
               placeholder="0"
             />
           </div>

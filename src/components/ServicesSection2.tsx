@@ -19,6 +19,17 @@ const services = [
         icon: Receipt,
     },
     {
+        title: "Tax Planning & Compliance",
+        description: "Minimize liabilities and meet deadlines with our strategic tax support for individuals and businesses.",
+        icon: Receipt,
+    },
+    {
+        title: "Bookkeeping & Financial Reporting",
+        description: "Accurate record-keeping and insightful financial reporting to keep your business on track.",
+        icon: BookOpen,
+
+    },
+    {
         title: "Bookkeeping & Financial Reporting",
         description: "Accurate record-keeping and insightful financial reporting to keep your business on track.",
         icon: BookOpen,
@@ -30,10 +41,21 @@ const services = [
         icon: Wallet,
     },
     {
+        title: "Payroll Services",
+        description: "Streamlined payroll processing with compliance and tax management.",
+        icon: Wallet,
+    },
+    {
         title: "Business Advisory",
         description: "Strategic guidance to help you navigate challenges and seize opportunities.",
         icon: LineChart,
     },
+    {
+        title: "Business Advisory",
+        description: "Strategic guidance to help you navigate challenges and seize opportunities.",
+        icon: LineChart,
+    },
+
 ];
 
 const ServiceSection2 = () => {
@@ -90,58 +112,67 @@ const ServiceSection2 = () => {
                             1024: { slidesPerView: 4 },
                         }}
                     >
-                        {services.map((service, index) => (
-                            <SwiperSlide key={index}>
-                                <div className="flex flex-col max-h-[760px]">
-                                    <div className="service-2-card-top group flex flex-col items-start w-full h-full min-h-auto min-h-auto md:min-h-[535px]">
-                                        <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
-                                            <service.icon className="w-[40px] h-[50px]" strokeWidth={2} />
+                        {services.map((_, index) => {
+                            if (index % 2 !== 0) return null
+
+                            const topService = services[index];
+                            const bottomService = services[index + 1];
+
+                            return (
+                                <SwiperSlide key={index}>
+                                    <div className="flex flex-col max-h-[650px]">
+
+                                        {/* TOP CARD */}
+                                        <div className="service-2-card-top group flex flex-col items-start w-full md:min-h-[455px]">
+                                            <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
+                                                <topService.icon className="w-[40px] h-[50px]" strokeWidth={2} />
+                                            </div>
+
+                                            <h3 className="font-bold text-white text-[20px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">
+                                                {topService.title}
+                                            </h3>
+
+                                            <p className="text-sm text-white/90 font-medium mb-[15px] pr-[30px]">
+                                                {topService.description}
+                                            </p>
+
+                                            <a className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition">
+                                                Discover More
+                                                <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
+                                                    <ArrowRight size={18} />
+                                                </span>
+                                            </a>
                                         </div>
 
-                                        <h3 className="font-bold text-white text-[20px] -translate-y-[120px] group-hover:translate-y-0 transition-transform duration-500">
-                                            {service.title}
-                                        </h3>
+                                        {/* BOTTOM CARD */}
+                                        {bottomService && (
+                                            <div className="service-2-card group flex flex-col items-start w-full md:min-h-[455px]">
+                                                <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
+                                                    <bottomService.icon className="w-[40px] h-[50px]" strokeWidth={2} />
+                                                </div>
 
-                                        <p className="text-sm text-white/90 font-medium mb-[15px]">
-                                            {service.description}
-                                        </p>
+                                                <h3 className="font-bold text-white text-[20px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">
+                                                    {bottomService.title}
+                                                </h3>
 
-                                        <a
-                                            href="#"
-                                            className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
-                                        >
-                                            Discover More
-                                            <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
-                                                <ArrowRight size={18} />
-                                            </span>
-                                        </a>
+                                                <p className="text-sm text-white/90 font-medium mb-[45px] pr-[30px]">
+                                                    {bottomService.description}
+                                                </p>
+
+                                                <a className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition">
+                                                    Discover More
+                                                    <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
+                                                        <ArrowRight size={18} />
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        )}
+
                                     </div>
-                                    <div className="service-2-card group flex flex-col items-start w-full h-full min-h-auto md:min-h-[535px]">
-                                        <div className="mb-4 text-gold px-4 py-3 bg-white/70 rounded-full">
-                                            <service.icon className="w-[40px] h-[50px]" strokeWidth={2} />
-                                        </div>
+                                </SwiperSlide>
+                            );
+                        })}
 
-                                        <h3 className="font-bold text-white text-[20px] -translate-y-[90px] group-hover:translate-y-0 transition-transform duration-500">
-                                            {service.title}
-                                        </h3>
-
-                                        <p className="text-sm text-white/90 font-medium mb-[45px]">
-                                            {service.description}
-                                        </p>
-
-                                        <a
-                                            href="#"
-                                            className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
-                                        >
-                                            Discover More
-                                            <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
-                                                <ArrowRight size={18} />
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
                     </Swiper>
 
                 </div>

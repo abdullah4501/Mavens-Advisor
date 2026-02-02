@@ -468,7 +468,7 @@ body {
   -webkit-backdrop-filter: blur(11px);
   backdrop-filter: blur(11px);
   clip-path: polygon(0 0, calc(100% - 148px) 0, 100% 150px, 100% 100%, 0 100%);
-  transform: translateY(64%);
+  transform: translateY(60%);
   transition: all ease 0.5s;
 }
 
@@ -477,15 +477,15 @@ body {
 }
 
 .service-2-card-top:hover {
-  transform: translateY(5%);
+  transform: translateY(0%);
 }
 
 .service-2-card h3 {
-  margin: 114px 0 20px;
+  margin: 55px 0 20px;
 }
 
 .service-2-card-top h3 {
-  margin: 114px 0 20px;
+  margin: 55px 0 20px;
 }
 
 

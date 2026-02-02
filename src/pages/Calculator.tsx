@@ -344,6 +344,7 @@ const Calculator = () => {
                           onQuantityChange={handleQuantityChange}
                           index={idx}
                           error={errors[service.id]}
+                          autoFocus={idx === 0}
                         />
                       ))}
                   </div>
