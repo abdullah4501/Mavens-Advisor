@@ -16,6 +16,7 @@ import { motion } from 'framer-motion';
 import ServiceSection2 from '@/components/ServicesSection2';
 import ServiceSection3 from '@/components/ServiceSection3';
 import WhyChooseSection2 from '@/components/WhyChooseSection2';
+import CaseStudiesSection from '@/components/CaseStudiesSection';
 
   const stats = [
     { icon: Users, value: '200+', label: 'Expert Consultants' },
@@ -71,6 +72,7 @@ const Index = () => {
         <ServiceSection2 />
       </div>
       <ServiceSection3 />
+      <CaseStudiesSection />
       
       <Footer />
     </div>

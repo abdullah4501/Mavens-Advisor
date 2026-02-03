@@ -89,6 +89,11 @@ const WhyChooseSection = () => {
     target: sectionRef,
     offset: ["start start", "end end"],
   });
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    ["-15%", "0%", "8%"]
+  );
 
   const maxScrollDistance = (features.length - VISIBLE_ITEMS) * ITEM_HEIGHT;
 
@@ -98,8 +103,9 @@ const WhyChooseSection = () => {
     [0, -maxScrollDistance]
   );
 
-
   const y = isDesktop ? transformY : 0;
+
+
 
 
   return (
@@ -113,7 +119,7 @@ const WhyChooseSection = () => {
       }}
     >
       <div className={isDesktop ? "sticky top-0 flex items-center overflow-hidden" : ""}>
-        <div className="container mx-auto px-6 lg:px-12">
+        <div className="container ">
           <div className="section-padding pb-0 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* LEFT (pinned) - No changes as requested */}
             <div className="space-y-8">
@@ -130,16 +136,23 @@ const WhyChooseSection = () => {
               />
 
               <div className="flex gap-4 pt-4">
-                <img
-                  src={teamStairs}
-                  alt="Team on stairs"
-                  className="w-1/2 h-80 object-cover rounded-lg"
-                />
-                <img
-                  src={teamLaptop}
-                  alt="Team with laptop"
-                  className="w-1/2 h-80 object-cover rounded-lg"
-                />
+                <div className="overflow-hidden rounded-[20px] h-full">
+                  <motion.img
+                    src={teamStairs}
+                    alt="Team on stairs"
+                    className="h-full w-full object-cover"
+                    style={{ y: isDesktop ? imageY : 0 }}
+                  />
+                </div>
+
+                <div className="overflow-hidden rounded-[20px] h-full">
+                  <motion.img
+                    src={teamLaptop}
+                    alt="Team with laptop"
+                    className="h-full w-full object-cover"
+                    style={{ y: isDesktop ? imageY : 0 }}
+                  />
+                </div>
               </div>
             </div>
 
@@ -157,7 +170,7 @@ const WhyChooseSection = () => {
                 {features.map((feature, index) => (
                   <motion.div
                     key={feature.number}
-                    className="border-b border-divider"
+                    className=" mb-[40px]"
                     style={{ height: ITEM_HEIGHT }}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -167,13 +180,13 @@ const WhyChooseSection = () => {
                       delay: index * 0.1,
                     }}
                   >
-                    <div className="flex gap-5 py-8 h-full items-start">
+                    <div className="flex gap-5 h-full items-start">
                       <FeatureIcon iconType={feature.icon} />
-                      <div className="flex-1">
+                      <div className="flex-1 border-b border-divider pb-[40px]">
                         <h3 className="text-[24px] text-foreground font-bold mb-3">
                           {feature.number}. {feature.title}
                         </h3>
-                        <p className="text-muted-foreground text-base leading-relaxed">
+                        <p className="text-muted-foreground text-[18px] leading-relaxed">
                           {feature.description}
                         </p>
                       </div>

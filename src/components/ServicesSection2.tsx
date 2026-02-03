@@ -128,11 +128,11 @@ const ServiceSection2 = () => {
                                                 <topService.icon className="w-[50px] h-[50px] text-[#4775ff]" strokeWidth={2} />
                                             </div>
 
-                                            <h3 className="font-bold text-white text-[20px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">
+                                            <h3 className="font-bold text-white text-[24px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">
                                                 {topService.title}
                                             </h3>
 
-                                            <p className="text-sm text-white/90 font-medium mb-[15px] pr-[30px]">
+                                            <p className="text-[18px] text-white/90 font-medium mb-[15px] pr-[30px]">
                                                 {topService.description}
                                             </p>
 
@@ -151,11 +151,11 @@ const ServiceSection2 = () => {
                                                     <topService.icon className="w-[50px] h-[50px] text-[#4775ff]" strokeWidth={2} />
                                                 </div>
 
-                                                <h3 className="font-bold text-white text-[20px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">
+                                                <h3 className="font-bold text-white text-[24px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">
                                                     {bottomService.title}
                                                 </h3>
 
-                                                <p className="text-sm text-white/90 font-medium mb-[45px] pr-[30px]">
+                                                <p className="text-[18px] text-white/90 font-medium mb-[45px] pr-[30px]">
                                                     {bottomService.description}
                                                 </p>
 

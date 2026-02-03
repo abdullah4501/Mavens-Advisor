@@ -79,7 +79,7 @@ const HeroSection = () => {
                 transition={{ duration: 1, ease: [0.5, 0.5, 0, 1] }}
                 className="overflow-hidden"
               >
-                <h1 className="text-5xl md:text-8xl lg:text-[150px] font-bold text-white leading-tight mb-6">
+                <h1 className="text-5xl md:text-8xl lg:text-[150px] font-bold text-white leading-tight mb-12">
                   {slides[activeIndex].title[0]}
                   <br />
                   <span>{slides[activeIndex].title[1]}</span>
@@ -102,13 +102,13 @@ const HeroSection = () => {
               >
                 <MotionLink
                   to="/calculator"
-                  className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
+                  className="bg-white text-navy px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Discover More
-                  <span className='w-7 h-7 bg-white rounded-full flex items-center justify-center'>
-                    <ArrowRight color="black" size={18} />
+                  <span className='w-8 h-8 bg-gold rounded-full flex items-center justify-center'>
+                    <ArrowRight color="white" size={18} />
                   </span>
                 </MotionLink>
               </motion.div>

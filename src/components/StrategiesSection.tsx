@@ -111,7 +111,7 @@ const StrategiesSection = () => {
 
               <a
                 href="#"
-                className="inline-flex items-center gap-3 bg-navy-light text-white px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:scale-105 transition"
+                className="inline-flex items-center gap-3 bg-navy-light text-white px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:bg-gold hover:scale-105 transition"
               >
                 Discover More
                 <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">

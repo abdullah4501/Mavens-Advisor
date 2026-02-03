@@ -158,16 +158,16 @@ const WhyChooseSection = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 5 * 0.1 }}
-                  className="px-[28px] py-[33px] rounded-[5px] bg-navy-light transition-all duration-500 cursor-pointer"
+                  className="px-[28px] py-[33px] rounded-[5px] bg-navy-light transition-all duration-500 cursor-pointer relative wcs-last"
                 >
                   <h3 className="text-[24px] font-semibold text-white mb-5 transition-colors duration-300">
                     Explore our all expertises we offers
                   </h3>
                   <a href="#"
-                    className="text-[13px] font-semibold inline-flex items-center gap-2 bg-white text-navy px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:scale-105 transition"
+                    className="text-[13px] font-semibold inline-flex items-center gap-2 bg-white text-navy px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:scale-105 hover:bg-gold hover:text-white transition group"
                   >
                     View All Services
-                    <span className="bg-gold text-white w-7 h-7 rounded-full flex items-center justify-center">
+                    <span className="bg-gold group-hover:bg-white text-white group-hover:text-navy w-8 h-8 rounded-full flex items-center justify-center">
                       <ArrowRight size={16} />
                     </span>
                   </a>
