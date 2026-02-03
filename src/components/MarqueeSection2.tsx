@@ -15,7 +15,7 @@ const MarqueeSection2 = () => {
     <section className="py-8 bg-[#91D089] overflow-hidden">
       <div className="flex">
         <motion.div
-          className="flex items-center gap-6 animate-marquee whitespace-nowrap"
+          className="flex items-end gap-6 animate-marquee whitespace-nowrap"
           initial={{ x: 0 }}
         >
           {[...items, ...items, ...items].map((item, index) => (
