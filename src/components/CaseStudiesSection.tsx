@@ -29,47 +29,51 @@ const CaseStudiesSection = () => {
                 <div className="grid grid-cols-12">
 
                     {/* LEFT COLUMN */}
-                    <div className="lg:col-span-5 col-span-12 ">
+                    <div className="lg:col-span-5 col-span-12">
 
                         {/* Case 1 — LEFT → RIGHT */}
                         <div className="mb-[45px]">
-                            <div className="relative rounded-[16px] overflow-hidden">
-                                <motion.img
+                            <motion.div
+                                className="relative rounded-[16px] overflow-hidden"
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                style={{ originX: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+                            >
+                                <img
                                     src={img3}
                                     alt="Revenue Cycle Optimization For Regional Hospital"
                                     className="w-full h-full object-cover"
-                                    initial={{ scaleX: 0 }}
-                                    whileInView={{ scaleX: 1 }}
-                                    style={{ originX: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.3, delay: 0.5, }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     Healthcare
                                 </span>
-                            </div>
+                            </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
                                 Revenue Cycle Optimization For Regional Hospital
                             </h3>
                         </div>
 
-                        {/* Case 2*/}
+                        {/* Case 2 — LEFT → RIGHT */}
                         <div className="md:max-w-[80%] mr-auto lg:ml-auto mb-[45px]">
-                            <div className="relative rounded-[16px] overflow-hidden">
-                                <motion.img
+                            <motion.div
+                                className="relative rounded-[16px] overflow-hidden"
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                style={{ originX: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+                            >
+                                <img
                                     src={img1}
                                     alt="R&D Tax Credit Recovery for SaaS Startup"
                                     className="w-full h-full object-cover"
-                                    initial={{ scaleX: 0 }}
-                                    whileInView={{ scaleX: 1 }}
-                                    style={{ originX: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.3, delay: 0.5, }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     Technology
                                 </span>
-                            </div>
+                            </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
                                 R&amp;D Tax Credit Recovery for SaaS Startup
                             </h3>
@@ -90,70 +94,75 @@ const CaseStudiesSection = () => {
                     </div>
 
                     {/* RIGHT COLUMN */}
-                    <div className="lg:col-span-7 col-span-12 lg:ml-[8.333333%] ">
+                    <div className="lg:col-span-7 col-span-12 lg:ml-[8.333333%]">
 
-                        {/* Case 3 */}
+                        {/* Case 3 — TOP → BOTTOM */}
                         <div className="md:max-w-[87%] mr-auto lg:ml-auto mb-[45px]">
-                            <div className="relative rounded-[16px] overflow-hidden">
-                                <motion.img
+                            <motion.div
+                                className="relative rounded-[16px] overflow-hidden"
+                                initial={{ scaleY: 0 }}
+                                whileInView={{ scaleY: 1 }}
+                                style={{ originY: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+                            >
+                                <img
                                     src={img2}
                                     alt="Cost Accounting Transformation"
                                     className="w-full h-full object-cover"
-                                    initial={{ scaleY: 0 }}
-                                    whileInView={{ scaleY: 1 }}
-                                    style={{ originY: 0 }}
-
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.3, delay: 0.5, }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     Manufacturing
                                 </span>
-                            </div>
+                            </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
                                 Cost Accounting Transformation
                             </h3>
                         </div>
 
-                        {/* Case 4  */}
+                        {/* Case 4 — RIGHT → LEFT */}
                         <div className="md:max-w-[87%] mr-auto mb-[45px]">
-                            <div className="relative rounded-[16px] overflow-hidden">
-                                <motion.img
+                            <motion.div
+                                className="relative rounded-[16px] overflow-hidden"
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                style={{ originX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+                            >
+                                <img
                                     src={img4}
                                     alt="Multi-State Sales Tax Compliance"
                                     className="w-full h-full object-cover"
-                                    initial={{ scaleX: 0 }}
-                                    whileInView={{ scaleX: 1 }}
-                                    style={{ originX: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.3, delay: 0.5, }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     e-Commerce
                                 </span>
-                            </div>
+                            </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
                                 Multi-State Sales Tax Compliance
                             </h3>
                         </div>
 
-                        {/* Case 5  */}
+                        {/* Case 5 — TOP → BOTTOM */}
                         <div className="md:max-w-[87%] mr-auto lg:ml-auto mb-[45px]">
-                            <div className="relative rounded-[16px] overflow-hidden">
-                                <motion.img
+                            <motion.div
+                                className="relative rounded-[16px] overflow-hidden"
+                                initial={{ scaleY: 0 }}
+                                whileInView={{ scaleY: 1 }}
+                                style={{ originY: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+                            >
+                                <img
                                     src={img5}
                                     alt="Grant Compliance & Audit Defense"
                                     className="w-full h-full object-cover"
-                                    initial={{ scaleY: 0 }}
-                                    whileInView={{ scaleY: 1 }}
-                                    style={{ originY: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.3, delay: 0.5, }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     Non-profit
                                 </span>
-                            </div>
+                            </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
                                 Grant Compliance &amp; Audit Defense
                             </h3>
