@@ -31,7 +31,7 @@ const CaseStudiesSection = () => {
                     {/* LEFT COLUMN */}
                     <div className="lg:col-span-5 col-span-12">
 
-                        {/* Case 1 — LEFT → RIGHT */}
+                        {/* Case 1 */}
                         <div className="mb-[45px]">
                             <motion.div
                                 className="relative rounded-[16px] overflow-hidden"
@@ -55,7 +55,7 @@ const CaseStudiesSection = () => {
                             </h3>
                         </div>
 
-                        {/* Case 2 — LEFT → RIGHT */}
+                        {/* Case 2 */}
                         <div className="md:max-w-[80%] mr-auto lg:ml-auto mb-[45px]">
                             <motion.div
                                 className="relative rounded-[16px] overflow-hidden"
@@ -120,7 +120,7 @@ const CaseStudiesSection = () => {
                             </h3>
                         </div>
 
-                        {/* Case 4 — RIGHT → LEFT */}
+                        {/* Case 4 */}
                         <div className="md:max-w-[87%] mr-auto mb-[45px]">
                             <motion.div
                                 className="relative rounded-[16px] overflow-hidden"
@@ -144,7 +144,7 @@ const CaseStudiesSection = () => {
                             </h3>
                         </div>
 
-                        {/* Case 5 — TOP → BOTTOM */}
+                        {/* Case 5 */}
                         <div className="md:max-w-[87%] mr-auto lg:ml-auto mb-[45px]">
                             <motion.div
                                 className="relative rounded-[16px] overflow-hidden"

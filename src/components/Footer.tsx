@@ -25,9 +25,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0f1729]" ref={ref} id="contact">
+    <footer className="bg-[#0f1729] relative footer-main" ref={ref} id="contact">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 pt-16 pb-12">
+      <div className="container pt-16 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Left Section - CTA */}
           <motion.div
@@ -124,7 +124,7 @@ const Footer = () => {
 
       {/* Contact Info Bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-8">
+        <div className="container py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Email */}
             <div>
@@ -154,8 +154,8 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 relative">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-6">
+      <div className="border-t border-black/10 bg-black relative">
+        <div className="container py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative">
             {/* Copyright */}
             <p className="text-slate-500 text-sm">
