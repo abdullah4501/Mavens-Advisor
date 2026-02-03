@@ -20,9 +20,10 @@ const Header = () => {
 
   const navItems = [
     { label: 'Home', href: '/', isActive: true },
-    { label: 'Pages', href: '#pages', isActive: false },
+    { label: 'About Us', href: '#about', isActive: false },
     { label: 'Services', href: '#services', isActive: false },
-    { label: 'Portfolio', href: '#portfolio', isActive: false },
+    { label: 'Our History', href: '#history', isActive: false },
+    { label: 'Our Team', href: '#team', isActive: false },
     { label: 'Blog', href: '#blog', isActive: false },
     { label: 'Contact Us', href: '#contact', isActive: false },
   ];
