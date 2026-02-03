@@ -11,6 +11,7 @@ import {
     Wallet,
     LineChart,
 } from "lucide-react";
+import MarqueeSection2 from "./MarqueeSection2";
 
 const services = [
     {
@@ -179,7 +180,7 @@ const ServiceSection2 = () => {
 
                 {/* Bottom green strip */}
             </div>
-            <MarqueeSection />
+            <MarqueeSection2 />
         </section>
     );
 };
