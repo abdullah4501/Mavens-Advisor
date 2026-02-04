@@ -139,7 +139,7 @@ const ContactUs = ({ breadcrumb }) => {
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {contactData.map((contact, index) => (
-                        <div className="group border border-[#E4E4E4] rounded-[5px] p-[40px] pt-[50px] bg-white transition-shadow duration-300">
+                        <div className="group border border-[#E4E4E4] rounded-[5px] p-[40px] pt-[50px] transition-shadow duration-300">
                             {/* Icon with 360 X-axis rotation on card hover */}
                             <div className="mb-8 w-fit transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(360deg)]">
                                 {contact.icon}
