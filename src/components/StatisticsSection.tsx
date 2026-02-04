@@ -7,7 +7,7 @@ import BarChart from "./BarChart";
 import ServicesGrid from "./ServicesGrid";
 import AnimatedHeading from "./AnimatedHeading";
 
-const StatisticsSection = () => {
+const StatisticsSection = ({subTitle}) => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
@@ -23,7 +23,7 @@ const StatisticsSection = () => {
               transition={{ duration: 0.8 }}
             >
               <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
-                Why Choose Us
+                {subTitle}
               </span>
             </motion.div>
           </div>

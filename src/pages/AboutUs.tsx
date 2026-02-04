@@ -11,6 +11,7 @@ import TeamSection2 from '@/components/TeamSection2';
 import StrategiesSection from '@/components/StrategiesSection';
 import AnimatedHeading from '@/components/AnimatedHeading';
 import ServicesSection4 from '@/components/ServicesSection4';
+import StatisticsSection from '@/components/StatisticsSection';
 
 const stats = [
     { icon: Users, value: '200+', label: 'Expert Consultants' },
@@ -112,7 +113,7 @@ const About = ({ breadcrumb }) => {
                     </div>
                 </div>
             </motion.div>
-            <StrategiesSection subTitle={'About Us'} />
+            <StatisticsSection subTitle={"About Us"}/>
             <ServicesSection4/>
             <div className='section-padding'>
                 <div className='container'>
