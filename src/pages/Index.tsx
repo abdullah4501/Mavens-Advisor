@@ -64,7 +64,7 @@ const Index = ({breadcrumb}) => {
       <WhyChooseSection />
       <MarqueeSection />
       
-      <StatisticsSection />
+      <StatisticsSection subTitle={'Why Choose Us'}/>
       <VideoSection/>
       <ProcessSection />
       <TeamSection />

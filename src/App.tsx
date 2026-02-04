@@ -16,6 +16,7 @@ import { SettingsProvider } from "./context/SettingsContext";
 import Team from "./pages/Team";
 import AboutUs from "./pages/AboutUs";
 import OurHistory from "./pages/OurHistory";
+import ContactUs from "./pages/ContactUs";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => {
               <Route path="/about-us" element={<AboutUs breadcrumb="About Us" />} />
               <Route path="/calculator" element={<Calculator breadcrumb="Calculator" />} />
               <Route path="/our-history" element={<OurHistory breadcrumb="Our History" />} />
+              <Route path="/contact" element={<ContactUs breadcrumb="Contact Us" />} />
               <Route path="*" element={<NotFound breadcrumb="404" />} />
             </Routes>
 
