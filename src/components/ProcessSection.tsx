@@ -38,7 +38,7 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen bg-navy py-20 overflow-hidden our-process-section-one">
+    <section className="relative min-h-[80vh] bg-navy py-20 overflow-hidden our-process-section-one">
       {/* Top right corner gradient decoration */}
       <div className="absolute top-0 right-0 w-48 h-32">
         <div className="absolute top-0 right-0 w-24 h-16 bg-gray-decorative-light opacity-60" />

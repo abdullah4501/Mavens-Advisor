@@ -49,7 +49,7 @@ const services = [
 
 const ServicesSection4 = () => {
     return (
-        <section className="py-24 ">
+        <section className="py-12 ">
             <div className="container">
 
                 {/* Heading */}

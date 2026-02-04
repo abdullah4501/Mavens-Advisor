@@ -8,7 +8,7 @@ import img2 from "@/assets/about-02.png";
 import infobox from "@/assets/infobox-img.png";
 import AnimatedHeading from "./AnimatedHeading";
 
-const StrategiesSection = () => {
+const StrategiesSection = ({subTitle}) => {
   const { ref: sectionRef, isVisible } = useScrollAnimation();
   const statsRef = useRef<HTMLDivElement | null>(null);
 
@@ -70,7 +70,7 @@ const StrategiesSection = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
-            Welcome
+            {subTitle}
           </span>
 
           <AnimatedHeading

@@ -126,7 +126,7 @@ const ServiceSection2 = () => {
                                         {/* TOP CARD */}
                                         <div className="service-2-card-top group flex flex-col items-start w-full md:min-h-[455px]">
                                             <div className=" mb-4">
-                                                <topService.icon className="w-[50px] h-[50px] text-[#91d089]" strokeWidth={2} />
+                                                <topService.icon className=" text-[#91d089]" size={50} strokeWidth={2} />
                                             </div>
 
                                             <h3 className="font-bold text-white text-[24px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">

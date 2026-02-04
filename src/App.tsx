@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,11 +7,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
 import Calculator from "./pages/Calculator";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AdminSettings from "./pages/AdminSettings";
 import { SettingsProvider } from "./context/SettingsContext";
+import Team from "./pages/Team";
+import AboutUs from "./pages/AboutUs";
+import OurHistory from "./pages/OurHistory";
 
 const queryClient = new QueryClient();
 
@@ -39,12 +44,16 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/calculator" element={<Calculator />} />
-              <Route path="/admin/settings" element={<AdminSettings />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path="/" element={<Index breadcrumb="Home" />} />
+              <Route path="/team" element={<Team breadcrumb="Our Team" />} />
+              <Route path="/about-us" element={<AboutUs breadcrumb="About Us" />} />
+              <Route path="/calculator" element={<Calculator breadcrumb="Calculator" />} />
+              <Route path="/our-history" element={<OurHistory breadcrumb="Our History" />} />
+              <Route path="*" element={<NotFound breadcrumb="404" />} />
             </Routes>
+
           </BrowserRouter>
         </TooltipProvider>
       </SettingsProvider>

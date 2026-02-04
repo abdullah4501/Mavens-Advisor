@@ -30,7 +30,7 @@ const STEPS = [
   { label: "Summary", icon: <Receipt className="w-5 h-5" /> },
 ];
 
-const Calculator = () => {
+const Calculator = ({breadcrumb}) => {
   const { settings } = useSettings();
   const [selectedServices, setSelectedServices] = useState<
     Record<string, boolean>

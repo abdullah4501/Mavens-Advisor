@@ -27,7 +27,7 @@ import MarqueeSection2 from '@/components/MarqueeSection2';
     { icon: TrendingUp, value: '98%', label: 'Client Satisfaction' },
   ];
 
-const Index = () => {
+const Index = ({breadcrumb}) => {
   return (
     <div className="">
       <Header />
@@ -60,7 +60,7 @@ const Index = () => {
         </div>
       </motion.div>
       
-      <StrategiesSection />
+      <StrategiesSection subTitle={'Welcome'}/>
       <WhyChooseSection />
       <MarqueeSection />
       

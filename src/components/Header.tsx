@@ -4,11 +4,12 @@ import { Menu, X, Phone, ArrowRight, Search } from 'lucide-react';
 import logoWhite from '@/assets/logo-white.png';
 import logo from '@/assets/mavens-update-3.png';
 import RollingText from './RollingText';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Add useLocation
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation(); // Get current location
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,15 +19,24 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Define all navigation items
   const navItems = [
-    { label: 'Home', href: '/', isActive: true },
-    { label: 'About Us', href: '#about', isActive: false },
-    { label: 'Services', href: '#services', isActive: false },
-    { label: 'Our History', href: '#history', isActive: false },
-    { label: 'Our Team', href: '#team', isActive: false },
-    { label: 'Blog', href: '#blog', isActive: false },
-    { label: 'Contact Us', href: '#contact', isActive: false },
+    { label: 'Home', href: '/', exact: true },
+    { label: 'About Us', href: '/about-us' },
+    { label: 'Services', href: '/services' },
+    { label: 'Our History', href: '/our-history' },
+    { label: 'Our Team', href: '/team' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact Us', href: '/contact' },
   ];
+
+  // Check if a nav item is active
+  const isActive = (href, exact = false) => {
+    if (exact) {
+      return location.pathname === href;
+    }
+    return location.pathname.startsWith(href);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -44,7 +54,6 @@ const Header = () => {
           <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
             <div className="h-12 w-full flex items-center">
               <img src={isScrolled ? logo : logo} alt="logo" className="h-8 mr-1" /><RollingText text="Mavens Advisor" />
-
             </div>
 
             {!isScrolled && (
@@ -64,8 +73,7 @@ const Header = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className={`text-xs xl:text-sm font-medium transition-colors whitespace-nowrap hover:text-gold ${item.isActive ? 'text-gold' : isScrolled ? 'text-navy' : 'text-white'}`}
-
+                className={`text-xs xl:text-sm font-medium transition-colors whitespace-nowrap hover:text-gold ${isActive(item.href, item.exact) ? 'text-gold' : isScrolled ? 'text-navy' : 'text-white'}`}
               >
                 {item.label}
               </Link>
@@ -122,13 +130,14 @@ const Header = () => {
               className="lg:hidden bg-navy-light rounded-md shadow p-4"
             >
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  className="block py-3 border-b border-slate-600 text-slate-200 last:border-b-0"
+                  to={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block py-3 border-b border-slate-600 text-slate-200 last:border-b-0 ${isActive(item.href, item.exact) ? 'text-gold font-semibold' : ''}`}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </motion.nav>
           )}

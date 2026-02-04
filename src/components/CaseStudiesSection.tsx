@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import img1 from "@/assets/case-6.jpg";
 import img2 from "@/assets/case-7.jpg";
 import img3 from "@/assets/case-5.jpg";
@@ -6,13 +6,28 @@ import img4 from "@/assets/case-8.jpg";
 import img5 from "@/assets/case-9.jpg";
 import { ArrowRight } from "lucide-react";
 import AnimatedHeading from "./AnimatedHeading";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const CaseStudiesSection = () => {
-    return (
-        <section className="py-24">
-            <div className="container">
+    const sectionRef = useRef(null);
+    const [isDesktop, setIsDesktop] = useState(false);
 
+    useEffect(() => {
+        const check = () => setIsDesktop(window.innerWidth >= 1024);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end end"],
+    });
+    const imageY = useTransform(scrollYProgress, [0, 0.5, 1], ["-15%", "0%", "8%"]);
+
+    return (
+        <section ref={sectionRef} className="py-24">
+            <div className="container">
                 {/* Heading */}
                 <div className="relative z-10 max-w-6xl mx-auto px-6 mb-20 text-center">
                     <AnimatedHeading
@@ -27,24 +42,23 @@ const CaseStudiesSection = () => {
 
                 {/* Grid */}
                 <div className="grid grid-cols-12">
-
                     {/* LEFT COLUMN */}
                     <div className="lg:col-span-5 col-span-12">
-
                         {/* Case 1 */}
                         <div className="mb-[45px]">
                             <motion.div
-                                className="relative rounded-[16px] overflow-hidden"
+                                className="relative rounded-[16px] overflow-hidden h-full"
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
                                 style={{ originX: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
                             >
-                                <img
+                                <motion.img
                                     src={img3}
                                     alt="Revenue Cycle Optimization For Regional Hospital"
                                     className="w-full h-full object-cover"
+                                    style={{ y: isDesktop ? imageY : 0 }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     Healthcare
@@ -65,17 +79,18 @@ const CaseStudiesSection = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
                             >
-                                <img
+                                <motion.img
                                     src={img1}
                                     alt="R&D Tax Credit Recovery for SaaS Startup"
                                     className="w-full h-full object-cover"
+                                    style={{ y: isDesktop ? imageY : 0 }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     Technology
                                 </span>
                             </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
-                                R&amp;D Tax Credit Recovery for SaaS Startup
+                                R&D Tax Credit Recovery for SaaS Startup
                             </h3>
                         </div>
 
@@ -95,21 +110,21 @@ const CaseStudiesSection = () => {
 
                     {/* RIGHT COLUMN */}
                     <div className="lg:col-span-7 col-span-12 lg:ml-[8.333333%]">
-
-                        {/* Case 3 — TOP → BOTTOM */}
+                        {/* Case 3 */}
                         <div className="md:max-w-[87%] mr-auto lg:ml-auto mb-[45px]">
                             <motion.div
-                                className="relative rounded-[16px] overflow-hidden"
+                                className="relative rounded-[16px] overflow-hidden h-full"
                                 initial={{ scaleY: 0 }}
                                 whileInView={{ scaleY: 1 }}
                                 style={{ originY: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
                             >
-                                <img
+                                <motion.img
                                     src={img2}
                                     alt="Cost Accounting Transformation"
                                     className="w-full h-full object-cover"
+                                    style={{ y: isDesktop ? imageY : 0 }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     Manufacturing
@@ -123,17 +138,18 @@ const CaseStudiesSection = () => {
                         {/* Case 4 */}
                         <div className="md:max-w-[87%] mr-auto mb-[45px]">
                             <motion.div
-                                className="relative rounded-[16px] overflow-hidden"
+                                className="relative rounded-[16px] overflow-hidden h-full"
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
                                 style={{ originX: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
                             >
-                                <img
+                                <motion.img
                                     src={img4}
                                     alt="Multi-State Sales Tax Compliance"
                                     className="w-full h-full object-cover"
+                                    style={{ y: isDesktop ? imageY : 0 }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     e-Commerce
@@ -147,29 +163,28 @@ const CaseStudiesSection = () => {
                         {/* Case 5 */}
                         <div className="md:max-w-[87%] mr-auto lg:ml-auto mb-[45px]">
                             <motion.div
-                                className="relative rounded-[16px] overflow-hidden"
+                                className="relative rounded-[16px] overflow-hidden h-full"
                                 initial={{ scaleY: 0 }}
                                 whileInView={{ scaleY: 1 }}
                                 style={{ originY: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
                             >
-                                <img
+                                <motion.img
                                     src={img5}
                                     alt="Grant Compliance & Audit Defense"
                                     className="w-full h-full object-cover"
+                                    style={{ y: isDesktop ? imageY : 0 }}
                                 />
                                 <span className="absolute bottom-[30px] left-[30px] px-[15px] text-navy py-[5px] rounded-full bg-white">
                                     Non-profit
                                 </span>
                             </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
-                                Grant Compliance &amp; Audit Defense
+                                Grant Compliance & Audit Defense
                             </h3>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </section>
