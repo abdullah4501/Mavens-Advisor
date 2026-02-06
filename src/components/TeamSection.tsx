@@ -53,7 +53,7 @@ const TeamSection = () => {
             {/* Left side - Badge and Title */}
             <div className='col-span-10 lg:col-span-5 md:col-span-6'>
               <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
-                Our Export
+                Our Experts
               </span>
               <AnimatedHeading
                 text="Trusted guidance for lasting financial growth."

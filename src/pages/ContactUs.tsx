@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from "react-router-dom";
@@ -7,29 +7,51 @@ import image from '@/assets/team-banner.jpg';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import TeamSection2 from '@/components/TeamSection2';
 import AnimatedHeading from '@/components/AnimatedHeading';
+import contactImg from '@/assets/contact-image.webp';
 
-  const contactData = [
+const contactData = [
     {
-      icon: <Mail className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-      title: "reply@example.com",
-      description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
+        icon: <Mail className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
+        title: "reply@example.com",
+        description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
     },
     {
-      icon: <Phone className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-      title: "+0123-895-4732",
-      description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
+        icon: <Phone className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
+        title: "+0123-895-4732",
+        description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
     },
     {
-      icon: <MapPin className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-      title: "Location",
-      description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
+        icon: <MapPin className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
+        title: "Location",
+        description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
     }
-  ];
+];
 
 const ContactUs = ({ breadcrumb }) => {
-    const { ref, isVisible } = useScrollAnimation();
+    const [formData, setFormData] = useState({
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+    });
+
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmitted(true);
+
+        if (!formData.name || !formData.phone || !formData.email) {
+            return;
+        }
+        
+    };
     return (
         <>
             <Header />
@@ -99,8 +121,8 @@ const ContactUs = ({ breadcrumb }) => {
                 <div className="grid grid-cols-2 gap-y-8 mb-16 items-center">
                     {/* Left side - Badge and Title */}
                     <div className='col-span-2 lg:col-span-1'>
-                        <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
-                            Our Export
+                        <span className="inline-block bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-6">
+                            Reach Out
                         </span>
                         <AnimatedHeading
                             text="Feel free to our contact & hire us for your finance !!"
@@ -166,6 +188,119 @@ const ContactUs = ({ breadcrumb }) => {
                             </button>
                         </div>
                     ))}
+                </div>
+            </div>
+            <div className='contact-form pt-[115px] bg-[linear-gradient(180deg,#ECF0F4_42%,transparent_100%)] bg-transparent relative z-10'>
+                <div className="container">
+                    <div className='grid md:grid-cols-1 lg:grid-cols-3 items-end'>
+                        <div className='col-span-1'>
+                            <img src={contactImg} alt="" className='max-w-full h-auto' />
+                        </div>
+                        <div className='ms:col-span-1 lg:col-span-2'>
+                            <div className='lg:pl-[130px] py-10'>
+                                <span className="inline-block bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-2">
+                                    Contact Us
+                                </span>
+                                <AnimatedHeading
+                                    text="Get support from our team."
+                                    className="text-4xl md:text-[48px] font-bold text-navy leading-tight"
+                                    duration={0.6}
+                                    stagger={0.01}
+                                    startDelay={0.3}
+                                />
+
+                                <div className="mt-10 w-full ">
+                                    <form className="space-y-5" onSubmit={handleSubmit}>
+                                        {/* Message */}
+                                        <div>
+                                            <textarea
+                                                rows={5}
+                                                placeholder="Message"
+                                                className="w-full rounded-md border border-gray-200 bg-white p-[20px] text-[15px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400"
+                                            />
+                                        </div>
+
+                                        {/* Name & Phone */}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                            <div>
+                                                <input
+                                                    type="text"
+                                                    onChange={handleChange}
+                                                    value={formData.name}
+                                                    name="name"
+                                                    placeholder="Full Name *"
+                                                    className="w-full rounded-md border border-gray-200 bg-white px-[20px] py-[10px] text-[15px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 h-[55px]"
+                                                />
+                                                {submitted && !formData.name && (
+                                                    <span className="block mb-[15px] font-medium px-[10px] text-[16px] text-[#dc3232]">
+                                                        This field is required.
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <input
+                                                    type="tel"
+                                                    onChange={handleChange}
+                                                    value={formData.phone}
+                                                    name="phone"
+                                                    placeholder="Phone Number *"
+                                                    className="w-full rounded-md border border-gray-200 bg-white px-[20px] py-[10px] text-[15px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 h-[55px]"
+                                                />
+                                                {submitted && !formData.phone && (
+                                                    <span className="block mb-[15px] font-medium px-[10px] text-[16px] text-[#dc3232]">
+                                                        This field is required.
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Email */}
+                                        <div>
+                                            <input
+                                                type="email"
+                                                onChange={handleChange}
+                                                value={formData.email}
+                                                name="email"
+                                                placeholder="Email Address *"
+                                                className="w-full rounded-md border border-gray-200 bg-white px-[20px] py-[10px] text-[15px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 h-[55px]"
+                                            />
+                                            {submitted && !formData.email && (
+                                                <span className="block mb-[15px] font-medium px-[10px] text-[16px] text-[#dc3232]">
+                                                    This field is required.
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        {/* Checkbox */}
+                                        <div className="flex items-start gap-2 text-[17px] font-medium text-gray-400 ">
+                                            <input
+                                                type="checkbox"
+                                                id="save_info"
+                                                className="mt-1 h-5 w-5 rounded border-gray-300 text-navy focus:ring-0 cursor-pointer"
+                                            />
+                                            <label htmlFor="save_info" className="cursor-pointer">
+                                                Save my name, email, and website in this browser for the next time I
+                                                comment.
+                                            </label>
+                                        </div>
+
+                                        {/* Button */}
+                                        <div className="" >
+                                            <button
+                                                type='submit'
+                                                className="inline-flex items-center gap-3 bg-navy-light text-white px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:bg-gold hover:scale-105 transition"
+                                            >
+                                                Send Message
+                                                <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
+                                                    <ArrowRight size={18} />
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             {/* Google Map Section */}
