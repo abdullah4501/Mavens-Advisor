@@ -18,6 +18,7 @@ import AboutUs from "./pages/AboutUs";
 import OurHistory from "./pages/OurHistory";
 import ContactUs from "./pages/ContactUs";
 import Services from "./pages/Services";
+import Blogs from "./pages/Blogs";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => {
               <Route path="/our-history" element={<OurHistory breadcrumb="Our History" />} />
               <Route path="/contact" element={<ContactUs breadcrumb="Contact Us" />} />
               <Route path="/services" element={<Services breadcrumb="Services" />} />
+              <Route path="/blog" element={<Blogs breadcrumb="Blog" />} />
               <Route path="*" element={<NotFound breadcrumb="404" />} />
             </Routes>
 

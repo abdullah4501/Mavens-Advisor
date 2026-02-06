@@ -10,39 +10,39 @@ import { Link } from "react-router-dom";
 
 const services = [
     {
-        title: "Accounting Services",
+        title: "Bookkeeping & Reconciliations",
         icon: icon1,
         items: [
-            "Bookkeeping",
-            "Financial Reporting",
-            "Payroll Management",
+            "Monthly reconciliations",
+            "Invoice & expense tracking",
+            "Bank account matching",
         ],
     },
     {
-        title: "Tax Services",
+        title: "Tax Planning & Compliance",
         icon: icon2,
         items: [
-            "Corporate Tax Filing",
-            "VAT & Sales Tax Support",
-            "Tax Advisory & Planning",
+            "VAT filing & returns",
+            "HMRC compliance",
+            "Tax optimization",
         ],
     },
     {
-        title: "Audit & Assurance",
+        title: "Financial Reporting & Analysis",
         icon: icon3,
         items: [
-            "Internal & External Audits",
-            "Risk Assessments",
-            "Compliance Reviews",
+            "Monthly P&L statements",
+            "Cash flow forecasts",
+            "Performance dashboards",
         ],
     },
     {
-        title: "Business Consulting",
+        title: "Strategic Advisory",
         icon: icon4,
         items: [
-            "Financial Strategy",
-            "Startup Advisory",
-            "Budgeting & Forecasting",
+            "Quarterly reviews",
+            "CFO-level guidance",
+            "Growth strategy support",
         ],
     },
 ];
@@ -55,7 +55,7 @@ const ServicesSection4 = () => {
                 {/* Heading */}
                 <div className="relative z-10 max-w-6xl mx-auto px-6 mb-20 text-center">
                     <AnimatedHeading
-                        text="How We Helped Clients Overcome Challenges and Achieve Remarkable Results"
+                        text="From calculation to scaling, everything your finance needs covered"
                         className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
                         duration={0.6}
                         stagger={0.01}
@@ -81,9 +81,9 @@ const ServicesSection4 = () => {
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-[24px] service-title font-bold text-navy mb-6 mt-[70px]">
-                               <Link to="" className="transition"> {service.title} </Link>
-                            </h3>
+                                     <h3 className="text-[24px] service-title font-bold text-navy mb-6 mt-[70px]">
+                                         <Link to="/services" className="transition"> {service.title} </Link>
+                                     </h3>
 
                             {/* List */}
                             <ul className="space-y-4 mb-10">
@@ -99,14 +99,14 @@ const ServicesSection4 = () => {
 
                             {/* CTA */}
                             <div className="mt-auto">
-                                <button className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition">
+                                <Link to="/services" className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition">
                                     <span className="text-[15px] font-semibold text-white">
                                         Discover More
                                     </span>
                                     <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center">
                                         <ArrowRight size={18} />
                                     </span>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}

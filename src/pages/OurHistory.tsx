@@ -83,7 +83,7 @@ const OurHistory = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    With years of experience and a results-focused approach, we empower businesses to navigate complexity and achieve their goals.
+                                    Mavens Advisor has built a legacy of reliable, scalable financial support. From startups to established companies, we grow alongside our clients.
                                 </motion.p>
                             </div>
                         </div>

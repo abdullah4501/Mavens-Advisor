@@ -25,20 +25,20 @@ const services = [
 ];
 const stats = [
   {
-    number: "1200+",
-    label: "Tax Returns Filed Successfully",
-  },
-  {
-    number: "98%",
-    label: "Client Retention Rate",
+    number: "500+",
+    label: "Companies Growing With Us",
   },
   {
     number: "99%",
-    label: "On-Time Project Delivery",
+    label: "Client Retention Rate",
+  },
+  {
+    number: "3000+",
+    label: "Financial Functions Managed",
   },
   {
     number: "24/7",
-    label: "Client Support Availability",
+    label: "Professional Support Always",
   },
 ];
 
@@ -81,7 +81,7 @@ const ServiceSection3 = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 text-center">
           <AnimatedHeading
-            text="Industries We Serve Tailored Financial Solutions for Your Sector's Unique Needs"
+            text="Built to Scale Every Business Type Virtual Finance for Startups to Mature Companies"
             className="text-4xl md:text-5xl font-[700] text-white leading-tight"
             duration={0.6}
             stagger={0.01}

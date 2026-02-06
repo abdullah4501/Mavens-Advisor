@@ -1,16 +1,27 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowRight, Facebook, Instagram, ChevronUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Footer = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [showButton, setShowButton] = useState(false);
-  const mainPages = ['Home', 'Blog', 'About', 'Blog Page', 'Service Page'];
 
-  const ourCompanyLeft = ['Service Single', 'Blog Single', 'Products', 'Contact', 'Licensing', 'Products'];
-  const ourCompanyRight = ['Sign In', 'Sign Up', 'Packages', 'Style Guide', 'Products'];
-  
+  const mainPages = [
+    { label: 'Home', path: '/' },
+    { label: 'Services', path: '/services' },
+    { label: 'Calculator', path: '/calculator' },
+    { label: 'About Us', path: '/about-us' }
+  ];
+
+  const ourCompany = [
+    { label: 'Our History', path: '/our-history' },
+    { label: 'Contact', path: '/contact' },
+    { label: 'Our Team', path: '/team' },
+    { label: 'Blog', path: '/blog' }
+  ];
+
   useEffect(() => {
     const onScroll = () => {
       setShowButton(window.scrollY > 200); // show after 200px
@@ -27,7 +38,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#0f1729] relative footer-main" ref={ref} id="contact">
       {/* Main Footer Content */}
-      <div className="container pt-16 pb-12">
+      <div className="container pt-16 pb-12 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Left Section - CTA */}
           <motion.div
@@ -37,12 +48,12 @@ const Footer = () => {
             className="lg:col-span-4"
           >
             <span className="text-[#628fff] text-xs font-semibold tracking-wider uppercase">
-              WANT TO GET ANY SUPPORT?
+              Ready to scale your finance?
             </span>
             <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight mt-4">
-              Let's
+              Start your
               <br />
-              Discuss<span className="text-gold">!</span>
+              Growth Now<span className="text-gold">.</span>
             </h2>
           </motion.div>
 
@@ -55,11 +66,11 @@ const Footer = () => {
           >
             <h4 className="text-white font-semibold text-lg mb-6">Main Pages</h4>
             <ul className="space-y-3">
-              {mainPages.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">
-                    {link}
-                  </a>
+              {mainPages.map((item) => (
+                <li key={item.label}>
+                  <Link to={item.path} className="text-slate-400 hover:text-white transition-colors text-sm">
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -73,26 +84,15 @@ const Footer = () => {
             className="lg:col-span-3"
           >
             <h4 className="text-white font-semibold text-lg mb-6">Our company</h4>
-            <div className="grid grid-cols-2 gap-x-8">
-              <ul className="space-y-3">
-                {ourCompanyLeft.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-3">
-                {ourCompanyRight.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="space-y-3">
+              {ourCompany.map((item) => (
+                <li key={item.label}>
+                  <Link to={item.path} className="text-slate-400 hover:text-white transition-colors text-sm">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
           {/* Newsletter */}
@@ -123,7 +123,7 @@ const Footer = () => {
       </div>
 
       {/* Contact Info Bar */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 relative">
         <div className="container py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Email */}

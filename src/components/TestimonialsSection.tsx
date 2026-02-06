@@ -20,34 +20,34 @@ const TestimonialsSection = () => {
 
   const testimonials = [
     {
-      rating: 4,
-      quote: '"We needed guidance navigating complex financial regulations. Provided expert support and tailored strategies tha...',
+      rating: 5,
+      quote: '"Mavens Advisor transformed how we manage our finances. Having a dedicated CFO at a fraction of the cost was game-changing."',
       author: 'Adeline Wood',
-      position: 'SATISFIED CLIENT',
+      position: 'Founder & CEO',
     },
     {
       rating: 5,
-      quote: '"The advice I received from gudfin was practical and actionable. They made complex financial concepts easy to understand, and I...',
+      quote: '"The fixed pricing and complete transparency gave us confidence. No surprises, just solid financial control every month."',
       author: 'Naomi Violet',
-      position: 'CEO & FOUNDER',
-    },
-    {
-      rating: 3,
-      quote: 'I had a fantastic experience with moving express. Their team was courteous, efficient, and treated my belongings as if they were...',
-      author: 'Anna Briggs',
-      position: 'GENERAL MANAGER',
+      position: 'Operations Director',
     },
     {
       rating: 5,
-      quote: '"Outstanding financial advice that transformed our business approach completely."',
-      author: 'Michael Chen',
-      position: 'CFO',
+      quote: '"Their AI analytics platform is incredible. We now see insights that drive real business decisions and save us money on taxes."',
+      author: 'Anna Briggs',
+      position: 'Finance Manager',
     },
     {
-      rating: 4,
-      quote: '"Professional team with deep expertise in financial planning and strategy."',
+      rating: 5,
+      quote: '"Professional, reliable, and truly scalable. As we grew, our finance team grew seamlessly without any disruption."',
+      author: 'Michael Chen',
+      position: 'Founder',
+    },
+    {
+      rating: 5,
+      quote: '"The best investment for early-stage companies. Compliance, bookkeeping, and strategic advice all in one place."',
       author: 'Sarah Johnson',
-      position: 'FOUNDER',
+      position: 'CEO',
     },
   ];
   const clientLogos = [
@@ -77,7 +77,7 @@ const TestimonialsSection = () => {
               Testimonials
             </span>
             <AnimatedHeading
-              text="What our customers say?"
+              text="What founders and CEOs are saying about us"
               className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
               duration={0.6}
               stagger={0.01}

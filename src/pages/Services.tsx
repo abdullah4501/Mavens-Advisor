@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import check from "@/assets/check.svg";
-import icon1 from "@/assets/account-maintenance.svg";
-import icon2 from "@/assets/online-tax.svg";
-import icon3 from "@/assets/audit.svg";
-import icon4 from "@/assets/consultant.svg";
 import image from '@/assets/team-banner.jpg';
 import image1 from '@/assets/service-1.jpg';
 import image2 from '@/assets/service-2.jpg';
@@ -22,57 +17,93 @@ import AnimatedHeading from '@/components/AnimatedHeading';
 
 const services = [
     {
-        title: "Accounting Services",
+        title: "Bookkeeping & Reconciliations",
         img: image1,
         items: [
-            "Bookkeeping",
-            "Financial Reporting",
-            "Payroll Management",
+            "Monthly bank reconciliations",
+            "Credit card matching",
+            "Ledger maintenance",
         ],
     },
     {
-        title: "Tax Services",
+        title: "Payroll & Contractor Payments",
         img: image2,
         items: [
-            "Corporate Tax Filing",
-            "VAT & Sales Tax Support",
-            "Tax Advisory & Planning",
+            "Weekly/Monthly payroll",
+            "Contractor settlements",
+            "Tax withholding management",
         ],
     },
     {
-        title: "Audit & Assurance",
+        title: "Invoicing & Billing",
         img: image3,
         items: [
-            "Internal & External Audits",
-            "Risk Assessments",
-            "Compliance Reviews",
+            "Automated invoicing",
+            "Accounts payable",
+            "Receivables tracking",
         ],
     },
     {
-        title: "Business Consulting",
+        title: "Profit & Loss Reporting",
         img: image4,
         items: [
-            "Financial Strategy",
-            "Startup Advisory",
-            "Budgeting & Forecasting",
+            "Monthly P&L",
+            "Revenue analysis",
+            "Expense breakdown",
         ],
     },
     {
-        title: "Payroll Services",
+        title: "Budgeting & Cash Flow",
         img: image5,
         items: [
-            "Financial Strategy",
-            "Startup Advisory",
-            "Budgeting & Forecasting",
+            "Cash flow forecasts",
+            "Budget planning",
+            "Variance analysis",
         ],
     },
     {
-        title: "Startup & SME Support",
+        title: "Financial Performance Analysis",
         img: image6,
         items: [
-            "Financial Strategy",
-            "Startup Advisory",
-            "Budgeting & Forecasting",
+            "KPI tracking",
+            "Ratio analysis",
+            "Trend identification",
+        ],
+    },
+    {
+        title: "VAT Filing",
+        img: image1,
+        items: [
+            "VAT returns",
+            "Compliance checks",
+            "Filing deadlines",
+        ],
+    },
+    {
+        title: "HMRC & Companies House Filings",
+        img: image2,
+        items: [
+            "Statutory accounts",
+            "Confirmation statements",
+            "Regulatory compliance",
+        ],
+    },
+    {
+        title: "Chart of Accounts Setup",
+        img: image3,
+        items: [
+            "Optimized structure",
+            "Departmental codes",
+            "Scalable design",
+        ],
+    },
+    {
+        title: "Ongoing Strategic Advice",
+        img: image4,
+        items: [
+            "CFO-level guidance",
+            "Growth strategies",
+            "Financial reviews",
         ],
     },
 ];
@@ -143,7 +174,7 @@ const Services = ({ breadcrumb }) => {
                                                 <ChevronRight size={20} className='mx-1' />
                                             </span>
                                             <span>
-                                                Our Team
+                                                {breadcrumb}
                                             </span>
                                         </div>
                                         <h1 className="text-[45px] md:text-[55px] lg:text-[70px] font-bold text-white leading-tight lg:mb-12 mb-6">
@@ -177,7 +208,7 @@ const Services = ({ breadcrumb }) => {
                     {/* Heading */}
                     <div className="relative z-10 max-w-6xl mx-auto px-6 mb-20 text-center">
                         <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-[14px] uppercase rounded mb-6">
-                            Fresh News
+                            Our Top Services
                         </span>
                         <AnimatedHeading
                             text="How We Helped Clients Overcome Challenges and Achieve Remarkable Results"
@@ -241,14 +272,14 @@ const Services = ({ breadcrumb }) => {
 
                                     {/* CTA */}
                                     <div className="mt-auto">
-                                        <button className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition relative z-[1]">
+                                        <Link to="/calculator" className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition relative z-[1]">
                                             <span className="text-[15px] font-semibold text-white">
-                                                Discover More
+                                                Get Quotation
                                             </span>
                                             <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center">
                                                 <ArrowRight size={18} />
                                             </span>
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </motion.div>

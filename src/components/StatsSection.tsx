@@ -6,7 +6,7 @@ const StatsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const partners = [
-    'Adobe', 'Cisco', 'Oracle', 'Deloitte', 'KPMG'
+    'Zendesk', 'HubSpot', 'Stripe', 'Slack', 'Notion'
   ];
 
   return (
@@ -31,12 +31,12 @@ const StatsSection = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="flex items-end gap-4 mb-6">
-              <span className="text-7xl md:text-8xl  font-bold text-gold">75+</span>
-              <span className="text-white/80 text-lg mb-4">Years of combined experience</span>
+              <span className="text-7xl md:text-8xl  font-bold text-gold">25+</span>
+              <span className="text-white/80 text-lg mb-4">Years of combined finance expertise</span>
             </div>
             <p className="text-white/60 leading-relaxed max-w-lg">
-              Our team brings together decades of expertise in financial consulting, 
-              helping businesses achieve their goals with proven strategies.
+              Our team brings together decades of CFO-level experience in financial management,
+              helping founders achieve growth with professional guidance and support.
             </p>
           </motion.div>
 
@@ -48,8 +48,8 @@ const StatsSection = () => {
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
               <div className="text-center mb-8">
-                <span className="text-5xl  font-bold text-white">1500+</span>
-                <p className="text-white/60 mt-2">Satisfied Clients Worldwide</p>
+                <span className="text-5xl  font-bold text-white">500+</span>
+                <p className="text-white/60 mt-2">Companies Growing With Us</p>
               </div>
 
               {/* Partners */}

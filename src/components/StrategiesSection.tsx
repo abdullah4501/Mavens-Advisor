@@ -7,6 +7,7 @@ import img1 from "@/assets/about-01.jpg";
 import img2 from "@/assets/about-02.png";
 import infobox from "@/assets/infobox-img.png";
 import AnimatedHeading from "./AnimatedHeading";
+import { Link } from "react-router-dom";
 
 const StrategiesSection = ({subTitle}) => {
   const { ref: sectionRef, isVisible } = useScrollAnimation();
@@ -58,7 +59,7 @@ const StrategiesSection = ({subTitle}) => {
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white shadow-[0_20px_60px_0_rgba(0,0,0,0.08)] rounded-xl px-6 py-4 flex flex-col items-center gap-3">
             <img src={infobox} alt="" />
             <span className="font-medium text-md font-[600]">
-              20K+ Customer Worldwide
+              500+ Companies Growing
             </span>
           </div>
         </motion.div>
@@ -74,7 +75,7 @@ const StrategiesSection = ({subTitle}) => {
           </span>
 
           <AnimatedHeading
-            text="Top strategies for achieving sustainable business"
+            text="Complete virtual finance department with CFO leadership"
             className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
             duration={0.6}
             stagger={0.01}
@@ -83,8 +84,8 @@ const StrategiesSection = ({subTitle}) => {
 
 
           <p className="text-muted-foreground text-[18px] mb-12 font-medium mt-6">
-            We specialize in helping small businesses thrive by providing expert
-            guidance in business planning and growth strategy.
+            We build and scale your entire finance function with AI-powered analytics,
+            professional oversight, and strategic financial support at every stage.
           </p>
 
           <div className="border-t mb-10"></div>
@@ -97,27 +98,27 @@ const StrategiesSection = ({subTitle}) => {
                 <sup>+</sup>
               </div>
               <p className="mt-2 font-bold">
-                Years of working
+                Years of finance
                 <br />
-                experience
+                expertise
               </p>
             </div>
 
             <div className="border-l pl-10">
               <p className="text-muted-foreground mb-6 font-medium">
-                We help small and growing businesses cut carbon, boost
-                credibility, and move forward with confidence.
+                We help entrepreneurs build financial control, gain confidence,
+                and focus on growth without compliance stress or blind spots.
               </p>
 
-              <a
-                href="#"
+              <Link
+                to={"/calculator"}
                 className="inline-flex items-center gap-3 bg-navy-light text-white px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:bg-gold hover:scale-105 transition"
               >
-                Discover More
+                Calculate Your Quote
                 <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
                   <ArrowRight size={18} />
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>

@@ -1,4 +1,5 @@
 import { ArrowRight, MoveLeft, MoveRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import serviceBg from '@/assets/service-bg-2.jpg';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from "swiper/modules";
@@ -15,48 +16,55 @@ import MarqueeSection2 from "./MarqueeSection2";
 
 const services = [
     {
-        title: "Tax Planning & Compliance",
-        description: "Minimize liabilities and meet deadlines with our strategic tax support for individuals and businesses.",
+        title: "Bookkeeping & Reconciliations",
+        description: "Complete bookkeeping with reconciliation, bank matching, and accurate record-keeping every month.",
         icon: Receipt,
     },
     {
-        title: "Tax Planning & Compliance",
-        description: "Minimize liabilities and meet deadlines with our strategic tax support for individuals and businesses.",
+        title: "Payroll & Contractor Payments",
+        description: "Full payroll processing, tax withholding, and contractor payment handling with compliance.",
         icon: Receipt,
     },
     {
-        title: "Bookkeeping & Financial Reporting",
-        description: "Accurate record-keeping and insightful financial reporting to keep your business on track.",
-        icon: BookOpen,
-
-    },
-    {
-        title: "Bookkeeping & Financial Reporting",
-        description: "Accurate record-keeping and insightful financial reporting to keep your business on track.",
-        icon: BookOpen,
-
-    },
-    {
-        title: "Payroll Services",
-        description: "Streamlined payroll processing with compliance and tax management.",
+        title: "Invoicing & Billing",
+        description: "Streamlined managing of payables and receivables to keep cash flow positive.",
         icon: Wallet,
     },
     {
-        title: "Payroll Services",
-        description: "Streamlined payroll processing with compliance and tax management.",
+        title: "Profit & Loss Reporting",
+        description: "Detailed monthly profit and loss reports to track your business performance.",
+        icon: BookOpen,
+    },
+    {
+        title: "Budgeting & Cash Flow",
+        description: "Forecasting and budgeting to help you plan for the future with confidence.",
         icon: Wallet,
     },
     {
-        title: "Business Advisory",
-        description: "Strategic guidance to help you navigate challenges and seize opportunities.",
+        title: "Financial Performance Analysis",
+        description: "Deep dive analysis into your financials to identify trends and opportunities.",
         icon: LineChart,
     },
     {
-        title: "Business Advisory",
-        description: "Strategic guidance to help you navigate challenges and seize opportunities.",
+        title: "VAT Filing",
+        description: "Accurate and timely VAT return filings to ensure compliance with tax authorities.",
+        icon: BookOpen,
+    },
+    {
+        title: "HMRC & Companies House Filings",
+        description: "Handling all necessary statutory filings for UK businesses.",
+        icon: BookOpen,
+    },
+    {
+        title: "Chart of Accounts Setup",
+        description: "Customized setup of your chart of accounts for better financial tracking.",
         icon: LineChart,
     },
-
+    {
+        title: "Ongoing Strategic Advice",
+        description: "Continuous financial advice to help you make informed strategic decisions.",
+        icon: Wallet,
+    },
 ];
 
 const ServiceSection2 = () => {
@@ -80,7 +88,7 @@ const ServiceSection2 = () => {
                     <h1 className="text-white font-semibold text-start leading-tight text-[24px] md:text-[28px] lg:text-[40px]">
                         <small className="text-white text-[18px] uppercase tracking-[0.05em] mb-6 font-medium mx-[70px]">
                             Our SERVICES
-                        </small>   Expert accounting and management<br />advice, all in one place. Custom-crafted for the way your business works.
+                        </small>   Complete finance solutions, backed by CFO<br />expertise and AI-powered insights for growth.
                     </h1>
                 </div>
 
@@ -137,12 +145,12 @@ const ServiceSection2 = () => {
                                                 {topService.description}
                                             </p>
 
-                                            <a className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition">
+                                            <Link to="/services" className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition">
                                                 Discover More
                                                 <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
                                                     <ArrowRight size={18} />
                                                 </span>
-                                            </a>
+                                            </Link>
                                         </div>
 
                                         {/* BOTTOM CARD */}
@@ -160,12 +168,12 @@ const ServiceSection2 = () => {
                                                     {bottomService.description}
                                                 </p>
 
-                                                <a className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition">
+                                                <Link to="/services" className="mt-auto inline-flex items-center gap-3 bg-gold text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition">
                                                     Discover More
                                                     <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
                                                         <ArrowRight size={18} />
                                                     </span>
-                                                </a>
+                                                </Link>
                                             </div>
                                         )}
 

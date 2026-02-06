@@ -13,26 +13,26 @@ const ProcessSection = () => {
   const steps = [
     {
       number: '01',
-      title: 'Basic Research',
-      description: 'In ligula libero neque neque nulla neque rutrum. laculis quam.',
+      title: 'Get Your Quote',
+      description: 'Calculate your transparent monthly fee instantly using our pricing calculator.',
       image: processBasicResearch,
     },
     {
       number: '02',
-      title: 'Discovery',
-      description: 'In ligula libero neque neque nulla neque rutrum. laculis quam.',
+      title: 'Lock Your Subscription',
+      description: 'Lock in your fixed monthly rate with no surprises or hidden charges ever.',
       image: processDiscovery,
     },
     {
       number: '03',
-      title: 'Build Plan',
-      description: 'In ligula libero neque neque nulla neque rutrum. laculis quam.',
+      title: 'Build Your Team',
+      description: 'Connect with your dedicated CFO and complete virtual finance department.',
       image: processBuildPlan,
     },
     {
       number: '04',
-      title: 'Execute',
-      description: 'In ligula libero neque neque nulla neque rutrum. laculis quam.',
+      title: 'Scale Confidently',
+      description: 'Your finance team grows with your business without rehiring friction.',
       image: processExecute,
     },
   ];
@@ -52,10 +52,10 @@ const ProcessSection = () => {
           {/* Left side - Badge and Title */}
           <div className='col-span-10 md:col-span-5'>
             <span className="inline-block bg-gold text-[#fff] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
-              Our Business Impact
+              How It Works
             </span>
             <AnimatedHeading
-              text="Successful Financial Control Process"
+              text="From quote to financial control in four steps"
               className="text-4xl md:text-5xl font-[700] font-bold text-white leading-tight"
               duration={0.6}
               stagger={0.01}
@@ -66,7 +66,7 @@ const ProcessSection = () => {
           {/* Right side - Description */}
           <div className="flex items-end lg:pl-12 col-span-12 md:col-span-5">
             <p className="text-white/80 leading-relaxed max-w-lg">
-              Stay organized and focused on growth while we handle your day financial record Gravida urna vehicula volutpat velit sed imperdiet.
+              Clear, organized, and focused on your financial growth. Our process handles everything seamlessly from start to ongoing support.
             </p>
           </div>
         </div>

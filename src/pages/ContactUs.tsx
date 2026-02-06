@@ -13,18 +13,18 @@ import contactImg from '@/assets/contact-image.webp';
 const contactData = [
     {
         icon: <Mail className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-        title: "reply@example.com",
-        description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
+        title: "hello@mavensadvisor.com",
+        description: "Reach our team anytime. We respond quickly to all inquiries."
     },
     {
         icon: <Phone className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-        title: "+0123-895-4732",
-        description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
+        title: "+44 (0)203 900 1800",
+        description: "Call us for immediate support and to discuss your needs."
     },
     {
         icon: <MapPin className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-        title: "Location",
-        description: "Provides speed, cost-effectiveness, and the ability to easily send files,"
+        title: "London, United Kingdom",
+        description: "Visit our office or schedule a virtual meeting anytime."
     }
 ];
 
@@ -89,7 +89,7 @@ const ContactUs = ({ breadcrumb }) => {
                                                 <ChevronRight size={20} className='mx-1' />
                                             </span>
                                             <span>
-                                                Our Team
+                                                {breadcrumb}
                                             </span>
                                         </div>
                                         <h1 className="text-[45px] md:text-[55px] lg:text-[70px] font-bold text-white leading-tight lg:mb-12 mb-6">

@@ -14,10 +14,10 @@ import ServicesSection4 from '@/components/ServicesSection4';
 import StatisticsSection from '@/components/StatisticsSection';
 
 const stats = [
-    { icon: Users, value: '200+', label: 'Expert Consultants' },
-    { icon: Award, value: '15+', label: 'Years Experience' },
-    { icon: Briefcase, value: '5000+', label: 'Projects Completed' },
-    { icon: TrendingUp, value: '98%', label: 'Client Satisfaction' },
+    { icon: Users, value: '500+', label: 'Companies Growing' },
+    { icon: Award, value: '25+', label: 'Years Combined Expertise' },
+    { icon: Briefcase, value: '3000+', label: 'Financial Functions Managed' },
+    { icon: TrendingUp, value: '99%', label: 'Client Retention Rate' },
 ];
 const About = ({ breadcrumb }) => {
     return (
@@ -79,7 +79,7 @@ const About = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    With years of experience and a results-focused approach, we empower businesses to navigate complexity and achieve their goals.
+                                    Mavens Advisor builds complete virtual finance departments with CFO leadership, AI analytics, and evergreen support for every stage of growth.
                                 </motion.p>
                             </div>
                         </div>

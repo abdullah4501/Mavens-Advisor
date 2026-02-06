@@ -7,6 +7,7 @@ import img5 from "@/assets/case-9.jpg";
 import { ArrowRight } from "lucide-react";
 import AnimatedHeading from "./AnimatedHeading";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const CaseStudiesSection = () => {
     const sectionRef = useRef(null);
@@ -96,15 +97,15 @@ const CaseStudiesSection = () => {
 
                         {/* CTA BUTTON */}
                         <div className="max-w-[80%] ml-auto md:mt-[120px] mb-[30px]">
-                            <a
-                                href="#"
+                            <Link
+                                to={"/our-history"}
                                 className="inline-flex items-center gap-3 bg-navy-light text-white px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:bg-gold hover:scale-105 transition"
                             >
                                 Discover More
                                 <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
                                     <ArrowRight size={18} />
                                 </span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 

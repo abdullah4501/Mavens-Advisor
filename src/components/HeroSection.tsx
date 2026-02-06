@@ -17,18 +17,18 @@ const MotionLink = motion(Link);
 
 const slides = [
   {
-    title: ['Business', 'Advisor'],
-    description: 'Transform your financial strategy with our expert consulting team. We craft solutions tailored to your business.',
+    title: ['Finance', 'Foundation'],
+    description: 'Build your complete virtual finance department with a dedicated CFO and AI-powered analytics for growth.',
     image: heroImage1,
   },
   {
-    title: ['Strategic', 'Planning'],
-    description: 'Build sustainable growth with data-driven strategies and expert guidance for your enterprise success.',
+    title: ['Transparent', 'Pricing'],
+    description: 'Fixed monthly subscriptions based on your business activity. No hidden fees, no hourly billing surprises.',
     image: heroImage2,
   },
   {
-    title: ['Growth', 'Solutions'],
-    description: 'Accelerate your business potential with innovative approaches and industry-leading expertise.',
+    title: ['Scale', 'Confidently'],
+    description: 'Your finance team grows with your business. Professional oversight, strategic support, evergreen solution.',
     image: heroImage3,
   },
 ];
@@ -106,7 +106,7 @@ const HeroSection = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Discover More
+                  Get Quotation
                   <span className='w-8 h-8 bg-gold rounded-full flex items-center justify-center'>
                     <ArrowRight color="white" size={18} />
                   </span>

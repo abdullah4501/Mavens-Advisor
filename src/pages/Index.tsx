@@ -21,10 +21,10 @@ import ServicesSection4 from '@/components/ServicesSection4';
 import MarqueeSection2 from '@/components/MarqueeSection2';
 
   const stats = [
-    { icon: Users, value: '200+', label: 'Expert Consultants' },
-    { icon: Award, value: '15+', label: 'Years Experience' },
-    { icon: Briefcase, value: '5000+', label: 'Projects Completed' },
-    { icon: TrendingUp, value: '98%', label: 'Client Satisfaction' },
+    { icon: Users, value: '500+', label: 'Companies Growing' },
+    { icon: Award, value: '25+', label: 'Years Combined Expertise' },
+    { icon: Briefcase, value: '3000+', label: 'Financial Functions Managed' },
+    { icon: TrendingUp, value: '99%', label: 'Client Retention Rate' },
   ];
 
 const Index = ({breadcrumb}) => {
@@ -75,7 +75,7 @@ const Index = ({breadcrumb}) => {
         <ServiceSection2 />
       </div>
       <ServiceSection3 />
-      <ServicesSection4 />
+      {/* <ServicesSection4 /> */}
       <CaseStudiesSection />
       
       <Footer />

@@ -73,7 +73,7 @@ const Team = ({breadcrumb}) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    With years of experience and a results-focused approach, we empower businesses to navigate complexity and achieve their goals.
+                                    Expert CFOs and finance professionals dedicated to your business growth and financial success every step of the way.
                                 </motion.p>
                             </div>
                         </div>

@@ -8,51 +8,51 @@ import FeatureIcon from "./FeatureIcon";
 const features = [
   {
     number: 1,
-    title: "Client-First Approach",
+    title: "Fixed Pricing Transparency",
     description:
-      "Dedicated account managers who learn your business and become an extension of your team.",
+      "Quote-based subscriptions on business activity. No hourly billing, no surprises.",
     icon: "heart" as const,
   },
   {
     number: 2,
-    title: "Tech-Enabled Solutions",
+    title: "CFO-Level Leadership",
     description:
-      "Cloud-based platforms give you real-time financial insights from anywhere, anytime.",
+      "Dedicated virtual CFO with complete financial team. Ownership, not outsourcing.",
     icon: "settings" as const,
   },
   {
     number: 3,
-    title: "Growth Focused",
+    title: "AI-Powered Analytics",
     description:
-      "We identify opportunities, not just compliance requirements, to help scale your business.",
+      "Real-time insights tailored to your business. Identify tax savings and opportunities.",
     icon: "trending" as const,
   },
   {
     number: 4,
-    title: "Ironclad Security",
+    title: "Complete Coverage",
     description:
-      "Enterprise-grade data protection with 256-bit encryption and SOC 2 compliant systems.",
+      "Bookkeeping, payroll, VAT, filings, forecasting, and strategic advice included.",
     icon: "shield" as const,
   },
   {
     number: 5,
-    title: "Proactive Advice",
+    title: "Evergreen Scalability",
     description:
-      "Quarterly strategy sessions to anticipate challenges before they become problems.",
+      "Your finance team grows with your business. No restructuring, no painful transitions.",
     icon: "headphones" as const,
   },
   {
     number: 6,
     title: "Proven Results",
     description:
-      "Dedicated account managers for personalized service before they become problems.",
+      "500+ companies scaling confidently with 99% retention rate and professional support.",
     icon: "headphones" as const,
   },
   {
     number: 7,
-    title: "Proven Results",
+    title: "Strategic Support",
     description:
-      "Dedicated account managers for personalized service before they become problems.",
+      "Quarterly insights and proactive guidance to anticipate challenges and opportunities.",
     icon: "headphones" as const,
   },
 ];

@@ -103,7 +103,7 @@ const Header = () => {
                 to="/calculator"
                 className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
               >
-                <span className="">Get In Touch</span>
+                <span className="">Get Quotation</span>
                 <span className="w-7 h-7 xl:w-8 xl:h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                   <ArrowRight size={16} className="text-black" />
                 </span>

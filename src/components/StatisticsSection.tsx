@@ -34,7 +34,7 @@ const StatisticsSection = ({subTitle}) => {
               transition={{ duration: 0.8 }}
             >
               <AnimatedHeading
-                text="Amazing accounting statistics show the power of numbers."
+                text="Our proven process delivers reliable financial management at scale."
                 className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
                 duration={0.6}
                 stagger={0.01}
@@ -49,22 +49,21 @@ const StatisticsSection = ({subTitle}) => {
                 {/* RIGHT TEXT */}
                 <div>
                   <p className="text-muted-foreground mb-8 max-w-lg">
-                    Our firm is built on a foundation of responsiveness. We understand
-                    that in a fast-paced business world, a timely answer is a competitive
-                    advantage.
+                    Complete financial control means clarity on cash flow, proactive tax planning,
+                    and strategic guidance when you need it most. Built for growth.
                   </p>
                   <ul className="space-y-4">
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      Social security and pension optimization
+                      AI-powered insights and analytics
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      GST, TDS, and income tax filings
+                      Tax planning and compliance automation
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      Tax deductions & exemptions guidance
+                      Strategic financial advisory always
                     </li>
                   </ul>
                 </div>

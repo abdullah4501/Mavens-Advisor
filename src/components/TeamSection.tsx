@@ -8,9 +8,11 @@ import tm4 from '@/assets/team-04.jpg';
 import tm5 from '@/assets/team-05.jpg';
 import tm6 from '@/assets/team-06.jpg';
 import AnimatedHeading from './AnimatedHeading';
+import { Link } from 'react-router-dom';
 
 const TeamSection = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const MotionLink = motion(Link);
 
   const teamMembers = [
     {
@@ -56,7 +58,7 @@ const TeamSection = () => {
                 Our Experts
               </span>
               <AnimatedHeading
-                text="Trusted guidance for lasting financial growth."
+                text="Expert CFOs and finance professionals ready to guide you."
                 className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
                 duration={0.6}
                 stagger={0.01}
@@ -67,7 +69,8 @@ const TeamSection = () => {
             {/* Right side - Description */}
             <div className="flex items-end lg:pl-12 col-span-12 md:col-span-6">
               <p className="text-navy-light/50 font-semibold ">
-                Stay organized and focused on growth while we handle your day financial record Gravida urna vehicula volutpat velit sed imperdiet.
+                Your dedicated finance team brings strategic experience, industry knowledge,
+                and proactive guidance to support your growth at every stage.
               </p>
             </div>
           </div>
@@ -76,13 +79,12 @@ const TeamSection = () => {
         {/* Team Grid */}
         <div className="grid grid-cols-12 gap-y-12">
           {teamMembers.slice(0, 3).map((member, index) => (
-            <motion.a
+            <motion.div
               key={member.name}
-              href="#"
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col lg:flex-row gap-5 group"
+              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col lg:flex-row gap-5 group cursor-pointer"
             >
               <div className="relative flex-shrink-0">
                 <div className="w-40 h-52 rounded-md overflow-hidden ">
@@ -102,19 +104,18 @@ const TeamSection = () => {
                   {member.position}
                 </p>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
           <div className='hidden lg:block col-span-1'>
 
           </div>
           {teamMembers.slice(3, 5).map((member, index) => (
-            <motion.a
+            <motion.div
               key={member.name}
-              href="#"
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col lg:flex-row gap-5 group"
+              className="col-span-12 sm:col-span-6 md:col-span-4 flex items-center md:flex-col sm:flex-col lg:flex-row gap-5 group cursor-pointer"
             >
               <div className="relative flex-shrink-0">
                 <div className="w-40 h-52 rounded-md overflow-hidden ">
@@ -134,7 +135,7 @@ const TeamSection = () => {
                   {member.position}
                 </p>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
 
           <div className="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 flex items-center justify-center">
@@ -145,8 +146,8 @@ const TeamSection = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex justify-center"
             >
-              <motion.a
-                href="#team"
+              <MotionLink
+                to="/team"
                 className="inline-flex items-center bg-navy-light text-white px-4 py-3 text-[15px] rounded-lg font-medium hover:scale-105 transition"
                 whileHover={{ scale: 1.05, gap: '12px' }}
                 whileTap={{ scale: 0.95 }}
@@ -155,7 +156,7 @@ const TeamSection = () => {
                 <span className="bg-white text-black w-8 h-8 rounded-full flex items-center justify-center ml-3">
                   <ArrowRight size={18} />
                 </span>
-              </motion.a>
+              </MotionLink>
             </motion.div>
           </div>
         </div>
