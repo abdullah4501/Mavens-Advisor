@@ -3,12 +3,10 @@ import { Asterisk } from 'lucide-react';
 
 const MarqueeSection = () => {
   const items = [
-    'Investment Management',
-    'Accountant Services',
-    'Business Planning',
-    'Audit Assurance',
-    'Wealth Protection',
-    'Tax Consulting',
+    'Fixed Monthly Subscription',
+    'CFO + Complete Finance Team',
+    'AI-Powered Analytics Portal',
+    'Evergreen & Scalable Solution',
   ];
 
   return (

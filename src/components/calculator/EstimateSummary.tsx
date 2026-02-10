@@ -42,7 +42,7 @@ const EstimateSummary = ({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.05 }}
-      className="max-w-[1440px] mx-auto"
+      className="max-w-md mx-auto"
     >
       {/* Success Header */}
       <motion.div

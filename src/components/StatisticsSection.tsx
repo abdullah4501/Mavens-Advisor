@@ -34,7 +34,7 @@ const StatisticsSection = ({ subTitle }) => {
               transition={{ duration: 0.8 }}
             >
               <AnimatedHeading
-                text="Our proven process delivers reliable financial management at scale."
+                text="We don't just manage your numbers—we build, scale, and lead your finance function"
                 className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
                 duration={0.6}
                 stagger={0.01}
@@ -49,21 +49,20 @@ const StatisticsSection = ({ subTitle }) => {
                 {/* RIGHT TEXT */}
                 <div>
                   <p className="text-muted-foreground mb-8 max-w-lg">
-                    Complete financial control means clarity on cash flow, proactive tax planning,
-                    and strategic guidance when you need it most. Built for growth.
+                    Mavens Advisor is not traditional outsourcing. We build an evergreen, scalable finance department so you can focus on growth without stress over books, compliance, or controls.
                   </p>
                   <ul className="space-y-4">
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      AI-powered insights and analytics
+                      Complete finance department at bookkeeper cost
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      Tax planning and compliance automation
+                      AI-powered analytics with actionable insights
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      Strategic financial advisory always
+                      Scales with your business—no rehiring friction
                     </li>
                   </ul>
                 </div>

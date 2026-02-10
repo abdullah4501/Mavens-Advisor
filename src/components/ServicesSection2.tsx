@@ -11,59 +11,65 @@ import {
     BookOpen,
     Wallet,
     LineChart,
+    Users,
+    CreditCard,
+    TrendingUp,
+    Settings,
+    BarChart3,
+    Target,
 } from "lucide-react";
 import MarqueeSection2 from "./MarqueeSection2";
 
 const services = [
     {
-        title: "Bookkeeping & Reconciliations",
-        description: "Complete bookkeeping with reconciliation, bank matching, and accurate record-keeping every month.",
+        title: "Monthly Bookkeeping & Close",
+        description: "Clean monthly closes you can rely on—bank reconciliations, ledger maintenance, and month-end accuracy.",
         icon: Receipt,
     },
     {
-        title: "Payroll & Contractor Payments",
-        description: "Full payroll processing, tax withholding, and contractor payment handling with compliance.",
-        icon: Receipt,
+        title: "Payroll & Contractor Management",
+        description: "Weekly/monthly payroll processing, contractor payments, tax compliance, and benefits administration.",
+        icon: Users,
     },
     {
-        title: "Invoicing & Billing",
-        description: "Streamlined managing of payables and receivables to keep cash flow positive.",
+        title: "Invoicing, Billing & Receivables",
+        description: "Automated invoicing, accounts receivable tracking, collections management, and payment processing.",
         icon: Wallet,
     },
     {
-        title: "Profit & Loss Reporting",
-        description: "Detailed monthly profit and loss reports to track your business performance.",
-        icon: BookOpen,
+        title: "Accounts Payable & Cash Management",
+        description: "Vendor bill processing, payment scheduling, cash flow optimization, and expense tracking.",
+        icon: CreditCard,
     },
     {
-        title: "Budgeting & Cash Flow",
-        description: "Forecasting and budgeting to help you plan for the future with confidence.",
-        icon: Wallet,
-    },
-    {
-        title: "Financial Performance Analysis",
-        description: "Deep dive analysis into your financials to identify trends and opportunities.",
+        title: "P&L Reporting + Performance Review",
+        description: "Monthly profit & loss statements with CFO-level insights, revenue analysis, and actionable recommendations.",
         icon: LineChart,
     },
     {
-        title: "VAT Filing",
-        description: "Accurate and timely VAT return filings to ensure compliance with tax authorities.",
+        title: "Budgeting + Cash Flow Forecasting",
+        description: "12-month rolling forecasts, annual budget development, variance analysis, and scenario planning for growth.",
+        icon: TrendingUp,
+    },
+    {
+        title: "VAT + HMRC & Companies House Filing",
+        description: "VAT returns, HMRC compliance, Companies House filings, statutory accounts, and regulatory deadlines.",
         icon: BookOpen,
     },
     {
-        title: "HMRC & Companies House Filings",
-        description: "Handling all necessary statutory filings for UK businesses.",
-        icon: BookOpen,
+        title: "Chart of Accounts & System Setup",
+        description: "Optimized chart of accounts, accounting system implementation, departmental coding, and scalable design.",
+        icon: Settings,
     },
     {
-        title: "Chart of Accounts Setup",
-        description: "Customized setup of your chart of accounts for better financial tracking.",
-        icon: LineChart,
+        title: "AI-Powered Analytics & Insights",
+        description: "Custom analytics portal, real-time KPI dashboards, tax savings identification, and AI assistant for financial questions.",
+        icon: BarChart3,
     },
     {
-        title: "Ongoing Strategic Advice",
-        description: "Continuous financial advice to help you make informed strategic decisions.",
-        icon: Wallet,
+        title: "CFO-Level Strategic Guidance",
+        description: "Monthly CFO review sessions, growth planning, financial modeling, fundraising support, and M&A due diligence.",
+        icon: Target,
     },
 ];
 

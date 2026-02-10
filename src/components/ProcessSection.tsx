@@ -13,26 +13,26 @@ const ProcessSection = () => {
   const steps = [
     {
       number: '01',
-      title: 'Get Your Quote',
-      description: 'Calculate your transparent monthly fee instantly using our pricing calculator.',
+      title: 'Calculate Your Quote',
+      description: 'Use our pricing calculator based on business activity. Instant, transparent pricing.',
       image: processBasicResearch,
     },
     {
       number: '02',
-      title: 'Lock Your Subscription',
-      description: 'Lock in your fixed monthly rate with no surprises or hidden charges ever.',
+      title: 'Lock Your Monthly Fee',
+      description: 'Fixed subscription locked in. No hourly billing, no hidden costs, no surprises.',
       image: processDiscovery,
     },
     {
       number: '03',
-      title: 'Build Your Team',
-      description: 'Connect with your dedicated CFO and complete virtual finance department.',
+      title: 'Connect With Your CFO',
+      description: 'Meet your dedicated CFO and complete virtual finance department.',
       image: processBuildPlan,
     },
     {
       number: '04',
-      title: 'Scale Confidently',
-      description: 'Your finance team grows with your business without rehiring friction.',
+      title: 'Build & Scale',
+      description: 'Your evergreen finance function grows with you—strategic leadership at every stage.',
       image: processExecute,
     },
   ];

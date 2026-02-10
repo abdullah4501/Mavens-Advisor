@@ -8,51 +8,51 @@ import FeatureIcon from "./FeatureIcon";
 const features = [
   {
     number: 1,
-    title: "Fixed Pricing Transparency",
+    title: "Fixed Monthly Subscription",
     description:
-      "Quote-based subscriptions on business activity. No hourly billing, no surprises.",
+      "Activity-based pricing you can predict and plan around. No hourly billing, no hidden costs, no surprises.",
     icon: "heart" as const,
   },
   {
     number: 2,
-    title: "CFO-Level Leadership",
+    title: "CFO + Complete Finance Team",
     description:
-      "Dedicated virtual CFO with complete financial team. Ownership, not outsourcing.",
+      "At the cost of a bookkeeper, get a dedicated CFO, complete virtual finance department, and full ownership.",
     icon: "settings" as const,
   },
   {
     number: 3,
-    title: "AI-Powered Analytics",
+    title: "AI-Powered Analytics Portal",
     description:
-      "Real-time insights tailored to your business. Identify tax savings and opportunities.",
+      "Custom analytics tailored to your business. Real-time KPI dashboards, tax savings identification, and AI assistant.",
     icon: "trending" as const,
   },
   {
     number: 4,
-    title: "Complete Coverage",
+    title: "Evergreen Finance Department",
     description:
-      "Bookkeeping, payroll, VAT, filings, forecasting, and strategic advice included.",
+      "Not temporary—a long-term foundation. Your finance team scales as you grow. No rehiring, no restructuring.",
     icon: "shield" as const,
   },
   {
     number: 5,
-    title: "Evergreen Scalability",
+    title: "Complete Finance Operations",
     description:
-      "Your finance team grows with your business. No restructuring, no painful transitions.",
+      "Monthly bookkeeping, payroll, invoicing, payables/receivables, VAT filing, and HMRC compliance—all handled.",
     icon: "headphones" as const,
   },
   {
     number: 6,
-    title: "Proven Results",
+    title: "Strategic CFO Guidance",
     description:
-      "500+ companies scaling confidently with 99% retention rate and professional support.",
+      "Monthly CFO review sessions, growth planning, financial modeling, fundraising support, and M&A due diligence.",
     icon: "headphones" as const,
   },
   {
     number: 7,
-    title: "Strategic Support",
+    title: "Proven Track Record",
     description:
-      "Quarterly insights and proactive guidance to anticipate challenges and opportunities.",
+      "500+ companies growing with confidence. 99% client retention rate. 25+ years combined finance expertise.",
     icon: "headphones" as const,
   },
 ];
@@ -128,7 +128,7 @@ const WhyChooseSection = () => {
               </span>
 
               <AnimatedHeading
-                text="We're not just accountants — we're strategic partners invested in your financial success"
+                text="Calculate your quote. Lock it. Get your Virtual CFO."
                 className="text-4xl md:text-5xl font-bold text-navy leading-tight"
                 duration={0.6}
                 stagger={0.01}

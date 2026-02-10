@@ -75,7 +75,7 @@ const StrategiesSection = ({ subTitle }) => {
           </span>
 
           <AnimatedHeading
-            text="Complete virtual finance department with CFO leadership"
+            text="Build, Scale & Lead Your Finance Function with Confidence"
             className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
             duration={0.6}
             stagger={0.01}
@@ -84,8 +84,7 @@ const StrategiesSection = ({ subTitle }) => {
 
 
           <p className="text-muted-foreground text-[18px] mb-12 font-medium mt-6">
-            We build and scale your entire finance function with AI-powered analytics,
-            professional oversight, and strategic financial support at every stage.
+            We help founders and business owners build an evergreen, scalable finance function so they can focus on growth, execution, and what they love to do, without worrying about books, compliance, or financial blind spots.
           </p>
 
           <div className="border-t mb-10"></div>
@@ -106,8 +105,7 @@ const StrategiesSection = ({ subTitle }) => {
 
             <div className="border-l pl-10">
               <p className="text-muted-foreground mb-6 font-medium">
-                We help entrepreneurs build financial control, gain confidence,
-                and focus on growth without compliance stress or blind spots.
+                Quote-based on business activity. Calculate instantly, lock your monthly fee, and connect with your Virtual CFO team. No hourly billing, no hidden costs, no surprises.
               </p>
 
               <Link

@@ -77,13 +77,16 @@ const TestimonialsSection = () => {
               Testimonials
             </span>
             <AnimatedHeading
-              text="What founders and CEOs are saying about us"
+              text="Build your business with confidence"
               className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
               duration={0.6}
               stagger={0.01}
               startDelay={0.3}
               center={true}
             />
+            <p className="text-muted-foreground mt-4 text-center">
+              CFO-level insight. Complete finance team. AI-powered analytics. One predictable fee.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-12 gap-6 items-stretch">

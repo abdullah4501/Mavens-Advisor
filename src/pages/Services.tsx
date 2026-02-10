@@ -17,93 +17,113 @@ import AnimatedHeading from '@/components/AnimatedHeading';
 
 const services = [
     {
-        title: "Bookkeeping & Reconciliations",
+        title: "Monthly Bookkeeping & Close",
         img: image1,
         items: [
-            "Monthly bank reconciliations",
-            "Credit card matching",
-            "Ledger maintenance",
+            "Clean monthly closes you can rely on",
+            "Bank and credit card reconciliations",
+            "Ledger maintenance and accuracy checks",
+            "Month-end journal entries",
+            "Accruals and prepayments management",
         ],
     },
     {
-        title: "Payroll & Contractor Payments",
+        title: "Payroll & Contractor Management",
         img: image2,
         items: [
-            "Weekly/Monthly payroll",
-            "Contractor settlements",
-            "Tax withholding management",
+            "Weekly/monthly payroll processing",
+            "Contractor payments and 1099 management",
+            "Tax withholding and compliance",
+            "Benefits administration support",
+            "Payroll tax filing and reporting",
         ],
     },
     {
-        title: "Invoicing & Billing",
+        title: "Invoicing, Billing & Receivables",
         img: image3,
         items: [
-            "Automated invoicing",
-            "Accounts payable",
-            "Receivables tracking",
+            "Automated invoicing and billing",
+            "Accounts receivable tracking",
+            "Collections management",
+            "Payment processing and reconciliation",
+            "Customer aging reports",
         ],
     },
     {
-        title: "Profit & Loss Reporting",
+        title: "Accounts Payable & Cash Management",
         img: image4,
         items: [
-            "Monthly P&L",
-            "Revenue analysis",
-            "Expense breakdown",
+            "Vendor bill processing and approval",
+            "Payment scheduling and execution",
+            "Cash flow optimization",
+            "Vendor relationship management",
+            "Expense categorization and tracking",
         ],
     },
     {
-        title: "Budgeting & Cash Flow",
+        title: "P&L Reporting + Performance Review",
         img: image5,
         items: [
-            "Cash flow forecasts",
-            "Budget planning",
-            "Variance analysis",
+            "Monthly profit & loss statements",
+            "Revenue and expense analysis",
+            "Performance vs. budget comparisons",
+            "CFO-level insights and explanations",
+            "Actionable recommendations for improvement",
         ],
     },
     {
-        title: "Financial Performance Analysis",
+        title: "Budgeting + Cash Flow Forecasting",
         img: image6,
         items: [
-            "KPI tracking",
-            "Ratio analysis",
-            "Trend identification",
+            "12-month rolling cash flow forecasts",
+            "Annual budget development",
+            "Variance analysis and adjustments",
+            "Scenario planning for growth",
+            "Capital expenditure planning",
         ],
     },
     {
-        title: "VAT Filing",
+        title: "VAT + HMRC & Companies House Filing",
         img: image1,
         items: [
-            "VAT returns",
-            "Compliance checks",
-            "Filing deadlines",
+            "VAT returns and submissions",
+            "HMRC compliance and deadlines",
+            "Companies House annual filings",
+            "Statutory accounts preparation",
+            "Confirmation statements and updates",
         ],
     },
     {
-        title: "HMRC & Companies House Filings",
+        title: "Chart of Accounts & System Setup",
         img: image2,
         items: [
-            "Statutory accounts",
-            "Confirmation statements",
-            "Regulatory compliance",
+            "Optimized chart of accounts structure",
+            "Accounting system implementation",
+            "Departmental and project coding",
+            "Integration with business tools",
+            "Scalable design for growth",
         ],
     },
     {
-        title: "Chart of Accounts Setup",
+        title: "AI-Powered Analytics & Insights",
         img: image3,
         items: [
-            "Optimized structure",
-            "Departmental codes",
-            "Scalable design",
+            "Custom analytics portal for your business",
+            "Real-time KPI tracking and dashboards",
+            "Tax savings opportunity identification",
+            "AI assistant for financial questions",
+            "Predictive analytics and trend analysis",
         ],
     },
     {
-        title: "Ongoing Strategic Advice",
+        title: "CFO-Level Strategic Guidance",
         img: image4,
         items: [
-            "CFO-level guidance",
-            "Growth strategies",
-            "Financial reviews",
+            "Monthly CFO review and strategy sessions",
+            "Growth planning and financial modeling",
+            "Fundraising and investor readiness",
+            "M&A support and due diligence",
+            "Long-term financial strategy development",
         ],
     },
 ];
@@ -195,7 +215,7 @@ const Services = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    With years of experience and a results-focused approach, we empower businesses to navigate complexity and achieve their goals.
+                                    Complete virtual finance department with CFO leadership, AI-powered analytics, and comprehensive support at every stage of growth.
                                 </motion.p>
                             </div>
                         </div>
@@ -211,7 +231,7 @@ const Services = ({ breadcrumb }) => {
                             Our Top Services
                         </span>
                         <AnimatedHeading
-                            text="How We Helped Clients Overcome Challenges and Achieve Remarkable Results"
+                            text="Complete Finance Solutions Backed by CFO Expertise"
                             className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
                             duration={0.6}
                             stagger={0.01}

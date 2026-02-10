@@ -12,6 +12,7 @@ import {
   Hash,
   Mail,
   Receipt,
+  Home,
 } from "lucide-react";
 import StepIndicator from "@/components/calculator/StepIndicator";
 import ServiceCard from "@/components/calculator/ServiceCard";
@@ -30,7 +31,7 @@ const STEPS = [
   { label: "Summary", icon: <Receipt className="w-5 h-5" /> },
 ];
 
-const Calculator = ({breadcrumb}) => {
+const Calculator = ({ breadcrumb }) => {
   const { settings } = useSettings();
   const [selectedServices, setSelectedServices] = useState<
     Record<string, boolean>
@@ -267,11 +268,7 @@ const Calculator = ({breadcrumb}) => {
 
   return (
     <div>
-      <Header />
-      <PageBanner
-        title="Service Calculator"
-        subtitle="Get a transparent, instant estimate for your business needs."
-      />
+
 
       <div className="bg-background">
         {/* Background decoration */}
@@ -280,15 +277,18 @@ const Calculator = ({breadcrumb}) => {
           <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 py-20">
+        <div className="relative z-10 max-w-[1440px] min-h-[95vh] mx-auto px-4 sm:px-6 py-20">
 
           {/* Step Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="mb-10"
+            className="mb-10 flex justify-center items-center flex-col sm:flex-row gap-5 sm:gap-0"
           >
+            <Link to={'/'} className="mr-auto p-3 bg-[#e6e7e9] rounded-lg" title="Home">
+              <Home className="w-6 h-6"/>
+            </Link>
             <StepIndicator currentStep={step} totalSteps={4} steps={STEPS} />
           </motion.div>
 

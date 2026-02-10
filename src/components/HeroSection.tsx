@@ -17,18 +17,21 @@ const MotionLink = motion(Link);
 
 const slides = [
   {
-    title: ['Finance', 'Foundation'],
-    description: 'Build your complete virtual finance department with a dedicated CFO and AI-powered analytics for growth.',
+    title: ['Build, Scale & Lead.', 'Your Finance Function'],
+    description: 'Virtual CFO firm delivering CFO-level leadership, complete finance department, and AI-powered insights—all on a fixed monthly subscription.',
+    cta: 'Calculate Your Quote',
     image: heroImage1,
   },
   {
-    title: ['Transparent', 'Pricing'],
-    description: 'Fixed monthly subscriptions based on your business activity. No hidden fees, no hourly billing surprises.',
+    title: ['Your CFO, Your Finance Team.', 'One Predictable Fee'],
+    description: 'At the cost of a bookkeeper, get a dedicated CFO, complete virtual finance department, and full ownership of your finance function.',
+    cta: 'Lock Your Monthly Fee',
     image: heroImage2,
   },
   {
-    title: ['Scale', 'Confidently'],
-    description: 'Your finance team grows with your business. Professional oversight, strategic support, evergreen solution.',
+    title: ['Focus on Growth.', 'We Handle Finance'],
+    description: 'Build an evergreen, scalable finance department so you can focus on what you love—without worrying about books, compliance, or blind spots.',
+    cta: 'Get Your Virtual CFO',
     image: heroImage3,
   },
 ];
@@ -79,10 +82,9 @@ const HeroSection = () => {
                 transition={{ duration: 1, ease: [0.5, 0.5, 0, 1] }}
                 className="overflow-hidden"
               >
-                <h1 className="text-5xl md:text-8xl lg:text-[150px] font-bold text-white leading-tight mb-12">
+                <h1 className="text-4xl md:text-6xl lg:text-[100px] font-bold text-white leading-tight mb-12">
                   {slides[activeIndex].title[0]}
-                  <br />
-                  <span>{slides[activeIndex].title[1]}</span>
+                  <span> {slides[activeIndex].title[1]}</span>
                 </h1>
               </motion.div>
             </AnimatePresence>
@@ -106,7 +108,7 @@ const HeroSection = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Get Quotation
+                  {slides[activeIndex].cta}
                   <span className='w-8 h-8 bg-gold rounded-full flex items-center justify-center'>
                     <ArrowRight color="white" size={18} />
                   </span>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Home } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface StepIndicatorProps {
   currentStep: number;
@@ -9,7 +10,8 @@ interface StepIndicatorProps {
 
 const StepIndicator = ({ currentStep, totalSteps, steps }: StepIndicatorProps) => {
   return (
-    <div className="flex items-center justify-center gap-2 sm:gap-4">
+    <div className="flex items-center justify-center gap-2 sm:gap-4 mr-0 sm:mr-auto">
+
       {steps.map((step, index) => {
         const stepNumber = index + 1;
         const isCompleted = currentStep > stepNumber;
