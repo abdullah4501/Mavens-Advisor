@@ -96,7 +96,7 @@ const Blogs = ({ breadcrumb }) => {
                                                 <ChevronRight size={20} className='mx-1' />
                                             </span>
                                             <span>
-                                                Our Team
+                                                {breadcrumb}
                                             </span>
                                         </div>
                                         <h1 className="text-[45px] md:text-[55px] lg:text-[70px] font-bold text-white leading-tight lg:mb-12 mb-6">
@@ -142,6 +142,92 @@ const Blogs = ({ breadcrumb }) => {
                                     transition={{ duration: 0.5, delay: index * 0.15 }}
                                     className="relative group cursor-pointer "
                                 >
+                                    <Link to={'/blog/why-financial-forecasting-is-critical-for-sustainable-growth'}>
+                                        {/* Image */}
+                                        <div className="relative h-[420px] shadow-[0px_20px_60px_0px_rgba(0,0,0,0.20)] ">
+                                            <img
+                                                src={post.image}
+                                                alt={post.title}
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04] rounded-[6px]"
+                                            />
+
+                                            {/* Category badge (TOP RIGHT) */}
+                                            <span className="absolute top-5 right-5 bg-gold text-white text-[13px] font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide">
+                                                {post.category}
+                                            </span>
+                                        </div>
+
+                                        {/* Floating content box */}
+                                        <div className="-mt-[60px] mx-[25px] relative bg-white p-7 rounded-t-[12px] ">
+                                            <div className="flex items-center gap-3 text-[13px] text-muted-foreground font-semibold uppercase mb-3">
+                                                <span>{post.date}</span>
+                                                <span className="w-1 h-1 bg-gray-400 rounded-full" />
+                                                <span>By Gudfin</span>
+                                            </div>
+
+                                            <h3 className="text-[22px] leading-snug font-bold text-navy">
+                                                {post.title}
+                                            </h3>
+                                        </div>
+                                    </Link>
+                                </motion.article>
+                            ))}
+                        </div>
+
+                        {/* RIGHT: COMPACT BLOG LIST */}
+                        <div className="flex flex-col gap-8">
+                            {topArticles.slice(2, 5).map((post, index) => (
+                                <motion.article
+                                    key={post.title}
+                                    initial={{ opacity: 0, x: 30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.4, delay: index * 0.12 }}
+                                    className="  border-b border-gray-200 pb-8 last:border-b-0 last:pb-0 cursor-pointer group"
+                                >
+                                    <Link to={'/blog/why-financial-forecasting-is-critical-for-sustainable-growth'} className="flex items-start gap-5">
+                                        {/* Thumbnail */}
+                                        <div className="relative min-w-[150px] w-[150px] h-[115px] rounded-lg overflow-hidden flex-shrink-0 ">
+                                            <img
+                                                src={post.image}
+                                                alt={post.title}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-2 text-[13px] text-muted-foreground font-semibold uppercase mb-2">
+                                                <span>{post.date}</span>
+                                                <span className="w-1 h-1 bg-gray-400 rounded-full" />
+                                                <span>By Gudfin</span>
+                                            </div>
+
+                                            <h4 className="text-[17px] font-bold text-navy leading-snug">
+                                                {post.title}
+                                            </h4>
+                                        </div>
+                                    </Link>
+                                </motion.article>
+                            ))}
+                        </div>
+
+                    </div>
+
+                    <div className="flex justify-center mb-5">
+                        <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-[14px] uppercase rounded mb-6">
+                            Top Articles
+                        </span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {topArticles.map((post, index) => (
+                            <motion.article
+                                key={post.title}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.15 }}
+                                className="relative group cursor-pointer "
+                            >
+                                <Link to={'/blog/why-financial-forecasting-is-critical-for-sustainable-growth'}>
                                     {/* Image */}
                                     <div className="relative h-[420px] shadow-[0px_20px_60px_0px_rgba(0,0,0,0.20)] ">
                                         <img
@@ -168,87 +254,7 @@ const Blogs = ({ breadcrumb }) => {
                                             {post.title}
                                         </h3>
                                     </div>
-                                </motion.article>
-                            ))}
-                        </div>
-
-                        {/* RIGHT: COMPACT BLOG LIST */}
-                        <div className="flex flex-col gap-8">
-                            {topArticles.slice(2, 5).map((post, index) => (
-                                <motion.article
-                                    key={post.title}
-                                    initial={{ opacity: 0, x: 30 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.4, delay: index * 0.12 }}
-                                    className="flex items-start gap-5 border-b border-gray-200 pb-8 last:border-b-0 last:pb-0 cursor-pointer group"
-                                >
-                                    {/* Thumbnail */}
-                                    <div className="relative min-w-[150px] w-[150px] h-[115px] rounded-lg overflow-hidden flex-shrink-0 ">
-                                        <img
-                                            src={post.image}
-                                            alt={post.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-2 text-[13px] text-muted-foreground font-semibold uppercase mb-2">
-                                            <span>{post.date}</span>
-                                            <span className="w-1 h-1 bg-gray-400 rounded-full" />
-                                            <span>By Gudfin</span>
-                                        </div>
-
-                                        <h4 className="text-[17px] font-bold text-navy leading-snug">
-                                            {post.title}
-                                        </h4>
-                                    </div>
-                                </motion.article>
-                            ))}
-                        </div>
-
-                    </div>
-
-                    <div className="flex justify-center mb-5">
-                        <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-[14px] uppercase rounded mb-6">
-                            Top Articles
-                        </span>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        {topArticles.map((post, index) => (
-                            <motion.article
-                                key={post.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.15 }}
-                                className="relative group cursor-pointer "
-                            >
-                                {/* Image */}
-                                <div className="relative h-[420px] shadow-[0px_20px_60px_0px_rgba(0,0,0,0.20)] ">
-                                    <img
-                                        src={post.image}
-                                        alt={post.title}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04] rounded-[6px]"
-                                    />
-
-                                    {/* Category badge (TOP RIGHT) */}
-                                    <span className="absolute top-5 right-5 bg-gold text-white text-[13px] font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide">
-                                        {post.category}
-                                    </span>
-                                </div>
-
-                                {/* Floating content box */}
-                                <div className="-mt-[60px] mx-[25px] relative bg-white p-7 rounded-t-[12px] ">
-                                    <div className="flex items-center gap-3 text-[13px] text-muted-foreground font-semibold uppercase mb-3">
-                                        <span>{post.date}</span>
-                                        <span className="w-1 h-1 bg-gray-400 rounded-full" />
-                                        <span>By Gudfin</span>
-                                    </div>
-
-                                    <h3 className="text-[22px] leading-snug font-bold text-navy">
-                                        {post.title}
-                                    </h3>
-                                </div>
+                                </Link>
                             </motion.article>
                         ))}
                     </div>

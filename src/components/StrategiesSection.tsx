@@ -9,7 +9,7 @@ import infobox from "@/assets/infobox-img.png";
 import AnimatedHeading from "./AnimatedHeading";
 import { Link } from "react-router-dom";
 
-const StrategiesSection = ({subTitle}) => {
+const StrategiesSection = ({ subTitle }) => {
   const { ref: sectionRef, isVisible } = useScrollAnimation();
   const statsRef = useRef<HTMLDivElement | null>(null);
 

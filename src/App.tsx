@@ -19,6 +19,7 @@ import OurHistory from "./pages/OurHistory";
 import ContactUs from "./pages/ContactUs";
 import Services from "./pages/Services";
 import Blogs from "./pages/Blogs";
+import BlogDetail from "./pages/BlogDetail";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,7 @@ const App = () => {
               <Route path="/contact" element={<ContactUs breadcrumb="Contact Us" />} />
               <Route path="/services" element={<Services breadcrumb="Services" />} />
               <Route path="/blog" element={<Blogs breadcrumb="Blog" />} />
+              <Route path="/blog/why-financial-forecasting-is-critical-for-sustainable-growth" element={<BlogDetail breadcrumb="Why Financial Forecasting Is Critical For Sustainable Growth" />} />
               <Route path="*" element={<NotFound breadcrumb="404" />} />
             </Routes>
 

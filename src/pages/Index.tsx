@@ -20,14 +20,14 @@ import CaseStudiesSection from '@/components/CaseStudiesSection';
 import ServicesSection4 from '@/components/ServicesSection4';
 import MarqueeSection2 from '@/components/MarqueeSection2';
 
-  const stats = [
-    { icon: Users, value: '500+', label: 'Companies Growing' },
-    { icon: Award, value: '25+', label: 'Years Combined Expertise' },
-    { icon: Briefcase, value: '3000+', label: 'Financial Functions Managed' },
-    { icon: TrendingUp, value: '99%', label: 'Client Retention Rate' },
-  ];
+const stats = [
+  { icon: Users, value: '500+', label: 'Companies Growing' },
+  { icon: Award, value: '25+', label: 'Years Combined Expertise' },
+  { icon: Briefcase, value: '3000+', label: 'Financial Functions Managed' },
+  { icon: TrendingUp, value: '99%', label: 'Client Retention Rate' },
+];
 
-const Index = ({breadcrumb}) => {
+const Index = ({ breadcrumb }) => {
   return (
     <div className="">
       <Header />
@@ -59,13 +59,13 @@ const Index = ({breadcrumb}) => {
           </div>
         </div>
       </motion.div>
-      
-      <StrategiesSection subTitle={'Welcome'}/>
+
+      <StrategiesSection subTitle={'Welcome'} />
       <WhyChooseSection />
       <MarqueeSection />
-      
-      <StatisticsSection subTitle={'Why Choose Us'}/>
-      <VideoSection/>
+
+      <StatisticsSection subTitle={'Why Choose Us'} />
+      <VideoSection />
       <ProcessSection />
       <TeamSection />
       <TestimonialsSection />
@@ -75,9 +75,8 @@ const Index = ({breadcrumb}) => {
         <ServiceSection2 />
       </div>
       <ServiceSection3 />
-      {/* <ServicesSection4 /> */}
       <CaseStudiesSection />
-      
+
       <Footer />
     </div>
   );

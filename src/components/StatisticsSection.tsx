@@ -7,7 +7,7 @@ import BarChart from "./BarChart";
 import ServicesGrid from "./ServicesGrid";
 import AnimatedHeading from "./AnimatedHeading";
 
-const StatisticsSection = ({subTitle}) => {
+const StatisticsSection = ({ subTitle }) => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (

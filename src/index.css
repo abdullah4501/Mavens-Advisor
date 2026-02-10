@@ -1012,6 +1012,15 @@ body {
     background-position: top center;
     background-repeat: no-repeat;
 }
+
+.article-detail p, .article-detail li, .article-detail a {
+  color: #676f72;
+  font-size: 18px;
+  font-weight: 500;
+}
+.article-detail h5 {
+  font-size: 18px;
+}
 /* Responsive */
 @media (max-width: 768px) {
   .place-card-large {

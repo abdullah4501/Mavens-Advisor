@@ -70,7 +70,7 @@ const ServicesSection4 = () => {
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className="service-card-new relative bg-white rounded-[20px] px-[30px] pt-[50px] pb-[30px] flex flex-col h-full w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(25%-15px)]"
+                            className="service-card-new relative bg-white rounded-[20px] px-[30px] pt-[50px] pb-[30px] flex flex-col h-full min-h-[590px] w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(25%-15px)]"
                         >
                             {/* Icon */}
                             <div className="mb-8">
@@ -98,8 +98,8 @@ const ServicesSection4 = () => {
                             </ul>
 
                             {/* CTA */}
-                            <div className="mt-auto">
-                                <Link to="/services" className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition">
+                            <div className="mt-auto flex">
+                                <Link to="/services" className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition relative z-[1]">
                                     <span className="text-[15px] font-semibold text-white">
                                         Discover More
                                     </span>

@@ -271,7 +271,7 @@ const Services = ({ breadcrumb }) => {
                                     </ul>
 
                                     {/* CTA */}
-                                    <div className="mt-auto">
+                                    <div className="mt-auto flex">
                                         <Link to="/calculator" className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition relative z-[1]">
                                             <span className="text-[15px] font-semibold text-white">
                                                 Get Quotation
