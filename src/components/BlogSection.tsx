@@ -5,6 +5,7 @@ import strategyImage from '@/assets/strategy-meeting.jpg';
 import analyticsImage from '@/assets/analytics.jpg';
 import teamMeetingImage from '@/assets/team-meeting.jpg';
 import AnimatedHeading from './AnimatedHeading';
+import { Link } from 'react-router-dom';
 
 const BlogSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -66,33 +67,35 @@ const BlogSection = () => {
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className="bg-white rounded-md overflow-hidden shadow-[0_9px_23.3px_0_rgba(0,0,0,0.09)] transition-all duration-300 group cursor-pointer"
             >
-              {/* Image */}
-              <div className="relative h-[240px] overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+              <Link to={'/blog/why-financial-forecasting-is-critical-for-sustainable-growth'}>
+                {/* Image */}
+                <div className="relative h-[240px] overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
 
-                {/* Category badge (BOTTOM LEFT like UI) */}
-                <span className="absolute bottom-4 left-4 bg-gold text-white text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wide">
-                  {post.category}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-[22px] font-bold text-navy-light mb-6 leading-snug">
-                  {post.title}
-                </h3>
-
-                {/* Meta */}
-                <div className="flex items-center gap-3 text-xs text-slate-400 uppercase tracking-wide">
-                  <span className='font-bold'>{post.date}</span>
-                  <span className="w-1 h-1 bg-slate-700 rounded-full" />
-                  <span className='font-bold'>By Gudfin</span>
+                  {/* Category badge (BOTTOM LEFT like UI) */}
+                  <span className="absolute bottom-4 left-4 bg-gold text-white text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wide">
+                    {post.category}
+                  </span>
                 </div>
-              </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-[22px] font-bold text-navy-light mb-6 leading-snug">
+                    {post.title}
+                  </h3>
+
+                  {/* Meta */}
+                  <div className="flex items-center gap-3 text-xs text-slate-400 uppercase tracking-wide">
+                    <span className='font-bold'>{post.date}</span>
+                    <span className="w-1 h-1 bg-slate-700 rounded-full" />
+                    <span className='font-bold'>By Gudfin</span>
+                  </div>
+                </div>
+              </Link>
             </motion.article>
           ))}
         </div>
