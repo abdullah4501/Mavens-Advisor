@@ -8,52 +8,52 @@ import FeatureIcon from "./FeatureIcon";
 const features = [
   {
     number: 1,
-    title: "Fixed Monthly Subscription",
+    title: "Predictable Pricing. No Surprises.",
     description:
-      "Activity-based pricing you can predict and plan around. No hourly billing, no hidden costs, no surprises.",
-    icon: "heart" as const,
+      "Fixed monthly subscription. Quote-based on your business activity. Calculated instantly. No hourly billing. No hidden fees. No reactive invoices.",
+    icon: "pricing" as const,
   },
   {
     number: 2,
     title: "CFO + Complete Finance Team",
     description:
-      "At the cost of a bookkeeper, get a dedicated CFO, complete virtual finance department, and full ownership.",
-    icon: "settings" as const,
+      "At the cost of a bookkeeper, get a dedicated CFO, complete virtual finance department, and full ownership of outcomes, not just reports.",
+    icon: "team" as const,
   },
   {
     number: 3,
     title: "AI-Powered Analytics Portal",
     description:
-      "Custom analytics tailored to your business. Real-time KPI dashboards, tax savings identification, and AI assistant.",
-    icon: "trending" as const,
+      "Know what matters — when it matters. Custom analytics, real-time insights, tax savings opportunities, and an integrated AI assistant for quick answers.",
+    icon: "ai" as const,
   },
   {
     number: 4,
-    title: "Evergreen Finance Department",
+    title: "This Is Not a Temporary Fix",
     description:
-      "Not temporary—a long-term foundation. Your finance team scales as you grow. No rehiring, no restructuring.",
-    icon: "shield" as const,
+      "Most finance setups break when the business grows. Mavens Advisor scales with you. No rehiring. No restructuring. No starting over.",
+    icon: "scale" as const,
   },
   {
     number: 5,
-    title: "Complete Finance Operations",
+    title: "Imagine Financial Clarity",
     description:
-      "Monthly bookkeeping, payroll, invoicing, payables/receivables, VAT filing, and HMRC compliance—all handled.",
-    icon: "headphones" as const,
+      "You know your numbers. You trust your reports. You make decisions with confidence. You stop worrying about compliance. You focus on growth.",
+    icon: "clarity" as const,
   },
   {
     number: 6,
-    title: "Strategic CFO Guidance",
+    title: "Built For Growing Businesses",
     description:
-      "Monthly CFO review sessions, growth planning, financial modeling, fundraising support, and M&A due diligence.",
-    icon: "headphones" as const,
+      "Founders who want CFO-level insight without hiring in-house. UK companies needing reliable, compliant financial leadership. Owners who see finance as a growth engine.",
+    icon: "business" as const,
   },
   {
     number: 7,
-    title: "Proven Track Record",
+    title: "The Cost of Delay",
     description:
-      "500+ companies growing with confidence. 99% client retention rate. 25+ years combined finance expertise.",
-    icon: "headphones" as const,
+      "Every month without proper financial leadership: hidden risks grow, missed tax savings compound, poor decisions get expensive. The most expensive finance function is the one you delay building.",
+    icon: "delay" as const,
   },
 ];
 

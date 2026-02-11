@@ -18,19 +18,22 @@ const MotionLink = motion(Link);
 const slides = [
   {
     title: ['Build, Scale & Lead.', 'Your Finance Function'],
-    description: 'Virtual CFO firm delivering CFO-level leadership, complete finance department, and AI-powered insights—all on a fixed monthly subscription.',
+    description: 'You didn\'t start your business to chase numbers, worry about compliance, or guess whether you can afford your next move.',
+    subPoints: ['Books always "almost" done', 'Cash flow unclear', 'Compliance stressful', 'Decisions made without real financial confidence'],
     cta: 'Calculate Your Quote',
     image: heroImage1,
   },
   {
     title: ['Your CFO, Your Finance Team.', 'One Predictable Fee'],
-    description: 'At the cost of a bookkeeper, get a dedicated CFO, complete virtual finance department, and full ownership of your finance function.',
+    description: 'Mavens Advisor builds and runs your entire finance department — so you can focus on growth, not numbers.',
+    subPoints: [],
     cta: 'Lock Your Monthly Fee',
     image: heroImage2,
   },
   {
     title: ['Focus on Growth.', 'We Handle Finance'],
-    description: 'Build an evergreen, scalable finance department so you can focus on what you love—without worrying about books, compliance, or blind spots.',
+    description: 'At the cost of a bookkeeper, you get a dedicated CFO, complete virtual finance department, and clear ownership of outcomes, not just reports.',
+    subPoints: [],
     cta: 'Get Your Virtual CFO',
     image: heroImage3,
   },
@@ -82,9 +85,9 @@ const HeroSection = () => {
                 transition={{ duration: 1, ease: [0.5, 0.5, 0, 1] }}
                 className="overflow-hidden"
               >
-                <h1 className="text-4xl md:text-6xl lg:text-[100px] font-bold text-white leading-tight mb-12">
-                  {slides[activeIndex].title[0]}
-                  <span> {slides[activeIndex].title[1]}</span>
+                <h1 className="text-4xl md:text-5xl lg:text-[70px] font-bold text-white leading-tight mb-12">
+                  {slides[activeIndex].title[0]}<br />
+                  <span>{slides[activeIndex].title[1]}</span>
                 </h1>
               </motion.div>
             </AnimatePresence>

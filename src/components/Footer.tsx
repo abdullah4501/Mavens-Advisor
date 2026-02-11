@@ -48,13 +48,16 @@ const Footer = () => {
             className="lg:col-span-4"
           >
             <span className="text-[#628fff] text-xs font-semibold tracking-wider uppercase">
-              Ready to scale your finance?
+              Build the Finance Department Your Business Deserves
             </span>
             <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight mt-4">
               Start your
               <br />
               Growth Now<span className="text-gold">.</span>
             </h2>
+            <p className="text-slate-400 text-sm mt-4">
+              This is the safest, smartest, and fastest way to take control of your finances and your growth.
+            </p>
           </motion.div>
 
           {/* Main Pages */}

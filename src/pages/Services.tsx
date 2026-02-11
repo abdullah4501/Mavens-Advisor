@@ -17,7 +17,7 @@ import AnimatedHeading from '@/components/AnimatedHeading';
 
 const services = [
     {
-        title: "Monthly Bookkeeping & Close",
+        title: "Monthly Bookkeeping",
         img: image1,
         items: [
             "Clean monthly closes you can rely on",

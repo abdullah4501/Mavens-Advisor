@@ -22,7 +22,7 @@ import MarqueeSection2 from '@/components/MarqueeSection2';
 
 const stats = [
   { icon: Users, value: '500+', label: 'Companies Growing' },
-  { icon: Award, value: '25+', label: 'Years Combined Expertise' },
+  { icon: Award, value: '30+', label: 'Years Combined Expertise' },
   { icon: Briefcase, value: '3000+', label: 'Financial Functions Managed' },
   { icon: TrendingUp, value: '99%', label: 'Client Retention Rate' },
 ];
@@ -32,11 +32,12 @@ const Index = ({ breadcrumb }) => {
     <div className="">
       <Header />
       <HeroSection />
+
       {/* Stats Bar */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
+        transition={{ duration: 0.8, delay: 1 }}
         className='border-b border-[#E4E4E4] shadow-[0_20px_60px_0_rgba(0,0,0,0.08)]'
       >
         <div className="container ">

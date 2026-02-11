@@ -54,14 +54,20 @@ const ServicesSection4 = () => {
 
                 {/* Heading */}
                 <div className="relative z-10 max-w-6xl mx-auto px-6 mb-20 text-center">
+                    <span className="inline-block bg-muted font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-6">
+                        What We Do
+                    </span>
                     <AnimatedHeading
-                        text="From calculation to scaling, everything your finance needs covered"
-                        className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
+                        text="Your Complete Virtual CFO Solution"
+                        className="text-4xl md:text-5xl font-[700] text-navy leading-tight mb-4"
                         duration={0.6}
                         stagger={0.01}
                         startDelay={0.3}
                         center={true}
                     />
+                    <p className="text-muted-foreground text-lg">
+                        We take full ownership of your finance function.
+                    </p>
                 </div>
 
                 {/* Services Cards */}

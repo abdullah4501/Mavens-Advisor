@@ -48,21 +48,25 @@ const StatisticsSection = ({ subTitle }) => {
                 </div>
                 {/* RIGHT TEXT */}
                 <div>
-                  <p className="text-muted-foreground mb-8 max-w-lg">
-                    Mavens Advisor is not traditional outsourcing. We build an evergreen, scalable finance department so you can focus on growth without stress over books, compliance, or controls.
+                  <h4 className="text-navy font-bold text-xl mb-4">This Is Not Finance Outsourcing</h4>
+                  <p className="text-muted-foreground mb-4 max-w-lg">
+                    Outsourcing gives you tasks done. Mavens Advisor gives you leadership, accountability, and structure.
+                  </p>
+                  <p className="text-navy font-semibold mb-6">
+                    At the cost of a bookkeeper, you get:
                   </p>
                   <ul className="space-y-4">
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      Complete finance department at bookkeeper cost
+                      A dedicated CFO
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      AI-powered analytics with actionable insights
+                      A complete virtual finance department
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      Scales with your business—no rehiring friction
+                      Clear ownership of outcomes, not just reports
                     </li>
                   </ul>
                 </div>

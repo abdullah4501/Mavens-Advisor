@@ -85,7 +85,7 @@ const TestimonialsSection = () => {
               center={true}
             />
             <p className="text-muted-foreground mt-4 text-center">
-              CFO-level insight. Complete finance team. AI-powered analytics. One predictable fee.
+              Predictable monthly pricing. CFO-led expertise. Scalable, evergreen structure. AI-powered clarity.
             </p>
           </motion.div>
 

@@ -1,4 +1,4 @@
-import { ArrowRight, MoveLeft, MoveRight } from "lucide-react";
+import { ArrowRight, HandCoins, MoveLeft, MoveRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import serviceBg from '@/assets/service-bg-2.jpg';
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -7,7 +7,6 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import MarqueeSection from "./MarqueeSection";
 import {
-    Receipt,
     BookOpen,
     Wallet,
     LineChart,
@@ -15,63 +14,93 @@ import {
     CreditCard,
     TrendingUp,
     Settings,
-    BarChart3,
     Target,
+    Calculator,
+    FileText,
+    PiggyBank,
+    BarChart3,
+    FileCheck,
+    Building2,
+    Layers,
+    Compass,
+    Rocket,
+    Lightbulb,
 } from "lucide-react";
 import MarqueeSection2 from "./MarqueeSection2";
 
 const services = [
     {
-        title: "Monthly Bookkeeping & Close",
-        description: "Clean monthly closes you can rely on—bank reconciliations, ledger maintenance, and month-end accuracy.",
-        icon: Receipt,
+        title: "Monthly Bookkeeping",
+        description: "Clean monthly closes you can rely on—bank reconciliations, ledger maintenance, and accurate month-end reporting.",
+        icon: Calculator,
     },
     {
         title: "Payroll & Contractor Management",
-        description: "Weekly/monthly payroll processing, contractor payments, tax compliance, and benefits administration.",
+        description: "Weekly or monthly payroll processing, contractor payments, tax deductions, compliance, and benefits administration.",
         icon: Users,
     },
     {
-        title: "Invoicing, Billing & Receivables",
-        description: "Automated invoicing, accounts receivable tracking, collections management, and payment processing.",
-        icon: Wallet,
+        title: "Invoicing & Billing",
+        description: "Automated invoicing, recurring billing setup, accounts receivable tracking, collections management, and payment processing.",
+        icon: FileText,
     },
     {
-        title: "Accounts Payable & Cash Management",
-        description: "Vendor bill processing, payment scheduling, cash flow optimization, and expense tracking.",
+        title: "Accounts Payable & Receivable",
+        description: "Vendor bill processing, payment scheduling, receivables monitoring, cash flow tracking, and expense management.",
         icon: CreditCard,
     },
     {
-        title: "P&L Reporting + Performance Review",
-        description: "Monthly profit & loss statements with CFO-level insights, revenue analysis, and actionable recommendations.",
+        title: "Monthly Profit & Loss Reports",
+        description: "Clear monthly P&L statements with revenue breakdowns, expense insights, margin analysis, and actionable recommendations.",
         icon: LineChart,
     },
     {
-        title: "Budgeting + Cash Flow Forecasting",
-        description: "12-month rolling forecasts, annual budget development, variance analysis, and scenario planning for growth.",
-        icon: TrendingUp,
+        title: "Budgeting & Forecasting",
+        description: "Annual budget development, variance analysis, scenario planning, and structured financial forecasting for sustainable growth.",
+        icon: Target,
     },
     {
-        title: "VAT + HMRC & Companies House Filing",
-        description: "VAT returns, HMRC compliance, Companies House filings, statutory accounts, and regulatory deadlines.",
-        icon: BookOpen,
+        title: "Cash Flow Forecasting",
+        description: "12-month rolling cash flow forecasts, liquidity planning, runway analysis, and proactive cash management strategies.",
+        icon: HandCoins,
     },
     {
-        title: "Chart of Accounts & System Setup",
-        description: "Optimized chart of accounts, accounting system implementation, departmental coding, and scalable design.",
-        icon: Settings,
-    },
-    {
-        title: "AI-Powered Analytics & Insights",
-        description: "Custom analytics portal, real-time KPI dashboards, tax savings identification, and AI assistant for financial questions.",
+        title: "Financial Performance Analysis",
+        description: "Deep analysis of KPIs, profitability trends, cost structures, and operational efficiency to improve financial performance.",
         icon: BarChart3,
     },
     {
-        title: "CFO-Level Strategic Guidance",
-        description: "Monthly CFO review sessions, growth planning, financial modeling, fundraising support, and M&A due diligence.",
-        icon: Target,
+        title: "VAT Filing",
+        description: "Accurate VAT return preparation, submission, compliance checks, and regulatory deadline management.",
+        icon: FileCheck,
+    },
+    {
+        title: "HMRC & Companies House Joint Filing (UK)",
+        description: "HMRC submissions, Companies House filings, statutory accounts preparation, and full UK regulatory compliance.",
+        icon: Building2,
+    },
+    {
+        title: "Chart of Accounts & Setup (for new books)",
+        description: "Custom chart of accounts design, accounting software setup, system structuring, and scalable financial architecture.",
+        icon: Layers,
+    },
+    {
+        title: "CFO-Level Strategic Advice",
+        description: "Executive-level financial strategy, modeling, capital planning, fundraising support, and long-term value creation.",
+        icon: Compass,
+    },
+    {
+        title: "Growth Planning & Cash Discipline",
+        description: "Structured growth planning, disciplined cash management frameworks, financial controls, and capital allocation strategy.",
+        icon: Rocket,
+    },
+    {
+        title: "Decision Support When It Actually Matters",
+        description: "On-demand financial insights for critical decisions including hiring, expansion, pricing strategy, investments, and risk management.",
+        icon: Lightbulb,
     },
 ];
+
 
 const ServiceSection2 = () => {
     return (
@@ -89,12 +118,11 @@ const ServiceSection2 = () => {
 
                 {/* Content */}
                 <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 text-center">
-
-
                     <h1 className="text-white font-semibold text-start leading-tight text-[24px] md:text-[28px] lg:text-[40px]">
                         <small className="text-white text-[18px] uppercase tracking-[0.05em] mb-6 font-medium mx-[70px]">
-                            Our SERVICES
-                        </small>   Complete finance solutions, backed by CFO<br />expertise and AI-powered insights for growth.
+                            Our Services
+                        </small>
+                        Complete finance solutions, backed by CFO expertise and AI-powered insights for growth.
                     </h1>
                 </div>
 
@@ -163,7 +191,7 @@ const ServiceSection2 = () => {
                                         {bottomService && (
                                             <div className="service-2-card group flex flex-col items-start w-full md:min-h-[455px]">
                                                 <div className=" mb-4">
-                                                    <topService.icon className="w-[50px] h-[50px] text-[#91d089]" strokeWidth={2} />
+                                                    <bottomService.icon className="w-[50px] h-[50px] text-[#91d089]" strokeWidth={2} />
                                                 </div>
 
                                                 <h3 className="font-bold text-white text-[24px] -translate-y-[60px] group-hover:translate-y-0 transition-transform duration-500">

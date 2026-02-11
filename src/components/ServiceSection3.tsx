@@ -80,9 +80,10 @@ const ServiceSection3 = () => {
         <div className="absolute inset-0 bg-[#00162c99]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 text-center">
+          
           <AnimatedHeading
             text="Built to Scale Every Business Type Virtual Finance for Startups to Mature Companies"
-            className="text-4xl md:text-5xl font-[700] text-white leading-tight"
+            className="text-4xl md:text-5xl font-[700] text-white leading-tight mb-6"
             duration={0.6}
             stagger={0.01}
             startDelay={0.3}

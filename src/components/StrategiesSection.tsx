@@ -23,7 +23,7 @@ const StrategiesSection = ({ subTitle }) => {
       ([entry]) => {
         if (entry.isIntersecting && !started) {
           setStarted(true);
-          animate(count, 25, {
+          animate(count, 30, {
             duration: 1.2,
             ease: "easeOut",
             onUpdate: (v) => setValue(Math.round(v)),
@@ -83,8 +83,11 @@ const StrategiesSection = ({ subTitle }) => {
           />
 
 
-          <p className="text-muted-foreground text-[18px] mb-12 font-medium mt-6">
+          <p className="text-muted-foreground text-[18px] mb-6 font-medium mt-6">
             We help founders and business owners build an evergreen, scalable finance function so they can focus on growth, execution, and what they love to do, without worrying about books, compliance, or financial blind spots.
+          </p>
+          <p className="text-navy font-semibold text-[16px] mb-12">
+            CFO-level leadership. A complete finance team. One predictable monthly fee.
           </p>
 
           <div className="border-t mb-10"></div>
