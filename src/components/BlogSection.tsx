@@ -58,42 +58,41 @@ const BlogSection = () => {
         </motion.div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {posts.map((post, index) => (
             <motion.article
               key={post.title}
               initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="bg-white rounded-md overflow-hidden shadow-[0_9px_23.3px_0_rgba(0,0,0,0.09)] transition-all duration-300 group cursor-pointer"
+              className="relative group cursor-pointer "
             >
               <Link to={'/blog/why-financial-forecasting-is-critical-for-sustainable-growth'}>
                 {/* Image */}
-                <div className="relative h-[240px] overflow-hidden">
+                <div className="relative h-[420px] shadow-[0px_20px_60px_0px_rgba(0,0,0,0.20)] ">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04] rounded-[6px]"
                   />
 
-                  {/* Category badge (BOTTOM LEFT like UI) */}
-                  <span className="absolute bottom-4 left-4 bg-gold text-white text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wide">
+                  {/* Category badge (TOP RIGHT) */}
+                  <span className="absolute top-5 right-5 bg-gold text-white text-[13px] font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide">
                     {post.category}
                   </span>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-[22px] font-bold text-navy-light mb-6 leading-snug">
+                {/* Floating content box */}
+                <div className="-mt-[60px] mx-[25px] relative bg-white p-7 rounded-t-[12px] ">
+                  <div className="flex items-center gap-3 text-[13px] text-muted-foreground font-semibold uppercase mb-3">
+                    <span>{post.date}</span>
+                    <span className="w-1 h-1 bg-gray-400 rounded-full" />
+                    <span>By Gudfin</span>
+                  </div>
+
+                  <h3 className="text-[22px] leading-snug font-bold text-navy">
                     {post.title}
                   </h3>
-
-                  {/* Meta */}
-                  <div className="flex items-center gap-3 text-xs text-slate-400 uppercase tracking-wide">
-                    <span className='font-bold'>{post.date}</span>
-                    <span className="w-1 h-1 bg-slate-700 rounded-full" />
-                    <span className='font-bold'>By Gudfin</span>
-                  </div>
                 </div>
               </Link>
             </motion.article>

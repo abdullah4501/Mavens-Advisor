@@ -70,7 +70,7 @@ const ServiceSection3 = () => {
   const inView = useInView(ref, { once: true, margin: "-150px" });
 
   return (
-    <section className="section-padding py-16">
+    <section className=" ">
       <div className="relative w-full overflow-hidden">
         <img
           src={serviceBg}

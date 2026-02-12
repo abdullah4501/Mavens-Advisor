@@ -222,7 +222,7 @@ const ServiceSection2 = () => {
 
                 {/* Bottom green strip */}
             </div>
-            <MarqueeSection2 />
+            {/* <MarqueeSection2 /> */}
         </section>
     );
 };

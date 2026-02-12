@@ -27,7 +27,7 @@ const CaseStudiesSection = () => {
     const imageY = useTransform(scrollYProgress, [0, 0.5, 1], ["-15%", "0%", "8%"]);
 
     return (
-        <section ref={sectionRef} className="py-24">
+        <section ref={sectionRef} className="py-24 bg-white">
             <div className="container">
                 {/* Heading */}
                 <div className="relative z-10 max-w-6xl mx-auto px-6 mb-20 text-center">
