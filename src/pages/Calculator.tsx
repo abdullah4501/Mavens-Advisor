@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSettings } from "@/context/SettingsContext";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import {
   Calculator as CalcIcon,
   Settings,
@@ -33,15 +33,33 @@ const STEPS = [
 
 const Calculator = ({ breadcrumb }) => {
   const { settings } = useSettings();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedServices, setSelectedServices] = useState<
     Record<string, boolean>
   >({});
   const [quantities, setQuantities] = useState<Record<string, string>>({});
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [step, setStep] = useState(1);
+
+  // Get initial step from URL or default to 1
+  const initialStep = parseInt(searchParams.get("step") || "1");
+  const [step, setStepState] = useState(initialStep);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Sync state with URL search parameters
+  const setStep = (newStep: number, options?: { replace?: boolean }) => {
+    setStepState(newStep);
+    setSearchParams({ step: newStep.toString() }, { replace: options?.replace });
+  };
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const urlStep = parseInt(searchParams.get("step") || "1");
+    if (urlStep !== step) {
+      setStepState(urlStep);
+    }
+  }, [searchParams]);
 
   // Initialize from localStorage
   useEffect(() => {
@@ -251,15 +269,15 @@ const Calculator = ({ breadcrumb }) => {
         (s) => selectedServices[s.id],
       );
       if (!hasHourlyServices) {
-        setStep(1);
+        setStep(1, { replace: true });
         return;
       }
     }
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep(step - 1, { replace: true });
   };
 
   const handleReset = () => {
-    setStep(1);
+    setStep(1, { replace: true });
     setSelectedServices({});
     setQuantities({});
     setUserName("");
@@ -370,7 +388,7 @@ const Calculator = ({ breadcrumb }) => {
                     <p className="text-muted-foreground mb-4">
                       No services selected.
                     </p>
-                    <Button variant="link" onClick={() => setStep(1)}>
+                    <Button variant="link" onClick={() => setStep(1, { replace: true })}>
                       Go back to select services
                     </Button>
                   </div>
