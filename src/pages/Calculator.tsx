@@ -110,10 +110,17 @@ const Calculator = ({ breadcrumb }) => {
       }
     });
 
+    const activeServices = [
+      ...settings.services.filter(
+        (s) => selectedServices[s.id] && (parseFloat(quantities[s.id]) || 0) > 0,
+      ),
+      ...settings.fixedPriceServices.filter((s) => selectedServices[s.id]),
+    ];
+
     const totalHours = totalMinutes / 60;
     const totalCost = totalHours * settings.hourlyRate + fixedCosts;
 
-    return { totalMinutes, totalHours, totalCost, serviceCosts };
+    return { totalMinutes, totalHours, totalCost, serviceCosts, activeServices };
   }, [selectedServices, quantities, settings]);
 
   const handleServiceToggle = (id: string, checked: boolean) => {
@@ -143,13 +150,6 @@ const Calculator = ({ breadcrumb }) => {
   const totalSelectedServices = Object.values(selectedServices).filter(
     (v) => v,
   ).length;
-
-  const activeServices = [
-    ...settings.services.filter(
-      (s) => selectedServices[s.id] && (parseFloat(quantities[s.id]) || 0) > 0,
-    ),
-    ...settings.fixedPriceServices.filter((s) => selectedServices[s.id]),
-  ];
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isFormValid = isEmailValid && userName.trim().length > 1;
@@ -203,7 +203,7 @@ const Calculator = ({ breadcrumb }) => {
         const payload = {
           userName,
           email,
-          services: activeServices.map(s => ({
+          services: calculations.activeServices.map(s => ({
             id: s.id,
             name: s.name,
             quantity: calculations.serviceCosts[s.id]?.quantity || 1,
@@ -287,7 +287,7 @@ const Calculator = ({ breadcrumb }) => {
             className="mb-10 flex justify-center items-center flex-col sm:flex-row gap-5 sm:gap-0"
           >
             <Link to={'/'} className="mr-auto p-3 bg-[#e6e7e9] rounded-lg" title="Home">
-              <Home className="w-6 h-6"/>
+              <Home className="w-6 h-6" />
             </Link>
             <StepIndicator currentStep={step} totalSteps={4} steps={STEPS} />
           </motion.div>
@@ -415,7 +415,7 @@ const Calculator = ({ breadcrumb }) => {
             {step === 4 && (
               <EstimateSummary
                 key="step4"
-                activeServices={activeServices}
+                activeServices={calculations.activeServices}
                 serviceCosts={calculations.serviceCosts}
                 totalCost={calculations.totalCost}
                 totalHours={calculations.totalHours}

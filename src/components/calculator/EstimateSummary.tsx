@@ -83,47 +83,8 @@ const EstimateSummary = ({
           </p>
         </div>
 
-        {/* Services List */}
-        <div className="p-6 space-y-4">
-          {activeServices.length > 0 ? (
-            <div className="space-y-3">
-              <p className="text-xs uppercase font-bold text-muted-foreground tracking-wider">
-                Selected Services
-              </p>
-              {activeServices.map((service) => {
-                const cost = serviceCosts[service.id];
-                if (!cost) return null;
-
-                // Format name: "Number of Transactions" -> "Monthly Transactions"
-                const formattedName = service.name
-                  .toLowerCase()
-                  .startsWith("number of")
-                  ? `Monthly ${service.name.replace(/^number of\s+/i, "")}`
-                  : service.name;
-
-                return (
-                  <div
-                    key={service.id}
-                    className="flex items-center justify-between py-3 border-b border-border/50 last:border-0"
-                  >
-                    <div className="flex-1">
-                      <p className="font-medium">{formattedName}</p>
-                    </div>
-                    <span className="font-display font-bold text-lg">
-                      {currency}
-                      {cost.cost.toFixed(2)}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <p className="text-center text-muted-foreground py-8">
-              No services selected
-            </p>
-          )}
-        </div>
-        <div className="bg-muted/30 p-6 border-t border-border/50">
+        {/* Services List Removed as per request */}
+        <div className="bg-muted/30 p-8">
           <div className="flex items-center justify-between">
             <span className="font-display text-xl font-bold">
               Total Estimate
