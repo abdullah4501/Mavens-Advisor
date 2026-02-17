@@ -40,6 +40,7 @@ const Calculator = ({ breadcrumb }) => {
   const [quantities, setQuantities] = useState<Record<string, string>>({});
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
+  const [serviceFrequencies, setServiceFrequencies] = useState<Record<string, string>>({});
 
   // Get initial step from URL or default to 1
   const initialStep = parseInt(searchParams.get("step") || "1");
@@ -71,11 +72,13 @@ const Calculator = ({ breadcrumb }) => {
           quantities: savedQuantities,
           userName: savedName,
           email: savedEmail,
+          payrollFrequencies: savedFrequencies,
         } = JSON.parse(savedSelections);
         setSelectedServices(hourly || {});
         setQuantities(savedQuantities || {});
         if (savedName) setUserName(savedName);
         if (savedEmail) setEmail(savedEmail);
+        if (savedFrequencies) setServiceFrequencies(savedFrequencies);
       } catch (e) {
         console.error("Error loading saved selections:", e);
       }
@@ -91,9 +94,10 @@ const Calculator = ({ breadcrumb }) => {
         quantities,
         userName,
         email,
+        payrollFrequencies: serviceFrequencies,
       }),
     );
-  }, [selectedServices, quantities, userName, email]);
+  }, [selectedServices, quantities, userName, email, serviceFrequencies]);
 
   const calculations = useMemo(() => {
     let totalMinutes = 0;
@@ -106,7 +110,17 @@ const Calculator = ({ breadcrumb }) => {
     settings.services.forEach((service) => {
       if (selectedServices[service.id]) {
         const qty = parseFloat(quantities[service.id] || "0") || 0;
-        const serviceMinutes = qty * service.minutesPerJob;
+
+        // Frequency multiplier for payroll and contractor payments
+        let frequencyMultiplier = 1;
+        const nameLower = service.name.toLowerCase();
+        if (nameLower.includes("payroll") || nameLower.includes("contractor")) {
+          const freq = serviceFrequencies[service.id] || "Monthly";
+          if (freq === "Weekly") frequencyMultiplier = 4;
+          else if (freq === "Bi-Monthly") frequencyMultiplier = 2;
+        }
+
+        const serviceMinutes = qty * service.minutesPerJob * frequencyMultiplier;
         const serviceCost = (serviceMinutes / 60) * settings.hourlyRate;
         totalMinutes += serviceMinutes;
         serviceCosts[service.id] = {
@@ -139,10 +153,24 @@ const Calculator = ({ breadcrumb }) => {
     const totalCost = totalHours * settings.hourlyRate + fixedCosts;
 
     return { totalMinutes, totalHours, totalCost, serviceCosts, activeServices };
-  }, [selectedServices, quantities, settings]);
+  }, [selectedServices, quantities, settings, serviceFrequencies]);
 
   const handleServiceToggle = (id: string, checked: boolean) => {
-    setSelectedServices((p) => ({ ...p, [id]: checked }));
+    setSelectedServices((p) => {
+      const newState = { ...p, [id]: checked };
+
+      // If unselecting Monthly Bookkeeping, also unselect P&L services
+      const service = settings.services.find(s => s.id === id);
+      if (service?.name.toLowerCase().includes("bookkeeping") && !checked) {
+        settings.fixedPriceServices.forEach(s => {
+          if (s.name.toLowerCase().includes("profit and loss") || s.name.toLowerCase().includes("p&l")) {
+            newState[s.id] = false;
+          }
+        });
+      }
+      return newState;
+    });
+
     if (checked) {
       setErrors((prev) => {
         const newErrors = { ...prev };
@@ -154,15 +182,50 @@ const Calculator = ({ breadcrumb }) => {
 
   const handleQuantityChange = (id: string, val: string) => {
     if (val === "" || /^\d*$/.test(val)) {
-      setQuantities((p) => ({ ...p, [id]: val }));
+      setQuantities((p) => {
+        const newQuantities = { ...p, [id]: val };
+
+        const invoicingService = settings.services.find(s => s.name.toLowerCase().includes("invoic"));
+        const receivablesService = settings.services.find(s => s.name.toLowerCase().includes("receivable"));
+        const billingService = settings.services.find(s => s.name.toLowerCase().includes("bill"));
+        const payablesService = settings.services.find(s => s.name.toLowerCase().includes("payable"));
+
+        // Sync Receivables if Invoicing is changed
+        if (invoicingService && id === invoicingService.id && receivablesService && selectedServices[receivablesService.id]) {
+          newQuantities[receivablesService.id] = val;
+        }
+        // Sync Invoicing if Receivables is changed (if visible)
+        if (receivablesService && id === receivablesService.id && invoicingService && selectedServices[invoicingService.id]) {
+          newQuantities[invoicingService.id] = val;
+        }
+
+        // Sync Payables if Billing is changed
+        if (billingService && id === billingService.id && payablesService && selectedServices[payablesService.id]) {
+          newQuantities[payablesService.id] = val;
+        }
+        // Sync Billing if Payables is changed (if visible)
+        if (payablesService && id === payablesService.id && billingService && selectedServices[billingService.id]) {
+          newQuantities[billingService.id] = val;
+        }
+
+        return newQuantities;
+      });
+
       if (val !== "" && parseInt(val) > 0) {
         setErrors((prev) => {
           const newErrors = { ...prev };
           delete newErrors[id];
+          // Also clear errors for synced services
+          if (id === "4") delete newErrors["7"];
+          if (id === "5") delete newErrors["6"];
           return newErrors;
         });
       }
     }
+  };
+
+  const handleFrequencyChange = (id: string, freq: string) => {
+    setServiceFrequencies((p) => ({ ...p, [id]: freq }));
   };
 
   const totalSelectedServices = Object.values(selectedServices).filter(
@@ -178,6 +241,20 @@ const Calculator = ({ breadcrumb }) => {
     if (step === 1) {
       if (totalSelectedServices > 0) {
         setErrors({});
+
+        // Pre-sync quantities before moving to details step
+        setQuantities(prev => {
+          const next = { ...prev };
+          const inv = settings.services.find(s => s.name.toLowerCase().includes("invoic"));
+          const rec = settings.services.find(s => s.name.toLowerCase().includes("receivable"));
+          const bill = settings.services.find(s => s.name.toLowerCase().includes("bill"));
+          const pay = settings.services.find(s => s.name.toLowerCase().includes("payable"));
+
+          if (inv && rec && selectedServices[inv.id] && selectedServices[rec.id]) next[rec.id] = next[inv.id] || "";
+          if (bill && pay && selectedServices[bill.id] && selectedServices[pay.id]) next[pay.id] = next[bill.id] || "";
+          return next;
+        });
+
         const hasHourlyServices = settings.services.some(
           (s) => selectedServices[s.id],
         );
@@ -225,6 +302,7 @@ const Calculator = ({ breadcrumb }) => {
             id: s.id,
             name: s.name,
             quantity: calculations.serviceCosts[s.id]?.quantity || 1,
+            frequency: serviceFrequencies[s.id] || ((s.name.toLowerCase().includes("payroll") || s.name.toLowerCase().includes("contractor")) ? "Monthly" : undefined),
             cost: calculations.serviceCosts[s.id]?.cost || 0
           })),
           totalCost: calculations.totalCost,
@@ -350,17 +428,26 @@ const Calculator = ({ breadcrumb }) => {
                       index={idx}
                     />
                   ))}
-                  {settings.fixedPriceServices.map((service, idx) => (
-                    <ServiceCard
-                      key={service.id}
-                      id={service.id}
-                      name={service.name}
-                      minutesPerJob={0}
-                      isSelected={selectedServices[service.id] || false}
-                      onToggle={handleServiceToggle}
-                      index={settings.services.length + idx}
-                    />
-                  ))}
+                  {settings.fixedPriceServices
+                    .filter(service => {
+                      const isPnL = service.name.toLowerCase().includes("profit and loss") || service.name.toLowerCase().includes("p&l");
+                      if (isPnL) {
+                        const bookkeeping = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
+                        return bookkeeping && selectedServices[bookkeeping.id];
+                      }
+                      return true;
+                    })
+                    .map((service, idx) => (
+                      <ServiceCard
+                        key={service.id}
+                        id={service.id}
+                        name={service.name}
+                        minutesPerJob={0}
+                        isSelected={selectedServices[service.id] || false}
+                        onToggle={handleServiceToggle}
+                        index={settings.services.length + idx}
+                      />
+                    ))}
                 </div>
               </motion.div>
             )}
@@ -395,7 +482,20 @@ const Calculator = ({ breadcrumb }) => {
                 ) : (
                   <div className="space-y-4">
                     {settings.services
-                      .filter((s) => selectedServices[s.id])
+                      .filter((s) => {
+                        if (!selectedServices[s.id]) return false;
+
+                        const inv = settings.services.find(s => s.name.toLowerCase().includes("invoic"));
+                        const rec = settings.services.find(s => s.name.toLowerCase().includes("receivable"));
+                        const bill = settings.services.find(s => s.name.toLowerCase().includes("bill"));
+                        const pay = settings.services.find(s => s.name.toLowerCase().includes("payable"));
+
+                        // Hide if synced with a primary service that is also selected
+                        if (rec && s.id === rec.id && inv && selectedServices[inv.id]) return false;
+                        if (pay && s.id === pay.id && bill && selectedServices[bill.id]) return false;
+
+                        return true;
+                      })
                       .map((service, idx) => (
                         <QuantityInput
                           key={service.id}
@@ -403,6 +503,8 @@ const Calculator = ({ breadcrumb }) => {
                           name={service.name}
                           quantity={quantities[service.id] || ""}
                           onQuantityChange={handleQuantityChange}
+                          frequency={serviceFrequencies[service.id]}
+                          onFrequencyChange={handleFrequencyChange}
                           index={idx}
                           error={errors[service.id]}
                           autoFocus={idx === 0}
