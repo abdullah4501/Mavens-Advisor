@@ -116,7 +116,8 @@ const EstimateSummary = ({
                         {(() => {
                           const name = service.name.toLowerCase();
                           if (name.includes("strategic")) return `${cost.quantity} hours`;
-                          if (name.includes("bookkeeping") || name.includes("profit and loss") || name.includes("p&l")) return `${cost.quantity} transactions`;
+                          if (name.includes("bookkeeping") || name.includes("profit and loss") || name.includes("p&l") ||
+                            name.includes("budgeting") || name.includes("cash flow") || name.includes("performance analysis")) return `${cost.quantity} transactions`;
                           if (name.includes("invoic") || name.includes("receivable")) return `${cost.quantity} invoices`;
                           if (name.includes("bill") || name.includes("payable")) return `${cost.quantity} bills`;
                           return cost.minutes > 0 ? `${cost.quantity} units` : "Fixed Service";

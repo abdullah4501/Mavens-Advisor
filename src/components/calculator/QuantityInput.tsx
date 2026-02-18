@@ -43,6 +43,9 @@ const QuantityInput = ({
     // Transform specific words for better natural language questions
     if (cleanName === "bookkeeping") return "How many monthly transactions do you have?";
     if (cleanName.includes("profit and loss") || cleanName.includes("p&l")) return "How many monthly transactions do you have?";
+    if (cleanName.includes("budgeting")) return "How many monthly transactions do you have?";
+    if (cleanName.includes("cash flow")) return "How many monthly transactions do you have?";
+    if (cleanName.includes("performance analysis")) return "How many monthly transactions do you have?";
     if (cleanName.includes("invoicing")) return "How many monthly invoices do you have?";
     if (cleanName.includes("billing")) return "How many monthly bills do you have?";
     if (cleanName.includes("receivable")) return "How many monthly invoices do you have?";
