@@ -141,19 +141,23 @@ const Calculator = ({ breadcrumb }) => {
         let price = service.price;
         let mins = 0;
         const isPnL = nameLower.includes("profit and loss") || nameLower.includes("p&l");
+        const isBudgeting = nameLower.includes("budgeting");
+        const isCashFlow = nameLower.includes("cash flow");
+        const isPerformance = nameLower.includes("performance analysis");
+        const isReportingService = isPnL || isBudgeting || isCashFlow || isPerformance;
 
-        if (isPnL) {
+        if (isReportingService) {
           const bookkeepingService = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
           const isBookkeepingSelected = bookkeepingService && selectedServices[bookkeepingService.id];
 
           if (!isBookkeepingSelected) {
-            // Standalone PNL: calculate based on transactions (using bookkeeping rates)
+            // Standalone: calculate based on transactions (using bookkeeping rates)
             const qty = Number(quantities[service.id] || 0);
             const bookMinutesPerJob = (bookkeepingService as any)?.minutesPerJob || 0;
             mins = qty * bookMinutesPerJob;
             price = (mins / 60) * settings.hourlyRate;
           } else {
-            // PNL with Bookkeeping: use fixed price ($50)
+            // Bundled with Bookkeeping: use fixed price from DB
             price = service.price;
           }
         }
@@ -327,9 +331,14 @@ const Calculator = ({ breadcrumb }) => {
             if (!selectedServices[s.id]) return false;
             const nameLower = (s.name || "").toLowerCase();
             const isStrategic = nameLower.includes("strat") || nameLower.includes("advice") || String(s.id) === "8" || String(s.id) === "fp3";
-            const isPnL = nameLower.includes("profit and loss") || nameLower.includes("p&l");
+            const isReporting = nameLower.includes("profit and loss") || nameLower.includes("p&l") ||
+              nameLower.includes("budgeting") || nameLower.includes("cash flow") || nameLower.includes("performance analysis");
             const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
-            return isStrategic || isPnL || !isFixed;
+            if (isReporting && isFixed) {
+              const book = settings.services.find(s2 => s2.name.toLowerCase().includes("bookkeeping"));
+              return !(book && selectedServices[book.id]);
+            }
+            return isStrategic || !isFixed;
           }
         );
 
@@ -343,12 +352,20 @@ const Calculator = ({ breadcrumb }) => {
       }
     } else if (step === 2) {
       const allServices = [...settings.services, ...settings.fixedPriceServices];
+      const bookkeepingService = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
+      const isBookkeepingSelected = bookkeepingService && selectedServices[bookkeepingService.id];
+
       allServices.forEach((s) => {
         const nameLower = (s.name || "").toLowerCase();
         const isStrategic = nameLower.includes("strat") || nameLower.includes("advice") || String(s.id) === "8" || String(s.id) === "fp3";
         const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
+        const isReporting = isFixed && (
+          nameLower.includes("profit and loss") || nameLower.includes("p&l") ||
+          nameLower.includes("budgeting") || nameLower.includes("cash flow") || nameLower.includes("performance analysis")
+        );
+        const needsQty = isStrategic || !isFixed || (isReporting && !isBookkeepingSelected);
 
-        if (selectedServices[s.id] && (isStrategic || !isFixed)) {
+        if (selectedServices[s.id] && needsQty) {
           if ((parseFloat(quantities[s.id]) || 0) <= 0) {
             newErrors[s.id] = ` required`;
           }
@@ -431,9 +448,14 @@ const Calculator = ({ breadcrumb }) => {
           if (!selectedServices[s.id]) return false;
           const nameLower = (s.name || "").toLowerCase();
           const isStrategic = nameLower.includes("strat") || nameLower.includes("advice") || String(s.id) === "8" || String(s.id) === "fp3";
-          const isPnL = nameLower.includes("profit and loss") || nameLower.includes("p&l");
+          const isReporting = nameLower.includes("profit and loss") || nameLower.includes("p&l") ||
+            nameLower.includes("budgeting") || nameLower.includes("cash flow") || nameLower.includes("performance analysis");
           const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
-          return isStrategic || isPnL || !isFixed;
+          if (isReporting && isFixed) {
+            const book = settings.services.find(s2 => s2.name.toLowerCase().includes("bookkeeping"));
+            return !(book && selectedServices[book.id]);
+          }
+          return isStrategic || !isFixed;
         }
       );
       if (!needsStep2) {
@@ -682,10 +704,21 @@ const Calculator = ({ breadcrumb }) => {
                         // Strategic advice is now always treated as an hourly service in Step 2
                         if (nameLower.includes("strat") || nameLower.includes("advice") || String(s.id) === "8" || String(s.id) === "fp3") return true;
 
-                        // Allow PNL to show in Step 2 even if it's fixed price
-                        if (pnl && s.id === pnl.id) return true;
+                        // Check if this is a reporting-type fixed-price service
+                        const isReportingFixed = settings.fixedPriceServices.some(fps => {
+                          const n = fps.name.toLowerCase();
+                          return fps.id === s.id && (
+                            n.includes("profit and loss") || n.includes("p&l") ||
+                            n.includes("budgeting") || n.includes("cash flow") || n.includes("performance analysis")
+                          );
+                        });
 
-                        // Fixed price services don't go in Step 2 (except Strategic and now PNL)
+                        // Show reporting services in Step 2 only when Bookkeeping is NOT selected
+                        if (isReportingFixed) {
+                          return !(book && selectedServices[book.id]);
+                        }
+
+                        // Fixed price services don't go in Step 2 (except Strategic and reporting)
                         const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
                         if (isFixed) return false;
 
