@@ -42,9 +42,14 @@ const QuantityInput = ({
 
     // Transform specific words for better natural language questions
     if (cleanName === "bookkeeping") return "How many monthly transactions do you have?";
+    if (cleanName.includes("profit and loss") || cleanName.includes("p&l")) return "How many monthly transactions do you have?";
     if (cleanName === "invoicing") return "How many monthly invoices do you have?";
     if (cleanName === "billing") return "How many monthly bills do you have?";
+    if (cleanName === "receivable") return "How many monthly invoices do you have?";
+    if (cleanName === "payable") return "How many monthly bills do you have?";
     if (cleanName === "payroll") return "How many payroll you have?";
+    const lowerName = name.toLowerCase();
+    if (lowerName.includes("strat") || lowerName.includes("advice") || String(id) === "8" || String(id) === "fp3") return "How many monthly strategic advice hours do you want?";
 
     // Default pluralization for other items
     if (!cleanName.endsWith('s')) {

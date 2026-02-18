@@ -4,6 +4,15 @@ import { useSettings } from "@/context/SettingsContext";
 import { Button } from "@/components/ui/button";
 import { Link, useSearchParams } from "react-router-dom";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
   Calculator as CalcIcon,
   Settings,
   ChevronLeft,
@@ -41,6 +50,8 @@ const Calculator = ({ breadcrumb }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [serviceFrequencies, setServiceFrequencies] = useState<Record<string, string>>({});
+  const [accountingSoftware, setAccountingSoftware] = useState<string>("");
+  const [otherSoftware, setOtherSoftware] = useState<string>("");
 
   // Get initial step from URL or default to 1
   const initialStep = parseInt(searchParams.get("step") || "1");
@@ -62,42 +73,6 @@ const Calculator = ({ breadcrumb }) => {
     }
   }, [searchParams]);
 
-  // Initialize from localStorage
-  useEffect(() => {
-    const savedSelections = localStorage.getItem("calculatorSelections");
-    if (savedSelections) {
-      try {
-        const {
-          hourly,
-          quantities: savedQuantities,
-          userName: savedName,
-          email: savedEmail,
-          payrollFrequencies: savedFrequencies,
-        } = JSON.parse(savedSelections);
-        setSelectedServices(hourly || {});
-        setQuantities(savedQuantities || {});
-        if (savedName) setUserName(savedName);
-        if (savedEmail) setEmail(savedEmail);
-        if (savedFrequencies) setServiceFrequencies(savedFrequencies);
-      } catch (e) {
-        console.error("Error loading saved selections:", e);
-      }
-    }
-  }, []);
-
-  // Save to localStorage
-  useEffect(() => {
-    localStorage.setItem(
-      "calculatorSelections",
-      JSON.stringify({
-        hourly: selectedServices,
-        quantities,
-        userName,
-        email,
-        payrollFrequencies: serviceFrequencies,
-      }),
-    );
-  }, [selectedServices, quantities, userName, email, serviceFrequencies]);
 
   const calculations = useMemo(() => {
     let totalMinutes = 0;
@@ -107,21 +82,41 @@ const Calculator = ({ breadcrumb }) => {
       { minutes: number; cost: number; quantity: number }
     > = {};
 
-    settings.services.forEach((service) => {
-      if (selectedServices[service.id]) {
+    // Combine both service lists to find Strategic Advice and treat it correctly
+    const allServices = [...settings.services, ...settings.fixedPriceServices];
+
+    // First loop: Services that use quantity (hourly + Strategic)
+    allServices.forEach((service) => {
+      const nameLower = (service.name || "").toLowerCase();
+      const isStrategic = nameLower.includes("strat") || nameLower.includes("advice") || String(service.id) === "8" || String(service.id) === "fp3";
+      const isFixedCategory = settings.fixedPriceServices.some(fps => fps.id === service.id);
+
+      // If it's a regular hourly service OR it's Strategic advice (treated as hourly)
+
+
+      if (selectedServices[service.id] && (!isFixedCategory || isStrategic)) {
         const qty = parseFloat(quantities[service.id] || "0") || 0;
 
         // Frequency multiplier for payroll and contractor payments
         let frequencyMultiplier = 1;
-        const nameLower = service.name.toLowerCase();
         if (nameLower.includes("payroll") || nameLower.includes("contractor")) {
           const freq = serviceFrequencies[service.id] || "Monthly";
           if (freq === "Weekly") frequencyMultiplier = 4;
           else if (freq === "Bi-Monthly") frequencyMultiplier = 2;
         }
 
-        const serviceMinutes = qty * service.minutesPerJob * frequencyMultiplier;
-        const serviceCost = (serviceMinutes / 60) * settings.hourlyRate;
+        // Hardcode 60 mins for Strategic Advice as requested
+        const minutesPerJob = isStrategic ? 60 : ((service as any).minutesPerJob || 0);
+        const serviceMinutes = qty * minutesPerJob * frequencyMultiplier;
+
+        let serviceCost = (serviceMinutes / 60) * settings.hourlyRate;
+
+        // Priority check for strategic advice rate
+        if (isStrategic) {
+          const rate = Number(settings.strategicAdviceRate || 0);
+          serviceCost = (serviceMinutes / 60) * rate;
+        }
+
         totalMinutes += serviceMinutes;
         serviceCosts[service.id] = {
           minutes: serviceMinutes,
@@ -131,43 +126,104 @@ const Calculator = ({ breadcrumb }) => {
       }
     });
 
+    // Special logic for P&L Reporting based on Bookkeeping cost
+    const bookkeepingService = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
+    const bookkeepingCost = (bookkeepingService && selectedServices[bookkeepingService.id])
+      ? serviceCosts[bookkeepingService.id]?.cost || 0
+      : 0;
+
+    // Second loop: Fixed price services only (excluding Strategic)
     settings.fixedPriceServices.forEach((service) => {
-      if (selectedServices[service.id]) {
-        fixedCosts += service.price;
+      const nameLower = (service.name || "").toLowerCase();
+      const isStrategic = /strat/i.test(nameLower) || service.id === "8" || service.id === "fp3";
+
+      if (selectedServices[service.id] && !isStrategic) {
+        let price = service.price;
+        let mins = 0;
+        const isPnL = nameLower.includes("profit and loss") || nameLower.includes("p&l");
+
+        if (isPnL) {
+          const bookkeepingService = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
+          const isBookkeepingSelected = bookkeepingService && selectedServices[bookkeepingService.id];
+
+          if (!isBookkeepingSelected) {
+            // Standalone PNL: calculate based on transactions (using bookkeeping rates)
+            const qty = Number(quantities[service.id] || 0);
+            const bookMinutesPerJob = (bookkeepingService as any)?.minutesPerJob || 0;
+            mins = qty * bookMinutesPerJob;
+            price = (mins / 60) * settings.hourlyRate;
+          } else {
+            // PNL with Bookkeeping: use fixed price ($50)
+            price = service.price;
+          }
+        }
+
+        const qty = Number(quantities[service.id] || 0);
+        fixedCosts += price;
+        totalMinutes += mins;
         serviceCosts[service.id] = {
-          minutes: 0,
-          cost: service.price,
-          quantity: 1,
+          minutes: mins,
+          cost: price,
+          quantity: qty > 0 ? qty : 1,
         };
       }
     });
 
-    const activeServices = [
-      ...settings.services.filter(
-        (s) => selectedServices[s.id] && (parseFloat(quantities[s.id]) || 0) > 0,
-      ),
-      ...settings.fixedPriceServices.filter((s) => selectedServices[s.id]),
-    ];
+    const activeServices = allServices.filter((s) => {
+      if (!selectedServices[s.id]) return false;
+      const isStrategic = /(strat|advice)/i.test(s.name || "") || s.id === "8" || s.id === "fp3";
+      const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
+
+      if (isStrategic || !isFixed) {
+        return (parseFloat(quantities[s.id]) || 0) > 0;
+      }
+      return true;
+    });
 
     const totalHours = totalMinutes / 60;
-    const totalCost = totalHours * settings.hourlyRate + fixedCosts;
+    const sumCost = Object.values(serviceCosts).reduce((acc, curr) => acc + curr.cost, 0);
+    const totalCost = Math.max(100, sumCost);
 
-    return { totalMinutes, totalHours, totalCost, serviceCosts, activeServices };
+    return { totalMinutes, totalHours, totalCost, serviceCosts, activeServices, baseCalculatedCost: sumCost };
   }, [selectedServices, quantities, settings, serviceFrequencies]);
 
   const handleServiceToggle = (id: string, checked: boolean) => {
     setSelectedServices((p) => {
       const newState = { ...p, [id]: checked };
 
-      // If unselecting Monthly Bookkeeping, also unselect P&L services
-      const service = settings.services.find(s => s.id === id);
-      if (service?.name.toLowerCase().includes("bookkeeping") && !checked) {
-        settings.fixedPriceServices.forEach(s => {
-          if (s.name.toLowerCase().includes("profit and loss") || s.name.toLowerCase().includes("p&l")) {
-            newState[s.id] = false;
+      // Cross-sync quantities for linked services when toggling
+      const invoicingService = settings.services.find(s => s.name.toLowerCase().includes("invoic"));
+      const receivablesService = settings.services.find(s => s.name.toLowerCase().includes("receivable"));
+      const billingService = settings.services.find(s => s.name.toLowerCase().includes("bill"));
+      const payablesService = settings.services.find(s => s.name.toLowerCase().includes("payable"));
+      const bookkeepingService = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
+      const pnlService = settings.fixedPriceServices.find(s => s.name.toLowerCase().includes("profit and loss") || s.name.toLowerCase().includes("p&l"));
+
+      if (checked) {
+        setQuantities(prev => {
+          const next = { ...prev };
+          if (invoicingService && id === invoicingService.id && receivablesService && prev[receivablesService.id]) {
+            next[id] = prev[receivablesService.id];
           }
+          if (receivablesService && id === receivablesService.id && invoicingService && prev[invoicingService.id]) {
+            next[id] = prev[invoicingService.id];
+          }
+          if (billingService && id === billingService.id && payablesService && prev[payablesService.id]) {
+            next[id] = prev[payablesService.id];
+          }
+          if (payablesService && id === payablesService.id && billingService && prev[billingService.id]) {
+            next[id] = prev[billingService.id];
+          }
+          if (bookkeepingService && id === bookkeepingService.id && pnlService && prev[pnlService.id]) {
+            next[id] = prev[pnlService.id];
+          }
+          if (pnlService && id === pnlService.id && bookkeepingService && prev[bookkeepingService.id]) {
+            next[id] = prev[bookkeepingService.id];
+          }
+          return next;
         });
       }
+
       return newState;
     });
 
@@ -189,6 +245,8 @@ const Calculator = ({ breadcrumb }) => {
         const receivablesService = settings.services.find(s => s.name.toLowerCase().includes("receivable"));
         const billingService = settings.services.find(s => s.name.toLowerCase().includes("bill"));
         const payablesService = settings.services.find(s => s.name.toLowerCase().includes("payable"));
+        const bookkeepingService = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
+        const pnlService = settings.fixedPriceServices.find(s => s.name.toLowerCase().includes("profit and loss") || s.name.toLowerCase().includes("p&l"));
 
         // Sync Receivables if Invoicing is changed
         if (invoicingService && id === invoicingService.id && receivablesService && selectedServices[receivablesService.id]) {
@@ -206,6 +264,15 @@ const Calculator = ({ breadcrumb }) => {
         // Sync Billing if Payables is changed (if visible)
         if (payablesService && id === payablesService.id && billingService && selectedServices[billingService.id]) {
           newQuantities[billingService.id] = val;
+        }
+
+        // Sync PNL if Bookkeeping is changed
+        if (bookkeepingService && id === bookkeepingService.id && pnlService && selectedServices[pnlService.id]) {
+          newQuantities[pnlService.id] = val;
+        }
+        // Sync Bookkeeping if PNL is changed
+        if (pnlService && id === pnlService.id && bookkeepingService && selectedServices[bookkeepingService.id]) {
+          newQuantities[bookkeepingService.id] = val;
         }
 
         return newQuantities;
@@ -255,10 +322,18 @@ const Calculator = ({ breadcrumb }) => {
           return next;
         });
 
-        const hasHourlyServices = settings.services.some(
-          (s) => selectedServices[s.id],
+        const needsStep2 = [...settings.services, ...settings.fixedPriceServices].some(
+          (s) => {
+            if (!selectedServices[s.id]) return false;
+            const nameLower = (s.name || "").toLowerCase();
+            const isStrategic = nameLower.includes("strat") || nameLower.includes("advice") || String(s.id) === "8" || String(s.id) === "fp3";
+            const isPnL = nameLower.includes("profit and loss") || nameLower.includes("p&l");
+            const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
+            return isStrategic || isPnL || !isFixed;
+          }
         );
-        if (hasHourlyServices) {
+
+        if (needsStep2) {
           setStep(2);
         } else {
           setStep(3);
@@ -267,9 +342,16 @@ const Calculator = ({ breadcrumb }) => {
         setErrors({ services: "Please select at least one service to continue." });
       }
     } else if (step === 2) {
-      settings.services.forEach((s) => {
-        if (selectedServices[s.id] && (parseFloat(quantities[s.id]) || 0) <= 0) {
-          newErrors[s.id] = ` required`;
+      const allServices = [...settings.services, ...settings.fixedPriceServices];
+      allServices.forEach((s) => {
+        const nameLower = (s.name || "").toLowerCase();
+        const isStrategic = nameLower.includes("strat") || nameLower.includes("advice") || String(s.id) === "8" || String(s.id) === "fp3";
+        const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
+
+        if (selectedServices[s.id] && (isStrategic || !isFixed)) {
+          if ((parseFloat(quantities[s.id]) || 0) <= 0) {
+            newErrors[s.id] = ` required`;
+          }
         }
       });
 
@@ -298,6 +380,7 @@ const Calculator = ({ breadcrumb }) => {
         const payload = {
           userName,
           email,
+          accountingSoftware: accountingSoftware === "Others" ? otherSoftware : accountingSoftware,
           services: calculations.activeServices.map(s => ({
             id: s.id,
             name: s.name,
@@ -343,10 +426,17 @@ const Calculator = ({ breadcrumb }) => {
 
   const handleBack = () => {
     if (step === 3) {
-      const hasHourlyServices = settings.services.some(
-        (s) => selectedServices[s.id],
+      const needsStep2 = [...settings.services, ...settings.fixedPriceServices].some(
+        (s) => {
+          if (!selectedServices[s.id]) return false;
+          const nameLower = (s.name || "").toLowerCase();
+          const isStrategic = nameLower.includes("strat") || nameLower.includes("advice") || String(s.id) === "8" || String(s.id) === "fp3";
+          const isPnL = nameLower.includes("profit and loss") || nameLower.includes("p&l");
+          const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
+          return isStrategic || isPnL || !isFixed;
+        }
       );
-      if (!hasHourlyServices) {
+      if (!needsStep2) {
         setStep(1, { replace: true });
         return;
       }
@@ -360,6 +450,8 @@ const Calculator = ({ breadcrumb }) => {
     setQuantities({});
     setUserName("");
     setEmail("");
+    setAccountingSoftware("");
+    setOtherSoftware("");
   };
 
   return (
@@ -399,55 +491,100 @@ const Calculator = ({ breadcrumb }) => {
                 exit={{ opacity: 0, x: -50 }}
                 className="space-y-6"
               >
-                <div className="text-center mb-8">
-                  <h2 className="font-display text-2xl sm:text-3xl font-bold mb-2">
+                <div className="text-center mb-10">
+                  <h2 className="font-display text-3xl font-bold mb-2">
                     Choose Your Services
                   </h2>
                   <p className="text-muted-foreground">
-                    Select the services you need for your project
+                    Select the specialized services tailored to your business needs
                   </p>
+
                   {errors.services && (
                     <motion.p
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-destructive font-medium mt-2"
+                      className="text-destructive font-bold text-sm uppercase tracking-widest mt-4"
                     >
                       {errors.services}
                     </motion.p>
                   )}
                 </div>
-                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${errors.services ? 'p-2 rounded-2xl border-2 border-destructive/20 bg-destructive/5' : ''}`}>
-                  {settings.services.map((service, idx) => (
-                    <ServiceCard
-                      key={service.id}
-                      id={service.id}
-                      name={service.name}
-                      minutesPerJob={service.minutesPerJob}
-                      isSelected={selectedServices[service.id] || false}
-                      onToggle={handleServiceToggle}
-                      index={idx}
-                    />
-                  ))}
-                  {settings.fixedPriceServices
-                    .filter(service => {
-                      const isPnL = service.name.toLowerCase().includes("profit and loss") || service.name.toLowerCase().includes("p&l");
-                      if (isPnL) {
-                        const bookkeeping = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
-                        return bookkeeping && selectedServices[bookkeeping.id];
-                      }
-                      return true;
-                    })
-                    .map((service, idx) => (
-                      <ServiceCard
-                        key={service.id}
-                        id={service.id}
-                        name={service.name}
-                        minutesPerJob={0}
-                        isSelected={selectedServices[service.id] || false}
-                        onToggle={handleServiceToggle}
-                        index={settings.services.length + idx}
-                      />
-                    ))}
+
+                <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 ${errors.services ? 'p-4 rounded-3xl border-2 border-destructive/20 bg-destructive/5' : ''}`}>
+                  {/* Category 1: Finance Operations */}
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="h-1 w-6 bg-gold rounded-full" />
+                      <h3 className="text-sm font-bold uppercase tracking-widest text-primary">Finance Operations</h3>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      {[1, 2, 3, 4, 5, 6, 7].map(id => {
+                        const s = [...settings.services, ...settings.fixedPriceServices].find(item => String(item.id) === String(id));
+                        if (!s) return null;
+                        return (
+                          <ServiceCard
+                            key={s.id}
+                            id={s.id}
+                            name={s.name}
+                            minutesPerJob={(s as any).minutesPerJob || 0}
+                            isSelected={selectedServices[s.id] || false}
+                            onToggle={handleServiceToggle}
+                            index={Number(id)}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Category 2: Reporting & Forecasting */}
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="h-1 w-6 bg-gold rounded-full" />
+                      <h3 className="text-sm font-bold uppercase tracking-widest text-primary">Reporting & Forecasting</h3>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      {["fp7", "fp6", "fp5", "fp4"].map((id, idx) => {
+                        const s = [...settings.services, ...settings.fixedPriceServices].find(item => item.id === id);
+                        if (!s) return null;
+                        return (
+                          <ServiceCard
+                            key={s.id}
+                            id={s.id}
+                            name={s.name}
+                            minutesPerJob={(s as any).minutesPerJob || 0}
+                            isSelected={selectedServices[s.id] || false}
+                            onToggle={handleServiceToggle}
+                            index={idx + 10}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Category 3: Compliance & Strategic Advisory */}
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="h-1 w-6 bg-gold rounded-full" />
+                      <h3 className="text-sm font-bold uppercase tracking-widest text-primary">Compliance & Strategic</h3>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      {["fp8", "fp2", "8", "fp1"].map((id, idx) => {
+                        const s = [...settings.services, ...settings.fixedPriceServices].find(item => item.id === id);
+                        if (!s) return null;
+                        return (
+                          <ServiceCard
+                            key={s.id}
+                            id={s.id}
+                            name={s.name}
+                            minutesPerJob={(s as any).minutesPerJob || 0}
+                            isSelected={selectedServices[s.id] || false}
+                            onToggle={handleServiceToggle}
+                            index={idx + 20}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -470,6 +607,50 @@ const Calculator = ({ breadcrumb }) => {
                   </p>
                 </div>
 
+                <div className="w-full mb-10 p-6 bg-card rounded-3xl border border-border/50 shadow-sm">
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="software" className="text-base font-semibold">
+                        Which accounting software are you currently using?
+                      </Label>
+                      <Select
+                        value={accountingSoftware}
+                        onValueChange={setAccountingSoftware}
+                      >
+                        <SelectTrigger id="software" className="w-full h-12 bg-background">
+                          <SelectValue placeholder="Select software" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="QuickBooks">QuickBooks</SelectItem>
+                          <SelectItem value="Xero">Xero</SelectItem>
+                          <SelectItem value="FreshBooks">FreshBooks</SelectItem>
+                          <SelectItem value="Wave">Wave</SelectItem>
+                          <SelectItem value="Sage">Sage</SelectItem>
+                          <SelectItem value="Zoho Books">Zoho Books</SelectItem>
+                          <SelectItem value="Others">Others</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {accountingSoftware === "Others" && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        className="space-y-2"
+                      >
+                        <Label htmlFor="otherSoftware">Please specify</Label>
+                        <Input
+                          id="otherSoftware"
+                          placeholder="Enter software name"
+                          value={otherSoftware}
+                          onChange={(e) => setOtherSoftware(e.target.value)}
+                          className="h-12 bg-background"
+                        />
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+
                 {totalSelectedServices === 0 ? (
                   <div className="text-center py-16 bg-card rounded-3xl border border-dashed border-border">
                     <p className="text-muted-foreground mb-4">
@@ -481,18 +662,32 @@ const Calculator = ({ breadcrumb }) => {
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    {settings.services
+                    {[...settings.services, ...settings.fixedPriceServices]
                       .filter((s) => {
                         if (!selectedServices[s.id]) return false;
 
+                        const nameLower = (s.name || "").toLowerCase();
                         const inv = settings.services.find(s => s.name.toLowerCase().includes("invoic"));
                         const rec = settings.services.find(s => s.name.toLowerCase().includes("receivable"));
                         const bill = settings.services.find(s => s.name.toLowerCase().includes("bill"));
                         const pay = settings.services.find(s => s.name.toLowerCase().includes("payable"));
+                        const pnl = settings.fixedPriceServices.find(s => s.name.toLowerCase().includes("profit and loss") || s.name.toLowerCase().includes("p&l"));
+                        const book = settings.services.find(s => s.name.toLowerCase().includes("bookkeeping"));
 
                         // Hide if synced with a primary service that is also selected
                         if (rec && s.id === rec.id && inv && selectedServices[inv.id]) return false;
                         if (pay && s.id === pay.id && bill && selectedServices[bill.id]) return false;
+                        if (pnl && s.id === pnl.id && book && selectedServices[book.id]) return false;
+
+                        // Strategic advice is now always treated as an hourly service in Step 2
+                        if (nameLower.includes("strat") || nameLower.includes("advice") || String(s.id) === "8" || String(s.id) === "fp3") return true;
+
+                        // Allow PNL to show in Step 2 even if it's fixed price
+                        if (pnl && s.id === pnl.id) return true;
+
+                        // Fixed price services don't go in Step 2 (except Strategic and now PNL)
+                        const isFixed = settings.fixedPriceServices.some(fps => fps.id === s.id);
+                        if (isFixed) return false;
 
                         return true;
                       })
@@ -543,6 +738,8 @@ const Calculator = ({ breadcrumb }) => {
                 onReset={handleReset}
                 onBack={handleBack}
                 email={email}
+                accountingSoftware={accountingSoftware === "Others" ? otherSoftware : accountingSoftware}
+                baseCalculatedCost={calculations.baseCalculatedCost}
               />
             )}
           </AnimatePresence>

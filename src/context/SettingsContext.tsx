@@ -19,6 +19,7 @@ interface Settings {
   currency: string;
   companyName: string;
   defaultQuantities: Record<string, number>;
+  strategicAdviceRate: number;
 }
 
 interface SettingsContextType {
@@ -41,12 +42,12 @@ const defaultServices: Service[] = [
   { id: "5", name: "Monthly Billing", minutesPerJob: 10 },
   { id: "6", name: "Monthly Accounts Payable Management", minutesPerJob: 15 },
   { id: "7", name: "Monthly Receivable Management", minutesPerJob: 15 },
+  { id: "8", name: "Strategic Financial Advice", minutesPerJob: 60 },
 ];
 
 const defaultFixedPriceServices: FixedPriceService[] = [
   { id: "fp1", name: "Chart of Accounts Setup (For New Books)", price: 300 },
   { id: "fp2", name: "HMRC and Companies House Joint Filing (for UK)", price: 300 },
-  { id: "fp3", name: "Strategic Financial Advice", price: 50 },
   { id: "fp4", name: "Monthly Financial Performance Analysis", price: 50 },
   { id: "fp5", name: "Monthly Cash Flow Forecasting", price: 50 },
   { id: "fp6", name: "Monthly Budgeting", price: 50 },
@@ -61,6 +62,7 @@ const defaultSettings: Settings = {
   currency: '$',
   companyName: 'Your Company',
   defaultQuantities: {},
+  strategicAdviceRate: 100,
 };
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
@@ -69,32 +71,47 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [settings, setSettings] = useState<Settings>(defaultSettings);
   const [isSyncing, setIsSyncing] = useState(false);
 
-  // Load from localStorage initially for fast start
+  // Load from localStorage initially for fast start, but always fetch fresh
   React.useEffect(() => {
     const saved = localStorage.getItem('serviceCalculatorSettings');
     if (saved) {
       try {
-        setSettings(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        setSettings(parsed);
+        console.log("[SETTINGS] Loaded from cache, rate:", parsed.strategicAdviceRate);
       } catch (e) {
         console.error("Error loading local settings", e);
       }
     }
+    // Always fetch fresh from server
     fetchSettings();
   }, []);
 
   const fetchSettings = async () => {
     try {
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/';
-      const response = await fetch(`${baseUrl.replace(/\/$/, '')}/api/settings`);
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/';
+      // Use a timestamp to force a fresh request every time
+      const url = `${baseUrl.replace(/\/$/, '')}/api/settings?t=${Date.now()}`;
+      console.log(`[SETTINGS] Fetching fresh data from: ${url}`);
+
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
+        }
+      });
       if (response.ok) {
         const data = await response.json();
-        if (data.success && data.settings) {
-          setSettings(data.settings);
-          localStorage.setItem('serviceCalculatorSettings', JSON.stringify(data.settings));
+        if (data.success && data.data?.settings) {
+          const s = data.data.settings;
+          console.log(`[SETTINGS] Fresh data received. Strategic Rate: ${s.strategicAdviceRate}`);
+          setSettings(s);
+          localStorage.setItem('serviceCalculatorSettings', JSON.stringify(s));
         }
       }
     } catch (error) {
-      console.error("Failed to fetch settings from server", error);
+      console.error("[SETTINGS] Error fetching settings:", error);
     }
   };
 

@@ -25,6 +25,8 @@ interface EstimateSummaryProps {
   onReset: () => void;
   onBack: () => void;
   email: string;
+  accountingSoftware?: string;
+  baseCalculatedCost?: number;
 }
 
 const EstimateSummary = ({
@@ -36,6 +38,8 @@ const EstimateSummary = ({
   onReset,
   onBack,
   email,
+  accountingSoftware,
+  baseCalculatedCost = 0
 }: EstimateSummaryProps) => {
   return (
     <motion.div
@@ -81,9 +85,74 @@ const EstimateSummary = ({
               day: "numeric",
             })}
           </p>
+          {accountingSoftware && (
+            <div className="mt-2 inline-block px-3 py-1 bg-primary-foreground/10 rounded-full text-xs text-primary-foreground/90 font-medium">
+              Software: {accountingSoftware}
+            </div>
+          )}
         </div>
 
-        {/* Services List Removed as per request */}
+        {/* Services List Breakup */}
+        <div className="p-6 max-h-[300px] overflow-y-auto custom-scrollbar">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="h-1 w-6 bg-gold rounded-full" />
+            <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+              Investment Breakup
+            </h4>
+          </div>
+          <div className="space-y-4">
+            {activeServices.map((service) => {
+              const cost = serviceCosts[service.id];
+              if (!cost) return null;
+
+              return (
+                <div key={service.id} className="flex justify-between items-start group">
+                  <div className="flex flex-col pr-4">
+                    <span className="text-sm font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {service.name}
+                    </span>
+                    {cost.quantity > 0 && (
+                      <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tighter">
+                        {(() => {
+                          const name = service.name.toLowerCase();
+                          if (name.includes("strategic")) return `${cost.quantity} hours`;
+                          if (name.includes("bookkeeping") || name.includes("profit and loss") || name.includes("p&l")) return `${cost.quantity} transactions`;
+                          if (name.includes("invoic") || name.includes("receivable")) return `${cost.quantity} invoices`;
+                          if (name.includes("bill") || name.includes("payable")) return `${cost.quantity} bills`;
+                          return cost.minutes > 0 ? `${cost.quantity} units` : "Fixed Service";
+                        })()}
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm font-bold font-mono text-primary">
+                      {currency}{cost.cost.toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Minimum Price Adjustment */}
+            {baseCalculatedCost > 0 && baseCalculatedCost < 100 && (
+              <div className="flex justify-between items-start pt-4 border-t border-border/50 group">
+                <div className="flex flex-col pr-4">
+                  <span className="text-sm font-display font-semibold text-muted-foreground italic">
+                    Minimum Fee Adjustment
+                  </span>
+                  <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tighter">
+                    Applied to reach monthly minimum
+                  </span>
+                </div>
+                <div className="text-right">
+                  <span className="text-sm font-bold font-mono text-muted-foreground italic">
+                    {currency}{(100 - baseCalculatedCost).toFixed(2)}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
         <div className="bg-muted/30 p-8">
           <div className="flex items-center justify-between">
             <span className="font-display text-xl font-bold">
@@ -143,7 +212,6 @@ const EstimateSummary = ({
           </Button>
         </div>
       </motion.div>
-
     </motion.div>
   );
 };
