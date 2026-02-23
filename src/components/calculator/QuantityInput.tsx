@@ -13,6 +13,7 @@ interface QuantityInputProps {
   onFrequencyChange?: (id: string, freq: string) => void;
   index: number;
   error?: string;
+  frequencyError?: string;
   autoFocus?: boolean;
   disabled?: boolean;
   placeholder?: string;
@@ -23,10 +24,11 @@ const QuantityInput = ({
   name,
   quantity,
   onQuantityChange,
-  frequency = "Monthly",
+  frequency = "",
   onFrequencyChange,
   index,
   error,
+  frequencyError,
   autoFocus,
   disabled,
   placeholder,
@@ -94,7 +96,11 @@ const QuantityInput = ({
   const question = getQuestion(name);
   const nameLower = name.toLowerCase();
   const isFrequencyService = nameLower.includes("payroll") || nameLower.includes("contractor");
+  const hasQuantity = (parseFloat(quantity) || 0) > 0;
   const freqTitle = nameLower.includes("payroll") ? "Payroll Frequency" : "Payment Frequency";
+
+  // Only show frequency section if it's a frequency service AND has quantity AND no frequency error
+  const showFrequencySection = isFrequencyService && hasQuantity;
 
   return (
     <motion.div
@@ -107,7 +113,7 @@ const QuantityInput = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <label
             htmlFor={id}
-            className={`font-display font-medium text-lg transition-colors max-w-md leading-snug ${error ? 'text-destructive' : 'text-foreground/80 group-hover:text-foreground'} ${disabled ? 'text-muted-foreground' : ''}`}
+            className={`font-display font-medium text-base transition-colors max-w-md leading-snug ${error ? 'text-destructive' : 'text-foreground/80 group-hover:text-foreground'} ${disabled ? 'text-muted-foreground' : ''}`}
           >
             {question}
             {disabled && <span className="block text-xs font-bold text-gold uppercase mt-1 tracking-wider">Synced with {placeholder}</span>}
@@ -127,30 +133,40 @@ const QuantityInput = ({
                 onQuantityChange(id, val);
               }}
               onKeyDown={handleKeyDown}
-              className={`w-full h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-xl px-4 rounded-xl transition-all border-2 ${disabled ? 'bg-muted/60 text-muted-foreground border-transparent cursor-not-allowed' : error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
+              className={`w-full h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-lg px-4 rounded-xl transition-all border-2 ${disabled ? 'bg-muted/60 text-muted-foreground border-transparent cursor-not-allowed' : error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
               placeholder={disabled ? quantity : "-"}
             />
           </div>
         </div>
 
-        {isFrequencyService && onFrequencyChange && (
-          <div className="flex flex-col gap-3 pt-2">
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{freqTitle}</p>
-            <div className="flex flex-wrap gap-2">
+        {showFrequencySection && onFrequencyChange && (
+          <div className={`flex flex-col gap-3 pt-2 ${frequencyError ? 'border-2 border-destructive/50 rounded-lg p-3 bg-destructive/5' : ''}`}>
+            <p className={`text-xs font-medium uppercase tracking-wider ${frequencyError ? 'text-destructive' : 'text-muted-foreground'}`}>{freqTitle}</p>
+            <div className="flex flex-wrap gap-2" id={`${id}_frequency`}>
               {["Weekly", "Bi-Monthly", "Monthly"].map((freq) => (
                 <button
                   key={freq}
                   type="button"
+                  id={`${id}_frequency_${freq.toLowerCase()}`}
                   onClick={() => onFrequencyChange(id, freq)}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 border-2 ${frequency === freq
+                  className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 border-2 ${frequency === freq
                     ? "bg-gold border-gold text-primary-foreground shadow-sm"
                     : "bg-muted/40 border-transparent text-muted-foreground hover:bg-muted/60"
-                    }`}
+                    } ${frequencyError ? "border-destructive/50" : ""}`}
                 >
                   {freq}
                 </button>
               ))}
             </div>
+            {frequencyError && (
+              <motion.p
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                className="text-destructive text-xs font-bold uppercase tracking-wide bg-destructive/10 px-2 py-1 rounded"
+              >
+                ⚠️ {frequencyError}
+              </motion.p>
+            )}
           </div>
         )}
 

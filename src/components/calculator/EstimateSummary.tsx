@@ -41,6 +41,24 @@ const EstimateSummary = ({
   accountingSoftware,
   baseCalculatedCost = 0
 }: EstimateSummaryProps) => {
+  // Calculate adjusted total cost: subtract 0.01 and round to nearest 50
+  const calculateAdjustedTotal = (cost: number) => {
+    // Subtract 0.01 first
+    let adjustedCost = cost - 0.01;
+    
+    // Round to nearest 50
+    const remainder = adjustedCost % 50;
+    if (remainder < 25) {
+      adjustedCost = adjustedCost - remainder;
+    } else {
+      adjustedCost = adjustedCost + (50 - remainder);
+    }
+    
+    // Subtract 0.01 again after rounding
+    return adjustedCost - 0.01;
+  };
+
+  const adjustedTotalCost = calculateAdjustedTotal(totalCost);
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -115,12 +133,19 @@ const EstimateSummary = ({
                       <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tighter">
                         {(() => {
                           const name = service.name.toLowerCase();
-                          if (name.includes("strategic")) return `${cost.quantity} hours`;
-                          if (name.includes("bookkeeping") || name.includes("profit and loss") || name.includes("p&l") ||
-                            name.includes("budgeting") || name.includes("cash flow") || name.includes("performance analysis")) return `${cost.quantity} transactions`;
-                          if (name.includes("invoic") || name.includes("receivable")) return `${cost.quantity} invoices`;
-                          if (name.includes("bill") || name.includes("payable")) return `${cost.quantity} bills`;
-                          return cost.minutes > 0 ? `${cost.quantity} units` : "Fixed Service";
+
+                          // HMRC and Chart of Accounts Setup - show as "1 off"
+                          if (name.includes("hmrc") || name.includes("chart of accounts") || name.includes("new books")) {
+                            return "1 off";
+                          }
+
+                          // VAT - show as "monthly"
+                          if (name.includes("vat")) {
+                            return "monthly";
+                          }
+
+                          // All other services - show as "monthly"
+                          return "monthly";
                         })()}
                       </span>
                     )}
@@ -161,7 +186,7 @@ const EstimateSummary = ({
             </span>
             <span className="font-display text-3xl font-bold text-primary">
               {currency}
-              {totalCost.toFixed(2)}
+              {adjustedTotalCost.toFixed(2)}
             </span>
           </div>
         </div>
@@ -169,8 +194,7 @@ const EstimateSummary = ({
         {/* Disclaimer */}
         <div className="px-6 py-4 bg-muted/20 text-center">
           <p className="text-xs text-muted-foreground">
-            This is an estimate. Final costs may vary based on actual work
-            duration.
+            This is an estimate. Final costs may vary based on actual Business activity.
           </p>
         </div>
       </motion.div>

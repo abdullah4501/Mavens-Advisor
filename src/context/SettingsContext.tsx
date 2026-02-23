@@ -47,7 +47,7 @@ const defaultServices: Service[] = [
 
 const defaultFixedPriceServices: FixedPriceService[] = [
   { id: "fp1", name: "Chart of Accounts Setup (For New Books)", price: 300 },
-  { id: "fp2", name: "HMRC and Companies House Joint Filing (for UK)", price: 300 },
+  { id: "fp2", name: "HMRC and Companies House Joint Filing", price: 300 },
   { id: "fp4", name: "Monthly Financial Performance Analysis", price: 50 },
   { id: "fp5", name: "Monthly Cash Flow Forecasting", price: 50 },
   { id: "fp6", name: "Monthly Budgeting", price: 50 },
