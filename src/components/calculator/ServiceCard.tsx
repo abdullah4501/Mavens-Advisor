@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, Clock } from "lucide-react";
+import { Check } from "lucide-react";
 
 interface ServiceCardProps {
   id: string;

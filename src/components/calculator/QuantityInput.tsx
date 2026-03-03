@@ -9,9 +9,14 @@ interface QuantityInputProps {
   name: string;
   quantity: string;
   onQuantityChange: (id: string, value: string) => void;
+  frequency?: string;
+  onFrequencyChange?: (id: string, freq: string) => void;
   index: number;
   error?: string;
+  frequencyError?: string;
   autoFocus?: boolean;
+  disabled?: boolean;
+  placeholder?: string;
 }
 
 const QuantityInput = ({
@@ -19,9 +24,14 @@ const QuantityInput = ({
   name,
   quantity,
   onQuantityChange,
+  frequency = "",
+  onFrequencyChange,
   index,
   error,
+  frequencyError,
   autoFocus,
+  disabled,
+  placeholder,
 }: QuantityInputProps) => {
   // Convert service name to a more natural question format
   const getQuestion = (name: string) => {
@@ -33,11 +43,18 @@ const QuantityInput = ({
     cleanName = cleanName.replace(/\s+management$/i, '');
 
     // Transform specific words for better natural language questions
-    // Customize questions for advisory services
-    if (cleanName.includes("investor")) return "How many potential investors do you need to target?";
-    if (cleanName.includes("pitch")) return "How many slides do you need in your pitch deck?";
-    if (cleanName.includes("valuation")) return "How many business units need valuation?";
-    if (cleanName.includes("market")) return "How many regional markets are you targeting?";
+    if (cleanName === "bookkeeping") return "How many monthly transactions do you have?";
+    if (cleanName.includes("profit and loss") || cleanName.includes("p&l")) return "How many monthly transactions do you have?";
+    if (cleanName.includes("budgeting")) return "How many monthly transactions do you have?";
+    if (cleanName.includes("cash flow")) return "How many monthly transactions do you have?";
+    if (cleanName.includes("performance analysis")) return "How many monthly transactions do you have?";
+    if (cleanName.includes("invoicing")) return "How many monthly invoices do you have?";
+    if (cleanName.includes("billing")) return "How many monthly bills do you have?";
+    if (cleanName.includes("receivable")) return "How many monthly invoices do you have?";
+    if (cleanName.includes("payable")) return "How many monthly bills do you have?";
+    if (cleanName.includes("payroll")) return "How many payroll runs do you have?";
+    const lowerName = name.toLowerCase();
+    if (lowerName.includes("strat") || lowerName.includes("advice") || String(id) === "8" || String(id) === "fp3") return "How many monthly strategic advice hours do you want?";
 
     return `What is the scale of your ${cleanName} requirements?`;
   };
@@ -51,7 +68,7 @@ const QuantityInput = ({
       const container = e.currentTarget.closest('[data-quantity-form]') || form || document;
 
       // Get all quantity inputs in the container
-      const inputs = Array.from(container.querySelectorAll('input[inputmode="numeric"]')) as HTMLInputElement[];
+      const inputs = Array.from(container.querySelectorAll('input[inputmode="numeric"]:not(:disabled)')) as HTMLInputElement[];
       const currentIndex = inputs.indexOf(e.currentTarget);
 
       if (currentIndex < inputs.length - 1) {
@@ -72,6 +89,13 @@ const QuantityInput = ({
   };
 
   const question = getQuestion(name);
+  const nameLower = name.toLowerCase();
+  const isFrequencyService = nameLower.includes("payroll") || nameLower.includes("contractor");
+  const hasQuantity = (parseFloat(quantity) || 0) > 0;
+  const freqTitle = nameLower.includes("payroll") ? "Payroll Frequency" : "Payment Frequency";
+
+  // Only show frequency section if it's a frequency service AND has quantity AND no frequency error
+  const showFrequencySection = isFrequencyService && hasQuantity;
 
   return (
     <motion.div
@@ -80,13 +104,14 @@ const QuantityInput = ({
       transition={{ delay: index * 0.05, duration: 0.3 }}
       className="group"
     >
-      <div className={`flex flex-col gap-2 p-6 bg-card rounded-2xl border transition-all duration-300 ${error ? 'border-destructive shadow-[0_0_15px_-5px_hsl(var(--destructive))]' : 'border-border/60 hover:border-gold/40 hover:shadow-md'}`}>
+      <div className={`flex flex-col gap-4 p-6 bg-card rounded-2xl border transition-all duration-300 ${disabled ? 'opacity-80 bg-muted/20' : ''} ${error ? 'border-destructive shadow-[0_0_15px_-5px_hsl(var(--destructive))]' : 'border-border/60 hover:border-gold/40 hover:shadow-md'}`}>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <label
             htmlFor={id}
-            className={`font-display font-medium text-lg transition-colors max-w-md leading-snug ${error ? 'text-destructive' : 'text-foreground/80 group-hover:text-foreground'}`}
+            className={`font-display font-medium text-base transition-colors max-w-md leading-snug ${error ? 'text-destructive' : 'text-foreground/80 group-hover:text-foreground'} ${disabled ? 'text-muted-foreground' : ''}`}
           >
             {question}
+            {disabled && <span className="block text-xs font-bold text-gold uppercase mt-1 tracking-wider">Synced with {placeholder}</span>}
           </label>
 
           <div className="relative w-full md:w-[20%]">
@@ -97,16 +122,48 @@ const QuantityInput = ({
               inputMode="numeric"
               pattern="[0-9]*"
               value={quantity}
+              disabled={disabled}
               onChange={(e) => {
                 const val = e.target.value.replace(/[^0-9]/g, '');
                 onQuantityChange(id, val);
               }}
               onKeyDown={handleKeyDown}
-              className={`w-full h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-xl px-4 rounded-xl transition-all border-2 ${error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
-              placeholder="-"
+              className={`w-full h-12 text-center sm:text-right bg-muted/40 font-display font-bold text-lg px-4 rounded-xl transition-all border-2 ${disabled ? 'bg-muted/60 text-muted-foreground border-transparent cursor-not-allowed' : error ? 'border-destructive focus-visible:ring-destructive/20' : 'border-transparent focus-visible:ring-gold/20'}`}
+              placeholder={disabled ? quantity : "-"}
             />
           </div>
         </div>
+
+        {showFrequencySection && onFrequencyChange && (
+          <div className={`flex flex-col gap-3 pt-2 ${frequencyError ? 'border-2 border-destructive/50 rounded-lg p-3 bg-destructive/5' : ''}`}>
+            <p className={`text-xs font-medium uppercase tracking-wider ${frequencyError ? 'text-destructive' : 'text-muted-foreground'}`}>{freqTitle}</p>
+            <div className="flex flex-wrap gap-2" id={`${id}_frequency`}>
+              {["Weekly", "Bi-Monthly", "Monthly"].map((freq) => (
+                <button
+                  key={freq}
+                  type="button"
+                  id={`${id}_frequency_${freq.toLowerCase()}`}
+                  onClick={() => onFrequencyChange(id, freq)}
+                  className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 border-2 ${frequency === freq
+                    ? "bg-gold border-gold text-primary-foreground shadow-sm"
+                    : "bg-muted/40 border-transparent text-muted-foreground hover:bg-muted/60"
+                    } ${frequencyError ? "border-destructive/50" : ""}`}
+                >
+                  {freq}
+                </button>
+              ))}
+            </div>
+            {frequencyError && (
+              <motion.p
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                className="text-destructive text-xs font-bold uppercase tracking-wide bg-destructive/10 px-2 py-1 rounded"
+              >
+                ⚠️ {frequencyError}
+              </motion.p>
+            )}
+          </div>
+        )}
 
         {error && (
           <motion.p

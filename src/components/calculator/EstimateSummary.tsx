@@ -25,6 +25,8 @@ interface EstimateSummaryProps {
   onReset: () => void;
   onBack: () => void;
   email: string;
+  accountingSoftware?: string;
+  baseCalculatedCost?: number;
 }
 
 const EstimateSummary = ({
@@ -36,7 +38,27 @@ const EstimateSummary = ({
   onReset,
   onBack,
   email,
+  accountingSoftware,
+  baseCalculatedCost = 0
 }: EstimateSummaryProps) => {
+  // Calculate adjusted total cost: subtract 0.01 and round to nearest 50
+  const calculateAdjustedTotal = (cost: number) => {
+    // Subtract 0.01 first
+    let adjustedCost = cost - 0.01;
+    
+    // Round to nearest 50
+    const remainder = adjustedCost % 50;
+    if (remainder < 25) {
+      adjustedCost = adjustedCost - remainder;
+    } else {
+      adjustedCost = adjustedCost + (50 - remainder);
+    }
+    
+    // Subtract 0.01 again after rounding
+    return adjustedCost - 0.01;
+  };
+
+  const adjustedTotalCost = calculateAdjustedTotal(totalCost);
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -81,56 +103,90 @@ const EstimateSummary = ({
               day: "numeric",
             })}
           </p>
-        </div>
-
-        {/* Services List */}
-        <div className="p-6 space-y-4">
-          {activeServices.length > 0 ? (
-            <div className="space-y-3">
-              <p className="text-xs uppercase font-bold text-muted-foreground tracking-wider">
-                Selected Services
-              </p>
-              {activeServices.map((service) => {
-                const cost = serviceCosts[service.id];
-                if (!cost) return null;
-
-                // Format name: "Number of Transactions" -> "Monthly Transactions"
-                const formattedName = service.name
-                  .toLowerCase()
-                  .startsWith("number of")
-                  ? `Advisory Area: ${service.name.replace(/^number of\s+/i, "")}`
-                  : service.name;
-
-                return (
-                  <div
-                    key={service.id}
-                    className="flex items-center justify-between py-3 border-b border-border/50 last:border-0"
-                  >
-                    <div className="flex-1">
-                      <p className="font-medium">{formattedName}</p>
-                    </div>
-                    <span className="font-display font-bold text-lg">
-                      {currency}
-                      {cost.cost.toFixed(2)}
-                    </span>
-                  </div>
-                );
-              })}
+          {accountingSoftware && (
+            <div className="mt-2 inline-block px-3 py-1 bg-primary-foreground/10 rounded-full text-xs text-primary-foreground/90 font-medium">
+              Software: {accountingSoftware}
             </div>
-          ) : (
-            <p className="text-center text-muted-foreground py-8">
-              No services selected
-            </p>
           )}
         </div>
-        <div className="bg-muted/30 p-6 border-t border-border/50">
+
+        {/* Services List Breakup */}
+        <div className="p-6 max-h-[300px] overflow-y-auto custom-scrollbar">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="h-1 w-6 bg-gold rounded-full" />
+            <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+              Investment Breakup
+            </h4>
+          </div>
+          <div className="space-y-4">
+            {activeServices.map((service) => {
+              const cost = serviceCosts[service.id];
+              if (!cost) return null;
+
+              return (
+                <div key={service.id} className="flex justify-between items-start group">
+                  <div className="flex flex-col pr-4">
+                    <span className="text-sm font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {service.name}
+                    </span>
+                    {cost.quantity > 0 && (
+                      <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tighter">
+                        {(() => {
+                          const name = service.name.toLowerCase();
+
+                          // HMRC and Chart of Accounts Setup - show as "1 off"
+                          if (name.includes("hmrc") || name.includes("chart of accounts") || name.includes("new books")) {
+                            return "1 off";
+                          }
+
+                          // VAT - show as "monthly"
+                          if (name.includes("vat")) {
+                            return "monthly";
+                          }
+
+                          // All other services - show as "monthly"
+                          return "monthly";
+                        })()}
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm font-bold font-mono text-primary">
+                      {currency}{cost.cost.toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Minimum Price Adjustment */}
+            {baseCalculatedCost > 0 && baseCalculatedCost < 100 && (
+              <div className="flex justify-between items-start pt-4 border-t border-border/50 group">
+                <div className="flex flex-col pr-4">
+                  <span className="text-sm font-display font-semibold text-muted-foreground italic">
+                    Minimum Fee Adjustment
+                  </span>
+                  <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tighter">
+                    Applied to reach monthly minimum
+                  </span>
+                </div>
+                <div className="text-right">
+                  <span className="text-sm font-bold font-mono text-muted-foreground italic">
+                    {currency}{(100 - baseCalculatedCost).toFixed(2)}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="bg-muted/30 p-8">
           <div className="flex items-center justify-between">
             <span className="font-display text-xl font-bold">
               Total Estimate
             </span>
             <span className="font-display text-3xl font-bold text-primary">
               {currency}
-              {totalCost.toFixed(2)}
+              {adjustedTotalCost.toFixed(2)}
             </span>
           </div>
         </div>
@@ -138,7 +194,7 @@ const EstimateSummary = ({
         {/* Disclaimer */}
         <div className="px-6 py-4 bg-muted/20 text-center">
           <p className="text-xs text-muted-foreground">
-            This is a preliminary assessment. Final advisory costs may vary based on exact project scope and complexity.
+            This is an estimate. Final costs may vary based on actual Business activity.
           </p>
         </div>
       </motion.div>
@@ -181,7 +237,6 @@ const EstimateSummary = ({
           </Button>
         </div>
       </motion.div>
-
     </motion.div>
   );
 };
