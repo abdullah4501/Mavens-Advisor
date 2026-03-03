@@ -17,24 +17,24 @@ const MotionLink = motion(Link);
 
 const slides = [
   {
-    title: ['Build, Scale & Lead.', 'Your Finance Function'],
-    description: 'You didn\'t start your business to chase numbers, worry about compliance, or guess whether you can afford your next move.',
-    subPoints: ['Books always "almost" done', 'Cash flow unclear', 'Compliance stressful', 'Decisions made without real financial confidence'],
-    cta: 'Calculate Your Quote',
+    title: ['Business', 'Consultancy.'],
+    description: 'We assist founders and management teams in securing capital, structuring investments, and executing financial strategies aligned with long-term growth objectives.',
+    subPoints: [],
+    cta: 'Explore Funding Solutions',
     image: heroImage1,
   },
   {
-    title: ['Your CFO, Your Finance Team.', 'One Predictable Fee'],
-    description: 'Mavens Advisor builds and runs your entire finance department — so you can focus on growth, not numbers.',
+    title: ['Capital', 'Raising.'],
+    description: 'We assist businesses in securing optimal debt financing while minimizing dilution and financial risk. Our services include sourcing, structuring, and negotiating debt facilities.',
     subPoints: [],
-    cta: 'Lock Your Monthly Fee',
+    cta: 'Get Debt Advisory',
     image: heroImage2,
   },
   {
-    title: ['Focus on Growth.', 'We Handle Finance'],
-    description: 'At the cost of a bookkeeper, you get a dedicated CFO, complete virtual finance department, and clear ownership of outcomes, not just reports.',
+    title: ['Investment', 'Advisory'],
+    description: 'Unlock executive-level financial expertise without the cost of a full-time CFO. Our virtual CFO services help startups, SMEs, and scaling companies optimize finances.',
     subPoints: [],
-    cta: 'Get Your Virtual CFO',
+    cta: 'Learn About Virtual CFO',
     image: heroImage3,
   },
 ];
@@ -106,7 +106,7 @@ const HeroSection = () => {
                 className="flex flex-wrap gap-4"
               >
                 <MotionLink
-                  to="/calculator"
+                  to="/contact"
                   className="bg-white text-navy px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

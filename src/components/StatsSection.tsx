@@ -35,8 +35,9 @@ const StatsSection = () => {
               <span className="text-white/80 text-lg mb-4">Years of combined finance expertise</span>
             </div>
             <p className="text-white/60 leading-relaxed max-w-lg">
-              Our team brings together decades of CFO-level experience in financial management,
-              helping founders achieve growth with professional guidance and support.
+              Our team brings together decades of regional expertise in capital raising,
+              strategic restructuring, and investment advisory, helping founders achieve
+              unparalleled growth with professional guidance.
             </p>
           </motion.div>
 

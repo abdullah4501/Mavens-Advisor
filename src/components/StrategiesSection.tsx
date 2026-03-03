@@ -75,7 +75,7 @@ const StrategiesSection = ({ subTitle }) => {
           </span>
 
           <AnimatedHeading
-            text="Build, Scale & Lead Your Finance Function with Confidence"
+            text="Securing Capital and Executing Financial Strategies for Growth"
             className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
             duration={0.6}
             stagger={0.01}
@@ -84,10 +84,10 @@ const StrategiesSection = ({ subTitle }) => {
 
 
           <p className="text-muted-foreground text-[18px] mb-6 font-medium mt-6">
-            We help founders and business owners build an evergreen, scalable finance function so they can focus on growth, execution, and what they love to do, without worrying about books, compliance, or financial blind spots.
+            Green Brander LLC is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions for startups, SMEs, and growth-stage companies.
           </p>
           <p className="text-navy font-semibold text-[16px] mb-12">
-            CFO-level leadership. A complete finance team. One predictable monthly fee.
+            Regional market expertise. Access to a diversified network of investors. End-to-end transaction support.
           </p>
 
           <div className="border-t mb-10"></div>
@@ -108,14 +108,14 @@ const StrategiesSection = ({ subTitle }) => {
 
             <div className="border-l pl-10">
               <p className="text-muted-foreground mb-6 font-medium">
-                Quote-based on business activity. Calculate instantly, lock your monthly fee, and connect with your Virtual CFO team. No hourly billing, no hidden costs, no surprises.
+                We bridge the gap between ambitious companies and regional capital. Our strategic advisory ensures your business is structured for investment and long-term financial success.
               </p>
 
               <Link
-                to={"/calculator"}
+                to={"/contact"}
                 className="inline-flex items-center gap-3 bg-navy-light text-white px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:bg-gold hover:scale-105 transition"
               >
-                Calculate Your Quote
+                Book an Advisory Session
                 <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
                   <ArrowRight size={18} />
                 </span>

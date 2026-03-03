@@ -13,18 +13,18 @@ import contactImg from '@/assets/contact-image.webp';
 const contactData = [
     {
         icon: <Mail className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-        title: "hello@mavensadvisor.com",
-        description: "Reach our team anytime. We respond quickly to all inquiries."
+        title: "info@greenbrander.com",
+        description: "Get in touch with Green Brander LLC to explore funding solutions."
     },
     {
         icon: <Phone className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
         title: "+44 (0)203 900 1800",
-        description: "Call us for immediate support and to discuss your needs."
+        description: "Call us for immediate support and to discuss your growth goals."
     },
     {
         icon: <MapPin className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-        title: "London, United Kingdom",
-        description: "Visit our office or schedule a virtual meeting anytime."
+        title: "Sharjah, UAE",
+        description: "Sharjah Media City, Sharjah, UAE. Registered advisory firm."
     }
 ];
 
@@ -50,7 +50,7 @@ const ContactUs = ({ breadcrumb }) => {
         if (!formData.name || !formData.phone || !formData.email) {
             return;
         }
-        
+
     };
     return (
         <>
@@ -110,7 +110,7 @@ const ContactUs = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    With years of experience and a results-focused approach, we empower businesses to navigate complexity and achieve their goals.
+                                    Get in touch with Green Brander LLC to explore funding solutions tailored to your business growth and investment goals.
                                 </motion.p>
                             </div>
                         </div>
@@ -306,15 +306,15 @@ const ContactUs = ({ breadcrumb }) => {
             {/* Google Map Section */}
             <div className='contact-page'>
                 <GoogleMapEmbed
-                    location="London Eye, London, United Kingdom"
-                    placeName="London Eye"
-                    address="Riverside Building, County Hall, Westminster Bridge Rd, London SE1 7PB, United Kingdom"
-                    rating={4.5}
-                    reviewCount="197,128"
-                    placeId="ChIJc2nSALkEdkgRkuoJJBfzkUI"
-                    lat={51.498057}
-                    lng={-0.023389}
-                    zoom={10}
+                    location="Sharjah Media City, Sharjah, UAE"
+                    placeName="Sharjah Media City (Shams)"
+                    address="Al Messaned, Sharjah, United Arab Emirates"
+                    rating={4.7}
+                    reviewCount="5,124"
+                    placeId="ChIJ_S_R_S_R_S_R_S_R_S_R_S_R"
+                    lat={25.3462}
+                    lng={55.4209}
+                    zoom={12}
                 />
             </div>
             <Footer />

@@ -25,10 +25,10 @@ import PageBanner from "@/components/PageBanner";
 import { toast } from "sonner";
 
 const STEPS = [
-  { label: "Services", icon: <Layers className="w-5 h-5" /> },
+  { label: "Advisory", icon: <Layers className="w-5 h-5" /> },
   { label: "Details", icon: <Hash className="w-5 h-5" /> },
-  { label: "Contact", icon: <Mail className="w-5 h-5" /> },
-  { label: "Summary", icon: <Receipt className="w-5 h-5" /> },
+  { label: "Account", icon: <Mail className="w-5 h-5" /> },
+  { label: "Analysis", icon: <Receipt className="w-5 h-5" /> },
 ];
 
 const Calculator = ({ breadcrumb }) => {
@@ -287,7 +287,7 @@ const Calculator = ({ breadcrumb }) => {
             className="mb-10 flex justify-center items-center flex-col sm:flex-row gap-5 sm:gap-0"
           >
             <Link to={'/'} className="mr-auto p-3 bg-[#e6e7e9] rounded-lg" title="Home">
-              <Home className="w-6 h-6"/>
+              <Home className="w-6 h-6" />
             </Link>
             <StepIndicator currentStep={step} totalSteps={4} steps={STEPS} />
           </motion.div>
@@ -305,10 +305,10 @@ const Calculator = ({ breadcrumb }) => {
               >
                 <div className="text-center mb-8">
                   <h2 className="font-display text-2xl sm:text-3xl font-bold mb-2">
-                    Choose Your Services
+                    Investment Readiness Assessment
                   </h2>
                   <p className="text-muted-foreground">
-                    Select the services you need for your project
+                    Select the advisory areas you need to optimize for capital raising.
                   </p>
                   {errors.services && (
                     <motion.p

@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 import TeamSection2 from '@/components/TeamSection2';
 
 
-const Team = ({breadcrumb}) => {
+const Team = ({ breadcrumb }) => {
 
 
 
@@ -49,7 +49,7 @@ const Team = ({breadcrumb}) => {
                                                 <Link to={'/'}>Home</Link>
                                             </span>
                                             <span>
-                                                <ChevronRight size={20} className='mx-1'/>
+                                                <ChevronRight size={20} className='mx-1' />
                                             </span>
                                             <span>
                                                 Our Team
@@ -73,7 +73,7 @@ const Team = ({breadcrumb}) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    Expert CFOs and finance professionals dedicated to your business growth and financial success every step of the way.
+                                    Strategic financial advisors and investment specialists dedicated to your growth and capital access every step of the way.
                                 </motion.p>
                             </div>
                         </div>
@@ -82,7 +82,7 @@ const Team = ({breadcrumb}) => {
 
             </section>
             <div className='my-20'>
-                <TeamSection2 limit={6}/>
+                <TeamSection2 limit={6} />
             </div>
             <Footer />
         </>

@@ -8,52 +8,52 @@ import FeatureIcon from "./FeatureIcon";
 const features = [
   {
     number: 1,
-    title: "Predictable Pricing. No Surprises.",
+    title: "Deep Regional Market Expertise",
     description:
-      "Fixed monthly subscription. Quote-based on your business activity. Calculated instantly. No hourly billing. No hidden fees. No reactive invoices.",
-    icon: "pricing" as const,
+      "Strategic insights into the UAE, GCC, and MENA financial markets, helping you navigate complex regulatory and investment landscapes.",
+    icon: "business" as const,
   },
   {
     number: 2,
-    title: "CFO + Complete Finance Team",
+    title: "Access to Diversified Capital",
     description:
-      "At the cost of a bookkeeper, get a dedicated CFO, complete virtual finance department, and full ownership of outcomes, not just reports.",
+      "Our network includes leading Venture Capital firms, Private Equity investors, Family Offices, and financial institutions across the Middle East.",
     icon: "team" as const,
   },
   {
     number: 3,
-    title: "AI-Powered Analytics Portal",
+    title: "Tailored Funding Strategies",
     description:
-      "Know what matters — when it matters. Custom analytics, real-time insights, tax savings opportunities, and an integrated AI assistant for quick answers.",
-    icon: "ai" as const,
+      "We don't believe in one-size-fits-all. We structure equity and debt solutions specifically designed for your company's growth stage.",
+    icon: "pricing" as const,
   },
   {
     number: 4,
-    title: "This Is Not a Temporary Fix",
+    title: "End-to-End Deal Execution",
     description:
-      "Most finance setups break when the business grows. Mavens Advisor scales with you. No rehiring. No restructuring. No starting over.",
+      "From strategy and pitch decks to term sheet negotiation and deal closure — Green Brander LLC handles the heavy lifting of fundraising.",
     icon: "scale" as const,
   },
   {
     number: 5,
-    title: "Imagine Financial Clarity",
+    title: "Investment Readiness Assessment",
     description:
-      "You know your numbers. You trust your reports. You make decisions with confidence. You stop worrying about compliance. You focus on growth.",
+      "We ensure your business is 'investor-ready' by auditing your financials, business model, and due diligence documentation before outreach.",
     icon: "clarity" as const,
   },
   {
     number: 6,
-    title: "Built For Growing Businesses",
+    title: "Structured Debt & Financing",
     description:
-      "Founders who want CFO-level insight without hiring in-house. UK companies needing reliable, compliant financial leadership. Owners who see finance as a growth engine.",
-    icon: "business" as const,
+      "Secure optimal debt facilities, working capital, or project financing without unnecessary dilution through our structured advisory services.",
+    icon: "pricing" as const,
   },
   {
     number: 7,
-    title: "The Cost of Delay",
+    title: "Strategic Financial Leadership",
     description:
-      "Every month without proper financial leadership: hidden risks grow, missed tax savings compound, poor decisions get expensive. The most expensive finance function is the one you delay building.",
-    icon: "delay" as const,
+      "Beyond fundraising, we provide high-level corporate finance advisory to optimize your capital structure and financial decision-making.",
+    icon: "team" as const,
   },
 ];
 
@@ -128,7 +128,7 @@ const WhyChooseSection = () => {
               </span>
 
               <AnimatedHeading
-                text="Calculate your quote. Lock it. Get your Virtual CFO."
+                text="Strategic Financial Advisory Tailored for Your Success."
                 className="text-4xl md:text-5xl font-bold text-navy leading-tight"
                 duration={0.6}
                 stagger={0.01}

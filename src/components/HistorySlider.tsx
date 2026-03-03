@@ -17,13 +17,13 @@ const timelineData = [
         top: {
             type: 'text',
             year: '2015',
-            title: 'Started Company',
-            description: 'Once the ideas are screened and business opportunity emerges conceptualized',
+            title: 'Inception of Vision',
+            description: 'Founded with a focus on bridging the gap between Middle East SMEs and institutional capital.',
         },
         bottom: {
             type: 'image',
             image: image1,
-            alt: 'Business handshake 2017',
+            alt: 'Sharjah office inception',
         },
         dotPosition: 'top',
     },
@@ -32,13 +32,13 @@ const timelineData = [
         top: {
             type: 'image',
             image: image2,
-            alt: 'Business meeting 2015',
+            alt: 'Regional expansion',
         },
         bottom: {
             type: 'text',
             year: '2017',
-            title: 'Expert Member',
-            description: 'As a team member, you understand your role within the team and work to achieve',
+            title: 'Regional Footprint',
+            description: 'Expanded advisory services across the GCC, establishing key networks in Saudi Arabia and Kuwait.',
         },
         dotPosition: 'bottom',
     },
@@ -47,13 +47,13 @@ const timelineData = [
         top: {
             type: 'text',
             year: '2019',
-            title: 'Multiple Branches',
-            description: 'In a multi-industry study, he found that high-performance work practices',
+            title: 'Capital Network Growth',
+            description: 'Diversified our network to include over 100+ VCs, PE firms, and Family Offices globally.',
         },
         bottom: {
             type: 'image',
             image: image3,
-            alt: 'Business professionals 2019',
+            alt: 'Investment Network',
         },
         dotPosition: 'top',
     },
@@ -62,13 +62,13 @@ const timelineData = [
         top: {
             type: 'image',
             image: image4,
-            alt: 'Business team 2019',
+            alt: 'Strategic Debt Solutions',
         },
         bottom: {
             type: 'text',
             year: '2021',
-            title: 'Evolved Over',
-            description: 'Investment companies have evolved from small entrepreneurial organizations',
+            title: 'Debt Advisory Launch',
+            description: 'Introduced specialized debt advisory to help companies scale without early-stage equity dilution.',
         },
         dotPosition: 'bottom',
     },
@@ -77,13 +77,13 @@ const timelineData = [
         top: {
             type: 'text',
             year: '2022',
-            title: 'Milestone Vision',
-            description: 'In a multi-industry study, he found that high-performance work practices',
+            title: 'The Green Brander Era',
+            description: 'Consolidated under Green Brander LLC, focusing on end-to-end transaction support and readiness.',
         },
         bottom: {
             type: 'image',
             image: image5,
-            alt: 'Business professionals 2019',
+            alt: 'Green Brander Brand',
         },
         dotPosition: 'top',
     },
@@ -179,7 +179,7 @@ const HistorySlider = () => {
                         Our History
                     </span>
                     <AnimatedHeading
-                        text="Essential history of our industry company"
+                        text="A Legacy of Securing Future Growth"
                         className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
                         duration={0.6}
                         stagger={0.01}

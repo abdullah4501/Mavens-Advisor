@@ -24,8 +24,6 @@ const Header = () => {
     { label: 'Home', href: '/', exact: true },
     { label: 'About Us', href: '/about-us' },
     { label: 'Services', href: '/services' },
-    { label: 'Our History', href: '/our-history' },
-    { label: 'Our Team', href: '/team' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact Us', href: '/contact' },
   ];
@@ -50,7 +48,6 @@ const Header = () => {
             : 'border rounded-md border-[#7C898D] bg-[linear-gradient(180deg,#ECF0F429_0%,#7C898D85_100%)]'
             }`}
         >
-          {/* LEFT */}
           <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
             <div className="h-12 w-full flex items-center">
               <img src={isScrolled ? logo : logo} alt="logo" className="h-8 mr-1" /><RollingText text="Mavens Advisor" />
@@ -62,7 +59,7 @@ const Header = () => {
                 <span className='px-3 py-3 ml-2 rounded-full bg-gold'>
                   <Phone className="w-4 h-4 text-white flex-shrink-0" />
                 </span>
-                <span className='font-bold'>14408482222</span>
+                <span className='font-bold'>+971 6 501 1111</span>
               </div>
             )}
           </div>
@@ -103,7 +100,7 @@ const Header = () => {
                 to="/calculator"
                 className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
               >
-                <span className="">Get Quotation</span>
+                <span className="">Get Funding Advice</span>
                 <span className="w-7 h-7 xl:w-8 xl:h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                   <ArrowRight size={16} className="text-black" />
                 </span>

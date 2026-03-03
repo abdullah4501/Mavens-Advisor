@@ -13,26 +13,32 @@ const ProcessSection = () => {
   const steps = [
     {
       number: '01',
-      title: 'Calculate Your Quote',
-      description: 'Use our pricing calculator based on business activity. Instant, transparent pricing.',
+      title: 'Initial Assessment',
+      description: 'We evaluate the business model, financial position, and funding objectives to define the most suitable strategy.',
       image: processBasicResearch,
     },
     {
       number: '02',
-      title: 'Lock Your Monthly Fee',
-      description: 'Fixed subscription locked in. No hourly billing, no hidden costs, no surprises.',
+      title: 'Preparation & Structuring',
+      description: 'We develop investment documentation and financial models tailored to investor and lender expectations.',
       image: processDiscovery,
     },
     {
       number: '03',
-      title: 'Connect With Your CFO',
-      description: 'Meet your dedicated CFO and complete virtual finance department.',
+      title: 'Investor & Lender Outreach',
+      description: 'Using our network, we engage with relevant capital providers aligned with client objectives.',
       image: processBuildPlan,
     },
     {
       number: '04',
-      title: 'Build & Scale',
-      description: 'Your evergreen finance function grows with you—strategic leadership at every stage.',
+      title: 'Transaction Execution',
+      description: 'We manage the fundraising process end-to-end, including negotiations and deal closure.',
+      image: processExecute,
+    },
+    {
+      number: '05',
+      title: 'Post-Funding Support',
+      description: 'We assist with investor relations, capital deployment strategy, and future planning.',
       image: processExecute,
     },
   ];

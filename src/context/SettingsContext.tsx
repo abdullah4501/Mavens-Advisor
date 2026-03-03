@@ -34,24 +34,19 @@ interface SettingsContextType {
 }
 
 const defaultServices: Service[] = [
-  { id: "1", name: "Monthly Bookkeeping", minutesPerJob: 1 },
-  { id: "2", name: "Monthly Payroll Management", minutesPerJob: 60 },
-  { id: "3", name: "Monthly Contractor Payments Management", minutesPerJob: 30 },
-  { id: "4", name: "Monthly Invoicing", minutesPerJob: 10 },
-  { id: "5", name: "Monthly Billing", minutesPerJob: 10 },
-  { id: "6", name: "Monthly Accounts Payable Management", minutesPerJob: 15 },
-  { id: "7", name: "Monthly Receivable Management", minutesPerJob: 15 },
+  { id: "1", name: "Pitch Deck Preparation", minutesPerJob: 120 },
+  { id: "2", name: "Regional Market Analysis", minutesPerJob: 180 },
+  { id: "3", name: "Due Diligence Readiness", minutesPerJob: 240 },
+  { id: "4", name: "Investor Long-List Curation", minutesPerJob: 60 },
+  { id: "5", name: "Business Model Optimization", minutesPerJob: 150 },
 ];
 
 const defaultFixedPriceServices: FixedPriceService[] = [
-  { id: "fp1", name: "Chart of Accounts Setup (For New Books)", price: 300 },
-  { id: "fp2", name: "HMRC and Companies House Joint Filing (for UK)", price: 300 },
-  { id: "fp3", name: "Strategic Financial Advice", price: 50 },
-  { id: "fp4", name: "Monthly Financial Performance Analysis", price: 50 },
-  { id: "fp5", name: "Monthly Cash Flow Forecasting", price: 50 },
-  { id: "fp6", name: "Monthly Budgeting", price: 50 },
-  { id: "fp7", name: "Monthly Profit and Loss Reporting", price: 50 },
-  { id: "fp8", name: "VAT Filling", price: 17 },
+  { id: "fp1", name: "Full Investment Readiness Audit", price: 2500 },
+  { id: "fp2", name: "Targeted Investor Outreach (Phase 1)", price: 1500 },
+  { id: "fp3", name: "Debt Facility Structuring Advisory", price: 3000 },
+  { id: "fp4", name: "M&A Strategic Roadmap", price: 2000 },
+  { id: "fp5", name: "Valuation Report (Full)", price: 1800 },
 ];
 
 const defaultSettings: Settings = {
@@ -59,7 +54,7 @@ const defaultSettings: Settings = {
   fixedPriceServices: defaultFixedPriceServices,
   hourlyRate: 20,
   currency: '$',
-  companyName: 'Your Company',
+  companyName: 'Green Brander LLC',
   defaultQuantities: {},
 };
 

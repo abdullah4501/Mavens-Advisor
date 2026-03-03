@@ -34,7 +34,7 @@ const StatisticsSection = ({ subTitle }) => {
               transition={{ duration: 0.8 }}
             >
               <AnimatedHeading
-                text="We don't just manage your numbers—we build, scale, and lead your finance function"
+                text="Strategic Financial Leadership to Secure Capital and Drive Growth"
                 className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
                 duration={0.6}
                 stagger={0.01}
@@ -48,25 +48,25 @@ const StatisticsSection = ({ subTitle }) => {
                 </div>
                 {/* RIGHT TEXT */}
                 <div>
-                  <h4 className="text-navy font-bold text-xl mb-4">This Is Not Finance Outsourcing</h4>
+                  <h4 className="text-navy font-bold text-xl mb-4">Strategic Advisory vs. Standard Outsourcing</h4>
                   <p className="text-muted-foreground mb-4 max-w-lg">
-                    Outsourcing gives you tasks done. Mavens Advisor gives you leadership, accountability, and structure.
+                    Standard firms give you reports. Green Brander LLC gives you access to capital, strategic networks, and deal-making expertise.
                   </p>
                   <p className="text-navy font-semibold mb-6">
-                    At the cost of a bookkeeper, you get:
+                    Partnering with us provides:
                   </p>
                   <ul className="space-y-4">
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      A dedicated CFO
+                      Access to VCs, PE firms, and Family Offices
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      A complete virtual finance department
+                      Structured debt and equity solutions
                     </li>
                     <li className="flex items-center gap-3">
                       <span className="w-3 h-3 rounded-full bg-gold"></span>
-                      Clear ownership of outcomes, not just reports
+                      Comprehensive deal execution and term sheet support
                     </li>
                   </ul>
                 </div>

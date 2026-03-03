@@ -21,33 +21,33 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       rating: 5,
-      quote: '"Mavens Advisor transformed how we manage our finances. Having a dedicated CFO at a fraction of the cost was game-changing."',
+      quote: '"Green Brander LLC played a pivotal role in our Series A. Their deep understanding of the UAE investor landscape was exactly what we needed."',
       author: 'Adeline Wood',
-      position: 'Founder & CEO',
+      position: 'Founder & CEO, Tech Emirates',
     },
     {
       rating: 5,
-      quote: '"The fixed pricing and complete transparency gave us confidence. No surprises, just solid financial control every month."',
+      quote: '"We secured our expansion debt facility through their structured advisory. Professional, transparent, and results-driven every step of the way."',
       author: 'Naomi Violet',
-      position: 'Operations Director',
+      position: 'Managing Director, Gulf Logistics',
     },
     {
       rating: 5,
-      quote: '"Their AI analytics platform is incredible. We now see insights that drive real business decisions and save us money on taxes."',
+      quote: '"Their investment readiness assessment uncovered critical gaps in our books that could have stalled our funding. Truly expert financial leadership."',
       author: 'Anna Briggs',
-      position: 'Finance Manager',
+      position: 'CFO, Innovate Qatar',
     },
     {
       rating: 5,
-      quote: '"Professional, reliable, and truly scalable. As we grew, our finance team grew seamlessly without any disruption."',
+      quote: '"Navigating the GCC market without regional expertise is high-risk. Green Brander provided the localized strategy we lacked."',
       author: 'Michael Chen',
-      position: 'Founder',
+      position: 'Global VP, Fintech Solutions',
     },
     {
       rating: 5,
-      quote: '"The best investment for early-stage companies. Compliance, bookkeeping, and strategic advice all in one place."',
+      quote: '"The best advisory for growth-stage companies. They don\'t just advise; they execute and deliver capital access."',
       author: 'Sarah Johnson',
-      position: 'CEO',
+      position: 'Founder, EcoScale MENA',
     },
   ];
   const clientLogos = [
@@ -85,7 +85,7 @@ const TestimonialsSection = () => {
               center={true}
             />
             <p className="text-muted-foreground mt-4 text-center">
-              Predictable monthly pricing. CFO-led expertise. Scalable, evergreen structure. AI-powered clarity.
+              Regional Capital Network. Strategic Debt Solutions. Investment Readiness. Corporate Finance Execution.
             </p>
           </motion.div>
 

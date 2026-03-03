@@ -56,7 +56,7 @@ const Footer = () => {
               Growth Now<span className="text-gold">.</span>
             </h2>
             <p className="text-slate-400 text-sm mt-4">
-              This is the safest, smartest, and fastest way to take control of your finances and your growth.
+              Green Brander LLC is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions.
             </p>
           </motion.div>
 
@@ -142,7 +142,7 @@ const Footer = () => {
               <span className="text-[#628fff] text-xs font-semibold tracking-wider uppercase">
                 LOCATION
               </span>
-              <p className="text-white text-lg mt-2">174 Street Charleston, New York</p>
+              <p className="text-white text-lg mt-2">Sharjah Media City, Sharjah, UAE</p>
             </div>
 
             {/* Phone */}
@@ -162,7 +162,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative">
             {/* Copyright */}
             <p className="text-slate-500 text-sm">
-              Copyright © 2025 Mavens Advisor, All Rights Reserved.
+              Copyright © 2025 Green Brander LLC, All Rights Reserved.
             </p>
 
             {/* Social Links & Scroll to Top */}

@@ -33,31 +33,27 @@ const QuantityInput = ({
     cleanName = cleanName.replace(/\s+management$/i, '');
 
     // Transform specific words for better natural language questions
-    if (cleanName === "bookkeeping") return "How many monthly transactions do you have?";
-    if (cleanName === "invoicing") return "How many monthly invoices do you have?";
-    if (cleanName === "billing") return "How many monthly bills do you have?";
-    if (cleanName === "payroll") return "How many monthly payrolls do you have?";
+    // Customize questions for advisory services
+    if (cleanName.includes("investor")) return "How many potential investors do you need to target?";
+    if (cleanName.includes("pitch")) return "How many slides do you need in your pitch deck?";
+    if (cleanName.includes("valuation")) return "How many business units need valuation?";
+    if (cleanName.includes("market")) return "How many regional markets are you targeting?";
 
-    // Default pluralization for other items
-    if (!cleanName.endsWith('s')) {
-      cleanName += 's';
-    }
-
-    return `How many monthly ${cleanName} do you have?`;
+    return `What is the scale of your ${cleanName} requirements?`;
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      
+
       // Try to find a container - form, or a parent container with data attribute, or document
       const form = e.currentTarget.closest('form');
       const container = e.currentTarget.closest('[data-quantity-form]') || form || document;
-      
+
       // Get all quantity inputs in the container
       const inputs = Array.from(container.querySelectorAll('input[inputmode="numeric"]')) as HTMLInputElement[];
       const currentIndex = inputs.indexOf(e.currentTarget);
-      
+
       if (currentIndex < inputs.length - 1) {
         // Move to next input
         inputs[currentIndex + 1].focus();
@@ -67,7 +63,7 @@ const QuantityInput = ({
         const nextButton = buttonContainer.querySelector(
           'button[type="submit"], button[data-next-button], button:last-of-type'
         ) as HTMLButtonElement;
-        
+
         if (nextButton) {
           nextButton.focus();
         }

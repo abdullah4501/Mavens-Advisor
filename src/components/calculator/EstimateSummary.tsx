@@ -98,7 +98,7 @@ const EstimateSummary = ({
                 const formattedName = service.name
                   .toLowerCase()
                   .startsWith("number of")
-                  ? `Monthly ${service.name.replace(/^number of\s+/i, "")}`
+                  ? `Advisory Area: ${service.name.replace(/^number of\s+/i, "")}`
                   : service.name;
 
                 return (
@@ -138,8 +138,7 @@ const EstimateSummary = ({
         {/* Disclaimer */}
         <div className="px-6 py-4 bg-muted/20 text-center">
           <p className="text-xs text-muted-foreground">
-            This is an estimate. Final costs may vary based on actual work
-            duration.
+            This is a preliminary assessment. Final advisory costs may vary based on exact project scope and complexity.
           </p>
         </div>
       </motion.div>
@@ -165,10 +164,10 @@ const EstimateSummary = ({
             className="rounded-full p-0 h-14 bg-gold hover:opacity-90 transition-opacity shadow-lg"
             style={{ boxShadow: "var(--shadow-button)" }}
           >
-            <a href="https://calendly.com/adeelshaikh/quick-catch-up-with-your-virtual-cfo?month=2026-01"
+            <a href="/contact"
               className="flex rounded-full items-center h-full px-14  "
               style={{ boxShadow: "var(--shadow-button)" }}
-            ><Sparkles className="w-5 h-5 mr-2" /> Lock the Estimate</a>
+            ><Sparkles className="w-5 h-5 mr-2" /> Book Advisory Session</a>
           </Button>
         </div>
         <div className="mt-10 justify-center items-center flex">

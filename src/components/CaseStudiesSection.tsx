@@ -32,7 +32,7 @@ const CaseStudiesSection = () => {
                 {/* Heading */}
                 <div className="relative z-10 max-w-6xl mx-auto px-6 mb-20 text-center">
                     <AnimatedHeading
-                        text="How We Helped Clients Overcome Challenges and Achieve Remarkable Results"
+                        text="Empowering Businesses to Secure Capital and Execute Strategic Transactions"
                         className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
                         duration={0.6}
                         stagger={0.01}
@@ -66,7 +66,7 @@ const CaseStudiesSection = () => {
                                 </span>
                             </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
-                                Revenue Cycle Optimization For Regional Hospital
+                                $15M Series A Funding for Regional Health-Tech Leader
                             </h3>
                         </div>
 
@@ -91,7 +91,7 @@ const CaseStudiesSection = () => {
                                 </span>
                             </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
-                                R&D Tax Credit Recovery for SaaS Startup
+                                Strategic Equity Recapitalization for Scaling SaaS
                             </h3>
                         </div>
 
@@ -132,7 +132,7 @@ const CaseStudiesSection = () => {
                                 </span>
                             </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
-                                Cost Accounting Transformation
+                                Debt Restructuring & Facility Optimization
                             </h3>
                         </div>
 
@@ -157,7 +157,7 @@ const CaseStudiesSection = () => {
                                 </span>
                             </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
-                                Multi-State Sales Tax Compliance
+                                GCC Market Entry & Venture Expansion Strategy
                             </h3>
                         </div>
 
@@ -182,7 +182,7 @@ const CaseStudiesSection = () => {
                                 </span>
                             </motion.div>
                             <h3 className="mt-5 text-[24px] font-bold text-navy leading-snug">
-                                Grant Compliance & Audit Defense
+                                IPO Readiness & Financial Structuring Compliance
                             </h3>
                         </div>
                     </div>

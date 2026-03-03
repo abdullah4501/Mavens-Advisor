@@ -12,6 +12,7 @@ import StrategiesSection from '@/components/StrategiesSection';
 import AnimatedHeading from '@/components/AnimatedHeading';
 import ServicesSection4 from '@/components/ServicesSection4';
 import StatisticsSection from '@/components/StatisticsSection';
+import TeamSection from '@/components/TeamSection';
 
 const stats = [
     { icon: Users, value: '500+', label: 'Companies Growing' },
@@ -79,7 +80,7 @@ const About = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    Mavens Advisor is a Virtual CFO firm delivering complete finance departments with CFO-level leadership, AI-powered analytics, and evergreen support for every stage of growth.
+                                    Green Brander LLC is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions for startups, SMEs, and growth-stage companies.
                                 </motion.p>
                             </div>
                         </div>
@@ -115,33 +116,7 @@ const About = ({ breadcrumb }) => {
             </motion.div>
             <StatisticsSection subTitle={"About Us"} />
             <ServicesSection4 />
-            <div className='section-padding'>
-                <div className='container'>
-                    <div className="grid grid-cols-12 gap-y-8 mb-16">
-                        {/* Left side - Badge and Title */}
-                        <div className='col-span-10 lg:col-span-5 md:col-span-6'>
-                            <span className="inline-block bg-muted text-[#7c898d] font-semibold px-4 py-1.5 text-xs uppercase rounded mb-6">
-                                Our Experts
-                            </span>
-                            <AnimatedHeading
-                                text="Expert CFO leadership for your finance function"
-                                className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
-                                duration={0.6}
-                                stagger={0.01}
-                                startDelay={0.3}
-                            />
-                        </div>
-
-                        {/* Right side - Description */}
-                        <div className="flex items-end lg:pl-12 col-span-12 md:col-span-6">
-                            <p className="text-navy-light/50 font-semibold ">
-                                Our CFO-led team brings decades of combined finance expertise to help you build, scale, and lead your finance function with confidence—from startup to scale-up and beyond.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <TeamSection2 limit={3} />
-            </div>
+            <TeamSection />
             <Footer />
         </>
     );

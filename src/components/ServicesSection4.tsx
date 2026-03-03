@@ -10,39 +10,39 @@ import { Link } from "react-router-dom";
 
 const services = [
     {
-        title: "Bookkeeping & Reconciliations",
-        icon: icon1,
-        items: [
-            "Monthly reconciliations",
-            "Invoice & expense tracking",
-            "Bank account matching",
-        ],
-    },
-    {
-        title: "Tax Planning & Compliance",
-        icon: icon2,
-        items: [
-            "VAT filing & returns",
-            "HMRC compliance",
-            "Tax optimization",
-        ],
-    },
-    {
-        title: "Financial Reporting & Analysis",
-        icon: icon3,
-        items: [
-            "Monthly P&L statements",
-            "Cash flow forecasts",
-            "Performance dashboards",
-        ],
-    },
-    {
-        title: "Strategic Advisory",
+        title: "Capital Raising Advisory",
         icon: icon4,
         items: [
-            "Quarterly reviews",
-            "CFO-level guidance",
-            "Growth strategy support",
+            "Equity Fundraising Strategy",
+            "Pitch Deck & IM Development",
+            "Investor Network Access",
+        ],
+    },
+    {
+        title: "Debt & Financing Solutions",
+        icon: icon1,
+        items: [
+            "Structured & Syndicated Loans",
+            "Working Capital Facilities",
+            "Project & Trade Finance",
+        ],
+    },
+    {
+        title: "Corporate Finance Advisory",
+        icon: icon2,
+        items: [
+            "Mergers & Acquisitions",
+            "Business Valuation & Modeling",
+            "IPO Readiness Support",
+        ],
+    },
+    {
+        title: "Growth & Entry Strategy",
+        icon: icon3,
+        items: [
+            "Market & Competitive Analysis",
+            "Strategic Business Planning",
+            "GCC Market Entry Support",
         ],
     },
 ];
@@ -58,7 +58,7 @@ const ServicesSection4 = () => {
                         What We Do
                     </span>
                     <AnimatedHeading
-                        text="Your Complete Virtual CFO Solution"
+                        text="Specialized Advisory for High-Growth Businesses"
                         className="text-4xl md:text-5xl font-[700] text-navy leading-tight mb-4"
                         duration={0.6}
                         stagger={0.01}
@@ -66,7 +66,7 @@ const ServicesSection4 = () => {
                         center={true}
                     />
                     <p className="text-muted-foreground text-lg">
-                        We take full ownership of your finance function.
+                        We provide the financial leadership required to secure capital and scale operations across the Middle East.
                     </p>
                 </div>
 
@@ -87,9 +87,9 @@ const ServicesSection4 = () => {
                             </div>
 
                             {/* Title */}
-                                     <h3 className="text-[24px] service-title font-bold text-navy mb-6 mt-[70px]">
-                                         <Link to="/services" className="transition"> {service.title} </Link>
-                                     </h3>
+                            <h3 className="text-[24px] service-title font-bold text-navy mb-6 mt-[70px]">
+                                <Link to="/services" className="transition"> {service.title} </Link>
+                            </h3>
 
                             {/* List */}
                             <ul className="space-y-4 mb-10">

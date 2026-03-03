@@ -34,7 +34,7 @@ const VideoSection = () => {
             className="flex flex-col h-full justify-end"
           >
             <span className="text-6xl md:text-8xl text-end mb-5 font-bold text-white/20">
-              Mavens Advisor
+              Green Brander LLC
             </span>
           </motion.div>
         </div>

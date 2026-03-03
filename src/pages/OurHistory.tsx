@@ -83,7 +83,7 @@ const OurHistory = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    Mavens Advisor has built a legacy of reliable, scalable financial support. From startups to established companies, we grow alongside our clients.
+                                    Green Brander LLC has built a legacy of securing capital and providing scalable financial advisory in the Middle East. From emerging startups to established companies, we drive financial excellence across the GCC and MENA region.
                                 </motion.p>
                             </div>
                         </div>

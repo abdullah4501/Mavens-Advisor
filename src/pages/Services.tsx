@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import check from "@/assets/check.svg";
 import image from '@/assets/team-banner.jpg';
-import image1 from '@/assets/service-1.jpg';
-import image2 from '@/assets/service-2.jpg';
-import image3 from '@/assets/service-3.jpg';
-import image4 from '@/assets/service-4.jpg';
-import image5 from '@/assets/service-5.jpg';
-import image6 from '@/assets/service-6.jpg';
+import icon1 from "@/assets/account-maintenance.svg";
+import icon2 from "@/assets/online-tax.svg";
+import icon3 from "@/assets/audit.svg";
+import icon4 from "@/assets/consultant.svg";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedHeading from '@/components/AnimatedHeading';
@@ -17,113 +15,48 @@ import AnimatedHeading from '@/components/AnimatedHeading';
 
 const services = [
     {
-        title: "Monthly Bookkeeping",
-        img: image1,
+        title: "Capital Raising Advisory (Equity)",
+        icon: icon4,
         items: [
-            "Clean monthly closes you can rely on",
-            "Bank and credit card reconciliations",
-            "Ledger maintenance and accuracy checks",
-            "Month-end journal entries",
-            "Accruals and prepayments management",
+            "Seed, Series A & Growth Fundraising",
+            "Investor Pitch Decks & IMs",
+            "Deal Structuring & Valuation",
         ],
     },
     {
-        title: "Payroll & Contractor Management",
-        img: image2,
+        title: "Debt Advisory & Financing",
+        icon: icon1,
         items: [
-            "Weekly/monthly payroll processing",
-            "Contractor payments and 1099 management",
-            "Tax withholding and compliance",
-            "Benefits administration support",
-            "Payroll tax filing and reporting",
+            "Working Capital & Term Loans",
+            "Structured & Syndicated Financing",
+            "Trade & Project Finance",
         ],
     },
     {
-        title: "Invoicing, Billing & Receivables",
-        img: image3,
+        title: "Corporate Finance & Strategic Advisory",
+        icon: icon2,
         items: [
-            "Automated invoicing and billing",
-            "Accounts receivable tracking",
-            "Collections management",
-            "Payment processing and reconciliation",
-            "Customer aging reports",
+            "Mergers & Acquisitions (M&A)",
+            "Business Valuation & Modeling",
+            "Feasibility Studies & Business Plans",
         ],
     },
     {
-        title: "Accounts Payable & Cash Management",
-        img: image4,
+        title: "Startup & Growth Advisory",
+        icon: icon3,
         items: [
-            "Vendor bill processing and approval",
-            "Payment scheduling and execution",
-            "Cash flow optimization",
-            "Vendor relationship management",
-            "Expense categorization and tracking",
+            "Investment Readiness Assessment",
+            "Market & Competitive Analysis",
+            "Due Diligence Preparation",
         ],
     },
     {
-        title: "P&L Reporting + Performance Review",
-        img: image5,
+        title: "Virtual CFO Services",
+        icon: icon4,
         items: [
-            "Monthly profit & loss statements",
-            "Revenue and expense analysis",
-            "Performance vs. budget comparisons",
-            "CFO-level insights and explanations",
-            "Actionable recommendations for improvement",
-        ],
-    },
-    {
-        title: "Budgeting + Cash Flow Forecasting",
-        img: image6,
-        items: [
-            "12-month rolling cash flow forecasts",
-            "Annual budget development",
-            "Variance analysis and adjustments",
-            "Scenario planning for growth",
-            "Capital expenditure planning",
-        ],
-    },
-    {
-        title: "VAT + HMRC & Companies House Filing",
-        img: image1,
-        items: [
-            "VAT returns and submissions",
-            "HMRC compliance and deadlines",
-            "Companies House annual filings",
-            "Statutory accounts preparation",
-            "Confirmation statements and updates",
-        ],
-    },
-    {
-        title: "Chart of Accounts & System Setup",
-        img: image2,
-        items: [
-            "Optimized chart of accounts structure",
-            "Accounting system implementation",
-            "Departmental and project coding",
-            "Integration with business tools",
-            "Scalable design for growth",
-        ],
-    },
-    {
-        title: "AI-Powered Analytics & Insights",
-        img: image3,
-        items: [
-            "Custom analytics portal for your business",
-            "Real-time KPI tracking and dashboards",
-            "Tax savings opportunity identification",
-            "AI assistant for financial questions",
-            "Predictive analytics and trend analysis",
-        ],
-    },
-    {
-        title: "CFO-Level Strategic Guidance",
-        img: image4,
-        items: [
-            "Monthly CFO review and strategy sessions",
-            "Growth planning and financial modeling",
-            "Fundraising and investor readiness",
-            "M&A support and due diligence",
-            "Long-term financial strategy development",
+            "Strategic Financial Planning",
+            "Budgeting & Cash Flow Control",
+            "KPI Dashboards & Monitoring",
         ],
     },
 ];
@@ -215,7 +148,7 @@ const Services = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    Complete virtual finance department with CFO leadership, AI-powered analytics, and comprehensive support at every stage of growth.
+                                    Specializing in equity and debt investment solutions, structuring investments, and executing financial strategies aligned with long-term growth objectives.
                                 </motion.p>
                             </div>
                         </div>
@@ -241,71 +174,52 @@ const Services = ({ breadcrumb }) => {
                     </div>
 
                     {/* Services Cards */}
-                    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center gap-5 gap-y-16">
-
+                    <div className="flex flex-wrap justify-start gap-5">
                         {services.map((service, index) => (
                             <motion.div
                                 key={index}
-                                className="service-card-new relative bg-white rounded-[20px] flex flex-col h-full w-full group"
+                                className="service-card-new relative bg-white rounded-[20px] px-[30px] pt-[50px] pb-[30px] flex flex-col h-full min-h-[590px] w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(33.333%-14px)]"
                                 initial="initial"
                                 whileHover="hover"
                             >
-                                {/* Image wrapper */}
-                                <div className="mb-8 relative overflow-hidden rounded-t-[20px]">
-                                    <motion.img
-                                        src={service.img}
+                                {/* Icon */}
+                                <div className="mb-8">
+                                    <img
+                                        src={service.icon}
                                         alt={service.title}
-                                        className="rounded-t-[20px] w-full"
-                                        variants={imageVariants}
-                                    />
-
-
-                                    {/* Strong blur + sharpness flash */}
-                                    <motion.div
-                                        className="absolute inset-0 backdrop-blur-[10px]"
-                                        variants={blurFlashVariants}
                                     />
                                 </div>
 
-                                <div className="md:px-[50px] md:pt-[25px] md:pb-[50px] p-[25px]">
-                                    {/* Title */}
-                                    <h3 className="text-[24px] service-title font-bold text-navy mb-6">
-                                        <Link to="" className="transition">
-                                            {service.title}
-                                        </Link>
-                                    </h3>
+                                {/* Title */}
+                                <h3 className="text-[24px] service-title font-bold text-navy mb-6 mt-[70px]">
+                                    <Link to="/services" className="transition"> {service.title} </Link>
+                                </h3>
 
-                                    {/* List */}
-                                    <ul className="space-y-4 mb-10">
-                                        {service.items.map((item, i) => (
-                                            <li
-                                                key={i}
-                                                className="flex items-center gap-3 text-[18px] font-medium text-gray-600"
-                                            >
-                                                <span className="text-green-500">
-                                                    <img src={check} alt="" />
-                                                </span>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                {/* List */}
+                                <ul className="space-y-4 mb-10">
+                                    {service.items.map((item, i) => (
+                                        <li key={i} className="flex items-center gap-3 text-[18px] font-medium text-gray-600">
+                                            <span className="text-green-500">
+                                                <img src={check} alt="" />
+                                            </span>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
 
-                                    {/* CTA */}
-                                    <div className="mt-auto flex">
-                                        <Link to="/calculator" className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition relative z-[1]">
-                                            <span className="text-[15px] font-semibold text-white">
-                                                Get Quotation
-                                            </span>
-                                            <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center">
-                                                <ArrowRight size={18} />
-                                            </span>
-                                        </Link>
-                                    </div>
+                                {/* CTA */}
+                                <div className="mt-auto flex">
+                                    <Link to="/services" className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition relative z-[1]">
+                                        <span className="text-[15px] font-semibold text-white">
+                                            Discover More
+                                        </span>
+                                        <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center">
+                                            <ArrowRight size={18} />
+                                        </span>
+                                    </Link>
                                 </div>
                             </motion.div>
-
                         ))}
-
                     </div>
                 </div>
             </section>
