@@ -14,7 +14,7 @@ const ProcessSection = () => {
     {
       number: '01',
       title: 'Initial Assessment',
-      description: 'We evaluate the business model, financial position, and funding objectives to define the most suitable strategy.',
+      description: 'We evaluate the business model, financial position, and funding objectives to define the most suitable capital strategy.',
       image: processBasicResearch,
     },
     {
@@ -26,19 +26,19 @@ const ProcessSection = () => {
     {
       number: '03',
       title: 'Investor & Lender Outreach',
-      description: 'Using our network, we engage with relevant capital providers aligned with client objectives.',
+      description: 'Using our regional and international network, we engage with relevant capital providers aligned with client objectives.',
       image: processBuildPlan,
     },
     {
       number: '04',
       title: 'Transaction Execution',
-      description: 'We manage the fundraising process end-to-end, including negotiations and deal closure.',
+      description: 'We manage the fundraising process end-to-end, including negotiations, coordination with legal advisors, and deal closure.',
       image: processExecute,
     },
     {
       number: '05',
       title: 'Post-Funding Support',
-      description: 'We assist with investor relations, capital deployment strategy, and future planning.',
+      description: 'We assist with investor relations, capital deployment strategy, and future fundraising planning.',
       image: processExecute,
     },
   ];
@@ -61,7 +61,7 @@ const ProcessSection = () => {
               How It Works
             </span>
             <AnimatedHeading
-              text="From quote to financial control in four steps"
+              text="Our comprehensive approach to transaction execution"
               className="text-4xl md:text-5xl font-[700] font-bold text-white leading-tight"
               duration={0.6}
               stagger={0.01}
@@ -70,9 +70,9 @@ const ProcessSection = () => {
           </div>
 
           {/* Right side - Description */}
-          <div className="flex items-end lg:pl-12 col-span-12 md:col-span-5">
-            <p className="text-white/80 leading-relaxed max-w-lg">
-              Clear, organized, and focused on your financial growth. Our process handles everything seamlessly from start to ongoing support.
+          <div className="flex items-end lg:pl-12 col-span-12 md:col-span-12">
+            <p className="text-white/80 leading-relaxed max-w-2xl">
+              We manage the fundraising process end-to-end, including negotiations, coordination with legal advisors, and deal closure.
             </p>
           </div>
         </div>

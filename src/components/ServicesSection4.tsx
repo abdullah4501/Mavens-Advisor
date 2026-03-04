@@ -10,21 +10,21 @@ import { Link } from "react-router-dom";
 
 const services = [
     {
-        title: "Capital Raising Advisory",
+        title: "Capital Raising Advisory (Equity)",
         icon: icon4,
         items: [
-            "Equity Fundraising Strategy",
-            "Pitch Deck & IM Development",
-            "Investor Network Access",
+            "Seed & Series A Fundraising",
+            "Venture Capital Introductions",
+            "Pitch Decks & Term Sheets",
         ],
     },
     {
-        title: "Debt & Financing Solutions",
+        title: "Debt Advisory & Financing",
         icon: icon1,
         items: [
-            "Structured & Syndicated Loans",
-            "Working Capital Facilities",
-            "Project & Trade Finance",
+            "Working Capital & Term Loans",
+            "Structured & Syndicated Finance",
+            "Trade & Project Financing",
         ],
     },
     {
@@ -33,16 +33,25 @@ const services = [
         items: [
             "Mergers & Acquisitions",
             "Business Valuation & Modeling",
-            "IPO Readiness Support",
+            "IPO Readiness Advisory",
         ],
     },
     {
-        title: "Growth & Entry Strategy",
+        title: "Startup & Growth Advisory",
         icon: icon3,
         items: [
-            "Market & Competitive Analysis",
-            "Strategic Business Planning",
-            "GCC Market Entry Support",
+            "Investment Readiness",
+            "Financial Projections",
+            "Due Diligence Preparation",
+        ],
+    },
+    {
+        title: "Virtual CFO Services",
+        icon: icon1,
+        items: [
+            "Strategic Financial Planning",
+            "Cash Flow & KPI Management",
+            "Fundraising Support",
         ],
     },
 ];
@@ -76,7 +85,7 @@ const ServicesSection4 = () => {
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className="service-card-new relative bg-white rounded-[20px] px-[30px] pt-[50px] pb-[30px] flex flex-col h-full min-h-[590px] w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(25%-15px)]"
+                            className="service-card-new relative bg-white rounded-[20px] px-[30px] pt-[50px] pb-[30px] flex flex-col h-full min-h-[590px] w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]"
                         >
                             {/* Icon */}
                             <div className="mb-8">

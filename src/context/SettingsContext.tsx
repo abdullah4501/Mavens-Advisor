@@ -60,7 +60,7 @@ const defaultSettings: Settings = {
   fixedPriceServices: defaultFixedPriceServices,
   hourlyRate: 20,
   currency: '$',
-  companyName: 'Green Brander LLC',
+  companyName: 'Yalla Startup',
   defaultQuantities: {},
   strategicAdviceRate: 100,
 };

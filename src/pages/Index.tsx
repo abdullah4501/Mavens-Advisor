@@ -66,6 +66,8 @@ const Index = ({ breadcrumb }) => {
 
       <MarqueeSection />
       <StatisticsSection subTitle={'Why Choose Us'} />
+      <VideoSection />
+      <ProcessSection />
       <TeamSection />
       <TestimonialsSection />
       <BlogSection />

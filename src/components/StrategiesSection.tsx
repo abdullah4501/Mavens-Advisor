@@ -75,7 +75,7 @@ const StrategiesSection = ({ subTitle }) => {
           </span>
 
           <AnimatedHeading
-            text="Securing Capital and Executing Financial Strategies for Growth"
+            text="Global Reach with Local Regional Expertise"
             className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
             duration={0.6}
             stagger={0.01}
@@ -84,10 +84,10 @@ const StrategiesSection = ({ subTitle }) => {
 
 
           <p className="text-muted-foreground text-[18px] mb-6 font-medium mt-6">
-            Green Brander LLC is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions for startups, SMEs, and growth-stage companies.
+            Yalla Startup is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions for startups, SMEs, and growth-stage companies.
           </p>
           <p className="text-navy font-semibold text-[16px] mb-12">
-            Regional market expertise. Access to a diversified network of investors. End-to-end transaction support.
+            We assist founders and management teams in securing capital, structuring investments, and executing financial strategies aligned with long-term growth objectives.
           </p>
 
           <div className="border-t mb-10"></div>
@@ -108,7 +108,7 @@ const StrategiesSection = ({ subTitle }) => {
 
             <div className="border-l pl-10">
               <p className="text-muted-foreground mb-6 font-medium">
-                We bridge the gap between ambitious companies and regional capital. Our strategic advisory ensures your business is structured for investment and long-term financial success.
+                Our advisory approach combines regional market expertise with access to a diversified network of investors, lenders, family offices, and financial institutions across the GCC and MENA region.
               </p>
 
               <Link

@@ -13,12 +13,9 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AdminSettings from "./pages/AdminSettings";
 import { SettingsProvider } from "./context/SettingsContext";
-import Team from "./pages/Team";
 import AboutUs from "./pages/AboutUs";
-import OurHistory from "./pages/OurHistory";
 import ContactUs from "./pages/ContactUs";
 import Services from "./pages/Services";
-import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 
 const queryClient = new QueryClient();
@@ -51,14 +48,9 @@ const App = () => {
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index breadcrumb="Home" />} />
-              <Route path="/team" element={<Team breadcrumb="Our Team" />} />
               <Route path="/about-us" element={<AboutUs breadcrumb="About Us" />} />
-              <Route path="/calculator" element={<Calculator breadcrumb="Calculator" />} />
-              <Route path="/our-history" element={<OurHistory breadcrumb="Our History" />} />
               <Route path="/contact" element={<ContactUs breadcrumb="Contact Us" />} />
               <Route path="/services" element={<Services breadcrumb="Services" />} />
-              <Route path="/blog" element={<Blogs breadcrumb="Blog" />} />
-              <Route path="/blog/why-financial-forecasting-is-critical-for-sustainable-growth" element={<BlogDetail breadcrumb="Why Financial Forecasting Is Critical For Sustainable Growth" />} />
               <Route path="*" element={<NotFound breadcrumb="404" />} />
             </Routes>
 

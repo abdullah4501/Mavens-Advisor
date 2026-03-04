@@ -21,7 +21,7 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       rating: 5,
-      quote: '"Green Brander LLC played a pivotal role in our Series A. Their deep understanding of the UAE investor landscape was exactly what we needed."',
+      quote: '"Yalla Startup played a pivotal role in our Series A. Their deep understanding of the UAE investor landscape was exactly what we needed."',
       author: 'Adeline Wood',
       position: 'Founder & CEO, Tech Emirates',
     },

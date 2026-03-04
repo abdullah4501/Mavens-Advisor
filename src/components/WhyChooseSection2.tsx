@@ -8,52 +8,39 @@ import FeatureIcon from "./FeatureIcon";
 const features = [
   {
     number: 1,
-    title: "Deep Regional Market Expertise",
-    description:
-      "Strategic insights into the UAE, GCC, and MENA financial markets, helping you navigate complex regulatory and investment landscapes.",
+    title: "Strategic Financial Planning & Forecasting",
+    description: "Align your business goals with actionable financial roadmaps and long-term projections.",
     icon: "business" as const,
   },
   {
     number: 2,
-    title: "Access to Diversified Capital",
-    description:
-      "Our network includes leading Venture Capital firms, Private Equity investors, Family Offices, and financial institutions across the Middle East.",
-    icon: "team" as const,
+    title: "Budgeting & Cash Flow Control",
+    description: "Optimize operations and manage liquidity with precise budget monitoring and cash management.",
+    icon: "pricing" as const,
   },
   {
     number: 3,
-    title: "Tailored Funding Strategies",
-    description:
-      "We don't believe in one-size-fits-all. We structure equity and debt solutions specifically designed for your company's growth stage.",
-    icon: "pricing" as const,
-  },
-  {
-    number: 4,
-    title: "End-to-End Deal Execution",
-    description:
-      "From strategy and pitch decks to term sheet negotiation and deal closure — Green Brander LLC handles the heavy lifting of fundraising.",
+    title: "KPI Dashboards & Performance Monitoring",
+    description: "Track the metrics that matter most with customized dashboards and real-time insights.",
     icon: "scale" as const,
   },
   {
-    number: 5,
-    title: "Investment Readiness Assessment",
-    description:
-      "We ensure your business is 'investor-ready' by auditing your financials, business model, and due diligence documentation before outreach.",
+    number: 4,
+    title: "Financial Reporting & Compliance",
+    description: "Ensure investor-ready financials and full compliance with regional regulations.",
     icon: "clarity" as const,
   },
   {
-    number: 6,
-    title: "Structured Debt & Financing",
-    description:
-      "Secure optimal debt facilities, working capital, or project financing without unnecessary dilution through our structured advisory services.",
-    icon: "pricing" as const,
+    number: 5,
+    title: "Accounting Oversight",
+    description: "High-level review and leadership for your existing accounting functions.",
+    icon: "team" as const,
   },
   {
-    number: 7,
-    title: "Strategic Financial Leadership",
-    description:
-      "Beyond fundraising, we provide high-level corporate finance advisory to optimize your capital structure and financial decision-making.",
-    icon: "team" as const,
+    number: 6,
+    title: "Fundraising & Investor Support",
+    description: "Expert guidance through every stage of the fundraising journey and beyond.",
+    icon: "pricing" as const,
   },
 ];
 
@@ -124,16 +111,28 @@ const WhyChooseSection = () => {
             {/* LEFT (pinned) - No changes as requested */}
             <div className="space-y-8">
               <span className="inline-block bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-6">
-                Why Choose Us
+                VIRTUAL CFO SERVICES
               </span>
 
               <AnimatedHeading
-                text="Strategic Financial Advisory Tailored for Your Success."
+                text="Strategic Virtual CFO & Financial Leadership for Growth‑Driven Businesses."
                 className="text-4xl md:text-5xl font-bold text-navy leading-tight"
                 duration={0.6}
                 stagger={0.01}
                 startDelay={0.3}
               />
+
+              <div className="space-y-4 text-muted-foreground text-[18px]">
+                <p>
+                  <strong className="text-navy">What is a Virtual CFO?</strong> A seasoned finance expert who leads your financial strategy, planning, and reporting — without being on your payroll.
+                </p>
+                <ul className="grid grid-cols-2 gap-2 text-sm font-semibold text-navy">
+                  <li>• Strategic Leadership</li>
+                  <li>• Cost‑Effective</li>
+                  <li>• Investor‑Ready</li>
+                  <li>• Improved Decisions</li>
+                </ul>
+              </div>
 
               <div className="flex gap-4 pt-4">
                 <div className="overflow-hidden rounded-[20px] h-full">

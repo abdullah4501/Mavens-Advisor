@@ -50,7 +50,7 @@ const StatisticsSection = ({ subTitle }) => {
                 <div>
                   <h4 className="text-navy font-bold text-xl mb-4">Strategic Advisory vs. Standard Outsourcing</h4>
                   <p className="text-muted-foreground mb-4 max-w-lg">
-                    Standard firms give you reports. Green Brander LLC gives you access to capital, strategic networks, and deal-making expertise.
+                    Standard firms give you reports. Yalla Startup gives you access to capital, strategic networks, and deal-making expertise.
                   </p>
                   <p className="text-navy font-semibold mb-6">
                     Partnering with us provides:

@@ -19,7 +19,7 @@ export default function RollingText({ text, size = 32 }: RollingTextProps) {
       {text.split("").map((char, i) => (
         <span
           key={i}
-          className={i < brandCount ? "text-gold" : "text-black"}
+          className={i < 5 ? "text-gold" : "text-navy"}
           style={{ transitionDelay: `${i * 25}ms` }}
         >
           {char}

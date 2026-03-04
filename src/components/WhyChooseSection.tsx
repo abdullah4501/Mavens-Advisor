@@ -102,10 +102,10 @@ const WhyChooseSection = () => {
                 className="max-w-2xl mb-16 "
               >
                 <span className="inline-block bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-6">
-                  Why founders choose Mavens Advisor
+                  WHY CHOOSE Yalla Startup
                 </span>
                 <AnimatedHeading
-                  text="Because the cost of unclear numbers is always higher later"
+                  text="Tailored, outcome-driven advisory for regional growth"
                   className="text-4xl md:text-5xl font-[700] text-navy leading-tight"
                   duration={0.6}
                   stagger={0.01}
@@ -161,13 +161,13 @@ const WhyChooseSection = () => {
                   className="px-[28px] py-[33px] rounded-[5px] bg-navy-light transition-all duration-500 cursor-pointer relative wcs-last"
                 >
                   <h3 className="text-[24px] font-semibold text-white mb-3 transition-colors duration-300">
-                    Calculate your quote. Lock it. Get your Virtual CFO.
+                    Ready to explore funding solutions tailored to your goals?
                   </h3>
 
-                  <Link to={'/calculator'}
+                  <Link to={'/contact'}
                     className="text-[13px] font-semibold inline-flex items-center gap-2 bg-white text-navy px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:scale-105 hover:bg-gold hover:text-white transition group"
                   >
-                    Calculate Your Quote
+                    Get In Touch
                     <span className="bg-gold group-hover:bg-white text-white group-hover:text-navy w-8 h-8 rounded-full flex items-center justify-center">
                       <ArrowRight size={16} />
                     </span>

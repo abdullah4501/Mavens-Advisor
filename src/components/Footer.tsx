@@ -48,15 +48,13 @@ const Footer = () => {
             className="lg:col-span-4"
           >
             <span className="text-[#628fff] text-xs font-semibold tracking-wider uppercase">
-              Build the Finance Department Your Business Deserves
+              Capital Raising & Investment Advisory
             </span>
             <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight mt-4">
-              Start your
-              <br />
-              Growth Now<span className="text-gold">.</span>
+              Yalla<br />Startup<span className="text-gold">.</span>
             </h2>
             <p className="text-slate-400 text-sm mt-4">
-              Green Brander LLC is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions.
+              Yalla Startup is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions for startups, SMEs, and growth-stage companies.
             </p>
           </motion.div>
 
@@ -134,7 +132,7 @@ const Footer = () => {
               <span className="text-[#628fff] text-xs font-semibold tracking-wider uppercase">
                 EMAIL US
               </span>
-              <p className="text-white text-lg mt-2">noreply@pbminfotech.com</p>
+              <p className="text-white text-lg mt-2">info@greenbrander.com</p>
             </div>
 
             {/* Location */}
@@ -150,7 +148,7 @@ const Footer = () => {
               <span className="text-[#628fff] text-xs font-semibold tracking-wider uppercase">
                 CALL US NOW
               </span>
-              <p className="text-white text-lg mt-2">+1 440 848 8222</p>
+              <p className="text-white text-lg mt-2">+971 6 501 1111</p>
             </div>
           </div>
         </div>
@@ -162,7 +160,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative">
             {/* Copyright */}
             <p className="text-slate-500 text-sm">
-              Copyright © 2025 Green Brander LLC, All Rights Reserved.
+              Copyright © 2025 Yalla Startup, All Rights Reserved.
             </p>
 
             {/* Social Links & Scroll to Top */}

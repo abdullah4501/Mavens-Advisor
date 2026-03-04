@@ -78,7 +78,7 @@ const timelineData = [
             type: 'text',
             year: '2022',
             title: 'The Green Brander Era',
-            description: 'Consolidated under Green Brander LLC, focusing on end-to-end transaction support and readiness.',
+            description: 'Consolidated under Yalla Startup, focusing on end-to-end transaction support and readiness.',
         },
         bottom: {
             type: 'image',

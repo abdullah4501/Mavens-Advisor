@@ -53,15 +53,6 @@ const Header = () => {
               <img src={isScrolled ? logo : logo} alt="logo" className="h-8 mr-1" /><RollingText text="Mavens Advisor" />
             </div>
 
-            {!isScrolled && (
-              <div className="hidden xl:flex items-center gap-2 text-white text-sm whitespace-nowrap">
-                <span className="text-white/80 text-[14px] font-bold">Book a call</span>
-                <span className='px-3 py-3 ml-2 rounded-full bg-gold'>
-                  <Phone className="w-4 h-4 text-white flex-shrink-0" />
-                </span>
-                <span className='font-bold'>+971 6 501 1111</span>
-              </div>
-            )}
           </div>
 
           {/* NAV */}

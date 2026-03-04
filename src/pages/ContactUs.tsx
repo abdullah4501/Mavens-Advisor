@@ -14,11 +14,11 @@ const contactData = [
     {
         icon: <Mail className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
         title: "info@greenbrander.com",
-        description: "Get in touch with Green Brander LLC to explore funding solutions."
+        description: "Get in touch with Yalla Startup to explore funding solutions."
     },
     {
         icon: <Phone className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-        title: "+44 (0)203 900 1800",
+        title: "+971 6 501 1111",
         description: "Call us for immediate support and to discuss your growth goals."
     },
     {
@@ -110,7 +110,7 @@ const ContactUs = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    Get in touch with Green Brander LLC to explore funding solutions tailored to your business growth and investment goals.
+                                    Get in touch with Yalla Startup to explore funding solutions tailored to your business growth and investment goals.
                                 </motion.p>
                             </div>
                         </div>
@@ -133,31 +133,6 @@ const ContactUs = ({ breadcrumb }) => {
                         />
                     </div>
 
-                    <div className="col-span-2 lg:col-span-1">
-                        <div className="flex items-start gap-6 justify-end">
-                            <div className="flex-shrink-0 bg-white p-6 rounded-lg shadow-[0px_10px_40px_0px_rgba(0,0,0,0.10)]">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 100 100"
-                                    className="w-[40px] h-[40px]"
-                                >
-                                    <path d="M77.61,46.432v43.4H64.545V52.907a.923.923,0,0,1,.461-.8l11.222-6.475A.922.922,0,0,1,77.61,46.432ZM38.416,68V89.827H51.481V61.519a.922.922,0,0,0-1.382-.8L38.877,67.2A.92.92,0,0,0,38.416,68ZM12.287,83.081v6.746H25.352V76.6a.922.922,0,0,0-1.383-.8L12.748,82.284A.92.92,0,0,0,12.287,83.081Z" fill="#005aeb"></path>
-                                    <path d="M93.548,88.371H84.113V41.92a1.452,1.452,0,0,0-2.177-1.258L68.871,48.2a1.451,1.451,0,0,0-.726,1.257V88.371H57.984V57.009a1.452,1.452,0,0,0-2.177-1.258L42.742,63.286a1.45,1.45,0,0,0-.726,1.257V88.371H31.855V72.1a1.451,1.451,0,0,0-2.177-1.257L16.613,78.375a1.451,1.451,0,0,0-.726,1.257v8.739H6.452a1.452,1.452,0,1,0,0,2.9h87.1a1.452,1.452,0,1,0,0-2.9Zm-22.5-38.079,10.162-5.86V88.371H71.048ZM44.919,65.382l10.162-5.86V88.371H44.919ZM18.79,80.471l10.162-5.86v13.76H18.79Zm-2.708-29.7a1.45,1.45,0,0,1,.531-1.982l60.276-34.8L66.434,11.6a1.454,1.454,0,0,1-1.092-1.742h0a1.452,1.452,0,0,1,1.741-1.09L80.312,11.8a2.242,2.242,0,0,1,1.642,2.845L77.967,27.614a1.453,1.453,0,1,1-2.777-.854L78.345,16.5l-60.28,34.8a1.45,1.45,0,0,1-1.983-.532Z"></path>
-                                </svg>
-                            </div>
-
-                            {/* Text Content */}
-                            <div className="flex flex-col">
-                                <h4 className="text-[45px] font-bold text-navy mb-1 leading-tight">
-                                    <span>10</span>
-                                    <span className="text-5xl font-bold">K</span>
-                                </h4>
-                                <h3 className="text-[17px] text-muted-foreground/70 font-semibold">
-                                    Projects completed
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {contactData.map((contact, index) => (

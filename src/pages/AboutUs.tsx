@@ -13,6 +13,7 @@ import AnimatedHeading from '@/components/AnimatedHeading';
 import ServicesSection4 from '@/components/ServicesSection4';
 import StatisticsSection from '@/components/StatisticsSection';
 import TeamSection from '@/components/TeamSection';
+import WhyChooseSection from '@/components/WhyChooseSection';
 
 const stats = [
     { icon: Users, value: '500+', label: 'Companies Growing' },
@@ -80,7 +81,7 @@ const About = ({ breadcrumb }) => {
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="text-white text-[16px] lg:text-[18px] lg:leading-[30px] font-[500] z-10 self-end"
                                 >
-                                    Green Brander LLC is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions for startups, SMEs, and growth-stage companies.
+                                    Yalla Startup is a Middle East–based business and financial advisory firm specializing in equity and debt investment solutions for startups, SMEs, and growth-stage companies.
                                 </motion.p>
                             </div>
                         </div>
@@ -114,9 +115,9 @@ const About = ({ breadcrumb }) => {
                     </div>
                 </div>
             </motion.div>
-            <StatisticsSection subTitle={"About Us"} />
+            <StrategiesSection subTitle={"About Us"} />
             <ServicesSection4 />
-            <TeamSection />
+            <WhyChooseSection />
             <Footer />
         </>
     );

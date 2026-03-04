@@ -3,16 +3,15 @@ import { Asterisk } from 'lucide-react';
 
 const MarqueeSection2 = () => {
   const items = [
-    'Investment Management',
-    'Accountant Services',
-    'Business Planning',
-    'Audit Assurance',
-    'Wealth Protection',
-    'Tax Consulting',
+    'Technology & FinTech',
+    'Healthcare & Life Sciences',
+    'Energy & Renewable Projects',
+    'Manufacturing & Industrial',
+    'Logistics, Trading & Services',
   ];
 
   return (
-    <section className="py-8 bg-[#91D089] overflow-hidden">
+    <section className="py-8 bg-navy-light overflow-hidden">
       <div className="flex">
         <motion.div
           className="flex items-end gap-6 animate-marquee whitespace-nowrap"

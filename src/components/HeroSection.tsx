@@ -25,14 +25,14 @@ const slides = [
   },
   {
     title: ['Capital', 'Raising.'],
-    description: 'We assist businesses in securing optimal debt financing while minimizing dilution and financial risk. Our services include sourcing, structuring, and negotiating debt facilities.',
+    description: 'We advise companies on raising equity capital through private placements, venture capital, private equity, and strategic investors.',
     subPoints: [],
     cta: 'Get Debt Advisory',
     image: heroImage2,
   },
   {
     title: ['Investment', 'Advisory'],
-    description: 'Unlock executive-level financial expertise without the cost of a full-time CFO. Our virtual CFO services help startups, SMEs, and scaling companies optimize finances.',
+    description: 'Our advisory approach combines regional market expertise with access to a diversified network of investors, lenders, family offices, and financial institutions across the GCC and MENA region.',
     subPoints: [],
     cta: 'Learn About Virtual CFO',
     image: heroImage3,
@@ -85,7 +85,7 @@ const HeroSection = () => {
                 transition={{ duration: 1, ease: [0.5, 0.5, 0, 1] }}
                 className="overflow-hidden"
               >
-                <h1 className="text-4xl md:text-5xl lg:text-[70px] font-bold text-white leading-tight mb-12">
+                <h1 className="text-[60px] md:text-[100px] lg:text-[140px] font-bold text-white leading-[150px] tracking-[-5.1px] mb-12">
                   {slides[activeIndex].title[0]}<br />
                   <span>{slides[activeIndex].title[1]}</span>
                 </h1>

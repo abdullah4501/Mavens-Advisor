@@ -20,7 +20,7 @@ const services = [
         items: [
             "Seed, Series A & Growth Fundraising",
             "Investor Pitch Decks & IMs",
-            "Deal Structuring & Valuation",
+            "Deal Structuring & Negotiation",
         ],
     },
     {
@@ -33,12 +33,12 @@ const services = [
         ],
     },
     {
-        title: "Corporate Finance & Strategic Advisory",
+        title: "Corporate Finance Advisory",
         icon: icon2,
         items: [
             "Mergers & Acquisitions (M&A)",
             "Business Valuation & Modeling",
-            "Feasibility Studies & Business Plans",
+            "Feasibility & IPO Readiness",
         ],
     },
     {
@@ -55,8 +55,8 @@ const services = [
         icon: icon4,
         items: [
             "Strategic Financial Planning",
-            "Budgeting & Cash Flow Control",
-            "KPI Dashboards & Monitoring",
+            "Cash Flow & KPI Dashboards",
+            "Fundraising & Accounting Support",
         ],
     },
 ];

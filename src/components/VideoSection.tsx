@@ -33,8 +33,8 @@ const VideoSection = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-col h-full justify-end"
           >
-            <span className="text-6xl md:text-8xl text-end mb-5 font-bold text-white/20">
-              Green Brander LLC
+            <span className="text-6xl uppercase md:text-8xl text-end mb-5 font-bold text-white/20">
+              Yalla Startup
             </span>
           </motion.div>
         </div>
