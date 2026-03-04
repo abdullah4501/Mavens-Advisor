@@ -5,7 +5,8 @@ interface RollingTextProps {
 
 export default function RollingText({ text, size = 32 }: RollingTextProps) {
   const lineHeight = Math.round(size * 1.25);
-  const brandCount = 6; // "Green" has 5 letters
+  const mavensCount = 6; 
+
   return (
     <p
       className="rolling-text"
@@ -19,7 +20,7 @@ export default function RollingText({ text, size = 32 }: RollingTextProps) {
       {text.split("").map((char, i) => (
         <span
           key={i}
-          className={i < 5 ? "text-gold" : "text-navy"}
+          className={i < mavensCount ? "text-gold" : "text-black"}
           style={{ transitionDelay: `${i * 25}ms` }}
         >
           {char}
@@ -28,4 +29,3 @@ export default function RollingText({ text, size = 32 }: RollingTextProps) {
     </p>
   );
 }
-

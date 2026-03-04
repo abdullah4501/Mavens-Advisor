@@ -73,7 +73,7 @@ const HeroSection = () => {
 
       {/* Content Container */}
       <div className='flex container flex-col sm:flex-row relative z-10'>
-        <div className="relative container mx-auto px-4 lg:px-8 pt-32 pb-20">
+        <div className="relative  lg:px-8 pt-32 pb-20">
           <div className="">
             {/* Main Heading with fade animation */}
             <AnimatePresence mode="wait">
@@ -85,7 +85,7 @@ const HeroSection = () => {
                 transition={{ duration: 1, ease: [0.5, 0.5, 0, 1] }}
                 className="overflow-hidden"
               >
-                <h1 className="text-[60px] md:text-[100px] lg:text-[140px] font-bold text-white leading-[150px] tracking-[-5.1px] mb-12">
+                <h1 className="text-[50px] md:text-[100px] lg:text-[140px] font-bold text-white leading-tight md:leading-[100px] lg:leading-[150px] md:tracking-[-4.1px] mb-12">
                   {slides[activeIndex].title[0]}<br />
                   <span>{slides[activeIndex].title[1]}</span>
                 </h1>
