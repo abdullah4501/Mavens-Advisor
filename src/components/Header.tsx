@@ -49,9 +49,9 @@ const Header = () => {
             }`}
         >
           <div className="flex items-center gap-4 xl:gap-6 flex-shrink-0">
-            <div className="h-12 w-full flex items-center">
+            <a href='/' className="h-12 w-full flex items-center">
               <RollingText text="Yalla Startup" />
-            </div>
+            </a>
 
           </div>
 
@@ -72,8 +72,6 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
             {isScrolled ? (
               <>
-                <Search className="w-5 h-5 text-navy cursor-pointer" />
-
                 <div className="flex items-center gap-2">
                   <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5 text-white" />
@@ -82,13 +80,13 @@ const Header = () => {
                     <p className="text-[11px] uppercase font-semibold text-slate-500">
                       Need to talk
                     </p>
-                    <p>(000)123456789</p>
+                    <p>+44 7944 148580</p>
                   </div>
                 </div>
               </>
             ) : (
               <Link
-                to="/calculator"
+                to="/contact"
                 className="bg-gold text-white px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
               >
                 <span className="">Get Funding Advice</span>

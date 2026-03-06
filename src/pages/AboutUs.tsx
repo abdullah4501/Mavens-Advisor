@@ -116,7 +116,6 @@ const About = ({ breadcrumb }) => {
                 </div>
             </motion.div>
             <StrategiesSection subTitle={"About Us"} />
-            <ServicesSection4 />
             <WhyChooseSection />
             <Footer />
         </>

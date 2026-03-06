@@ -8,6 +8,16 @@ import icon1 from "@/assets/account-maintenance.svg";
 import icon2 from "@/assets/online-tax.svg";
 import icon3 from "@/assets/audit.svg";
 import icon4 from "@/assets/consultant.svg";
+import icon5 from "@/assets/monthly-bk.svg";
+import icon6 from "@/assets/payroll.svg";
+import icon7 from "@/assets/invoicing.svg";
+import icon8 from "@/assets/accounts-payable.svg";
+import icon9 from "@/assets/P&L-reporting.svg";
+import icon10 from "@/assets/budgeting.svg";
+import icon11 from "@/assets/vat.svg";
+import icon12 from "@/assets/chart-acc.svg";
+import icon13 from "@/assets/AI-powered.svg";
+import icon14 from "@/assets/cfo-level.svg";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedHeading from '@/components/AnimatedHeading';
@@ -58,6 +68,122 @@ const services = [
             "Cash Flow & KPI Dashboards",
             "Fundraising & Accounting Support",
         ],
+    },
+    {
+        title: "Monthly Bookkeeping",
+        icon: icon5,
+        items: [
+            "Clean monthly closes you can rely on",
+            "Bank and credit card reconciliations",
+            "Ledger maintenance and accuracy checks",
+            "Month-end journal entries",
+            "Accruals and prepayments management",
+        ],
+        mav: true
+    },
+
+    {
+        title: "Monthly Payroll Management",
+        icon: icon6,
+        items: [
+            "Weekly/monthly payroll processing",
+            "Contractor payments and 1099 management",
+            "Tax withholding and compliance",
+            "Benefits administration support",
+            "Payroll tax filing and reporting",
+        ],
+        mav: true
+    },
+
+    {
+        title: "Monthly Invoicing",
+        icon: icon7,
+        items: [
+            "Automated invoicing and billing",
+            "Accounts receivable tracking",
+            "Collections management",
+            "Payment processing and reconciliation",
+            "Customer aging reports",
+        ],
+        mav: true
+    },
+
+    {
+        title: "Accounts Payable Management",
+        icon: icon8,
+        items: [
+            "Vendor bill processing and approval",
+            "Payment scheduling and execution",
+            "Cash flow optimization",
+            "Vendor relationship management",
+            "Expense categorization and tracking",
+        ],
+        mav: true
+    },
+
+    {
+        title: "Monthly Profit & Loss Reporting",
+        icon: icon9,
+        items: [
+            "Monthly profit & loss statements",
+            "Revenue and expense analysis",
+            "Performance vs. budget comparisons",
+            "CFO-level insights and explanations",
+            "Actionable recommendations for improvement",
+        ],
+        mav: true
+    },
+
+    {
+        title: "Monthly Budgeting",
+        icon: icon10,
+        items: [
+            "12-month rolling cash flow forecasts",
+            "Annual budget development",
+            "Variance analysis and adjustments",
+            "Scenario planning for growth",
+            "Capital expenditure planning",
+        ],
+        mav: true
+    },
+
+    {
+        title: "VAT Filing",
+        icon: icon11,
+        items: [
+            "VAT returns and submissions",
+            "HMRC compliance and deadlines",
+            "Companies House annual filings",
+            "Statutory accounts preparation",
+            "Confirmation statements and updates",
+        ],
+        mav: true
+    },
+
+    {
+        title: "Chart of Accounts Setup",
+        icon: icon12,
+        items: [
+            "Optimized chart of accounts structure",
+            "Accounting system implementation",
+            "Departmental and project coding",
+            "Integration with business tools",
+            "Scalable design for growth",
+        ],
+        mav: true
+    },
+
+    {
+        title: "Strategic Financial Advice",
+        icon: icon13,
+        items: [
+            "Custom analytics portal for your business",
+            "Real-time KPI tracking and dashboards",
+            "Tax savings opportunity identification",
+            "AI assistant for financial questions",
+            "Predictive analytics and trend analysis",
+        ],
+        mav: true
     },
 ];
 
@@ -174,11 +300,11 @@ const Services = ({ breadcrumb }) => {
                     </div>
 
                     {/* Services Cards */}
-                    <div className="flex flex-wrap justify-start gap-5">
+                    <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                         {services.map((service, index) => (
                             <motion.div
                                 key={index}
-                                className="service-card-new relative bg-white rounded-[20px] px-[30px] pt-[50px] pb-[30px] flex flex-col h-full min-h-[590px] w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(33.333%-14px)]"
+                                className="service-card-new relative bg-white rounded-[20px] px-[30px] pt-[50px] pb-[30px] flex flex-col h-full "
                                 initial="initial"
                                 whileHover="hover"
                             >
@@ -209,7 +335,7 @@ const Services = ({ breadcrumb }) => {
 
                                 {/* CTA */}
                                 <div className="mt-auto flex">
-                                    <Link to="/services" className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition relative z-[1]">
+                                    <Link to={`${service.mav ? 'https://new.mavensadvisor.com/contact' : '/contact'}`} className="group flex items-center bg-gold rounded-full pl-6 pr-4 py-3 gap-4 hover:scale-105 transition relative z-[1]">
                                         <span className="text-[15px] font-semibold text-white">
                                             Discover More
                                         </span>

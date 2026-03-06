@@ -29,8 +29,8 @@ const StatisticsSection = ({ subTitle }) => {
           </div>
           <div className="col-span-1 md:col-span-2">
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : {}}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
               <AnimatedHeading

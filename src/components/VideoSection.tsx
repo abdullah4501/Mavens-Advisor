@@ -18,7 +18,7 @@ const VideoSection = () => {
               transition={{ duration: 0.8 }}
               className="flex flex-row gap-3 items-center"
             >
-              <a href="" className='request-loader'>
+              <a className='request-loader'>
                 <Play fill='#fff' />
               </a>
               <h3 className='text-[26px] leading-[26px] font-semibold text-white '>That's what proper financial<br />

@@ -160,7 +160,7 @@ const WhyChooseSection = () => {
                   transition={{ duration: 0.5, delay: 5 * 0.1 }}
                   className="px-[28px] py-[33px] rounded-[5px] bg-navy-light transition-all duration-500 cursor-pointer relative wcs-last"
                 >
-                  <h3 className="text-[24px] font-semibold text-white mb-3 transition-colors duration-300">
+                  <h3 className="text-[20px] font-semibold text-white mb-3 transition-colors duration-300">
                     Ready to explore funding solutions tailored to your goals?
                   </h3>
 

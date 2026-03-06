@@ -1,31 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronRight, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowRight, Calendar, ChevronRight, Mail, MapPin, Phone } from 'lucide-react';
 import image from '@/assets/team-banner.jpg';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedHeading from '@/components/AnimatedHeading';
 import contactImg from '@/assets/contact-image.webp';
+import { InlineWidget } from "react-calendly";
+
 
 const contactData = [
     {
         icon: <Mail className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-        title: "info@greenbrander.com",
-        description: "Get in touch with Yalla Startup to explore funding solutions."
+        title: "info@yallastartup.com",
+        description: "Get in touch with Yalla Startup to explore funding solutions.",
+        link: "mailto:info@yallastartup.com"
     },
     {
         icon: <Phone className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
-        title: "+971 6 501 1111",
-        description: "Call us for immediate support and to discuss your growth goals."
+        title: "+44 7944 148580",
+        description: "Call us for immediate support and to discuss your growth goals.",
+        link: "tel:+447944148580"
     },
     {
         icon: <MapPin className="w-[50px] h-[50px] text-gold stroke-[1.5]" />,
         title: "Sharjah, UAE",
         description: "Sharjah Media City, Sharjah, UAE. Registered advisory firm."
-    }
+    },
 ];
 
 const ContactUs = ({ breadcrumb }) => {
@@ -35,23 +39,18 @@ const ContactUs = ({ breadcrumb }) => {
         email: "",
         message: "",
     });
+    const calendlyRef = useRef(null);
 
-    const [submitted, setSubmitted] = useState(false);
+    useEffect(() => {
+        setTimeout(() => {
+            calendlyRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }, 500);
+    }, []);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setSubmitted(true);
-
-        if (!formData.name || !formData.phone || !formData.email) {
-            return;
-        }
-
-    };
     return (
         <>
             <Header />
@@ -134,7 +133,7 @@ const ContactUs = ({ breadcrumb }) => {
                     </div>
 
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6'>
                     {contactData.map((contact, index) => (
                         <div className="group border border-[#E4E4E4] rounded-[5px] p-[40px] pt-[50px] transition-shadow duration-300">
                             {/* Icon with 360 X-axis rotation on card hover */}
@@ -143,135 +142,49 @@ const ContactUs = ({ breadcrumb }) => {
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-navy text-[24px] font-bold mb-3 leading-tight">
-                                {contact.title}
+                            <h3 className="text-navy text-[24px] font-bold mb-3 leading-tight break-words hover:text-gold">
+                                <a href={contact.link}>{contact.title}</a>
                             </h3>
 
                             {/* Description */}
-                            <div className="mb-6">
+                            <div className="mb-5">
                                 <p key={index} className="text-muted-foreground font-medium text-[18px] leading-relaxed">
                                     {contact.description}
                                 </p>
                             </div>
-
-                            {/* Read More Button */}
-                            <button className="inline-flex items-center gap-3 text-navy font-semibold text-[15px] hover:text-gold group/btn">
-                                <span>Read More</span>
-                                <span className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-300 bg-[#ecf0f4] group-hover/btn:bg-gold ">
-                                    <ArrowRight className="w-[20px] h-[20px] text-navy group-hover/btn:text-white transition-colors duration-300" />
-                                </span>
-                            </button>
                         </div>
                     ))}
                 </div>
             </div>
-            <div className='contact-form pt-[115px] bg-[linear-gradient(180deg,#ECF0F4_42%,transparent_100%)] bg-transparent relative z-10'>
+            <div className='contact-form pt-[115px] bg-[linear-gradient(180deg,#ECF0F4_42%,transparent_100%)] bg-transparent relative z-10' ref={calendlyRef}>
                 <div className="container">
-                    <div className='grid md:grid-cols-1 lg:grid-cols-3 items-end'>
+
+                    <div className='grid md:grid-cols-1 lg:grid-cols-3 items-start mt-10'>
                         <div className='col-span-1'>
-                            <img src={contactImg} alt="" className='max-w-full h-auto' />
-                        </div>
-                        <div className='ms:col-span-1 lg:col-span-2'>
-                            <div className='lg:pl-[130px] py-10'>
-                                <span className="inline-block bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-2">
-                                    Contact Us
+                            <div className="mb-20">
+                                <span className=" bg-white font-semibold text-[#7c898d] px-4 py-1.5 text-xs uppercase rounded mb-2">
+                                    Book a Call
                                 </span>
                                 <AnimatedHeading
-                                    text="Get support from our team."
+                                    text="Book a 15 Minute Meeting."
                                     className="text-4xl md:text-[48px] font-bold text-navy leading-tight"
                                     duration={0.6}
                                     stagger={0.01}
                                     startDelay={0.3}
                                 />
+                            </div>
+                            <img src={contactImg} alt="" className='max-w-full h-auto' />
+                        </div>
+                        <div className='ms:col-span-1 lg:col-span-2'>
+                            <div className=''>
 
-                                <div className="mt-10 w-full ">
-                                    <form className="space-y-5" onSubmit={handleSubmit}>
-                                        {/* Message */}
-                                        <div>
-                                            <textarea
-                                                rows={5}
-                                                placeholder="Message"
-                                                className="w-full rounded-md border border-gray-200 bg-white p-[20px] text-[15px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400"
-                                            />
-                                        </div>
 
-                                        {/* Name & Phone */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                            <div>
-                                                <input
-                                                    type="text"
-                                                    onChange={handleChange}
-                                                    value={formData.name}
-                                                    name="name"
-                                                    placeholder="Full Name *"
-                                                    className="w-full rounded-md border border-gray-200 bg-white px-[20px] py-[10px] text-[15px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 h-[55px]"
-                                                />
-                                                {submitted && !formData.name && (
-                                                    <span className="block mb-[15px] font-medium px-[10px] text-[16px] text-[#dc3232]">
-                                                        This field is required.
-                                                    </span>
-                                                )}
-                                            </div>
-                                            <div>
-                                                <input
-                                                    type="tel"
-                                                    onChange={handleChange}
-                                                    value={formData.phone}
-                                                    name="phone"
-                                                    placeholder="Phone Number *"
-                                                    className="w-full rounded-md border border-gray-200 bg-white px-[20px] py-[10px] text-[15px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 h-[55px]"
-                                                />
-                                                {submitted && !formData.phone && (
-                                                    <span className="block mb-[15px] font-medium px-[10px] text-[16px] text-[#dc3232]">
-                                                        This field is required.
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        {/* Email */}
-                                        <div>
-                                            <input
-                                                type="email"
-                                                onChange={handleChange}
-                                                value={formData.email}
-                                                name="email"
-                                                placeholder="Email Address *"
-                                                className="w-full rounded-md border border-gray-200 bg-white px-[20px] py-[10px] text-[15px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 h-[55px]"
-                                            />
-                                            {submitted && !formData.email && (
-                                                <span className="block mb-[15px] font-medium px-[10px] text-[16px] text-[#dc3232]">
-                                                    This field is required.
-                                                </span>
-                                            )}
-                                        </div>
-
-                                        {/* Checkbox */}
-                                        <div className="flex items-start gap-2 text-[17px] font-medium text-gray-400 ">
-                                            <input
-                                                type="checkbox"
-                                                id="save_info"
-                                                className="mt-1 h-5 w-5 rounded border-gray-300 text-navy focus:ring-0 cursor-pointer"
-                                            />
-                                            <label htmlFor="save_info" className="cursor-pointer">
-                                                Save my name, email, and website in this browser for the next time I
-                                                comment.
-                                            </label>
-                                        </div>
-
-                                        {/* Button */}
-                                        <div className="" >
-                                            <button
-                                                type='submit'
-                                                className="inline-flex items-center gap-3 bg-navy-light text-white px-[15px] pl-[25px] py-[15px] rounded-[5px] font-medium hover:bg-gold hover:scale-105 transition"
-                                            >
-                                                Send Message
-                                                <span className="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center">
-                                                    <ArrowRight size={18} />
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </form>
+                                <div className=" w-full ">
+                                    <InlineWidget
+                                        url="https://calendly.com/nabeel-shaikh/15min"
+                                        styles={{ height: "100vh" }}
+                                        className="new_calendly-inline-widget"
+                                    />
                                 </div>
                             </div>
                         </div>

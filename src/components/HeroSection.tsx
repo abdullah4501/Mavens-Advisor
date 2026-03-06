@@ -17,14 +17,14 @@ const MotionLink = motion(Link);
 
 const slides = [
   {
-    title: ['Business', 'Consultancy.'],
+    title: ['Business', 'Consultancy'],
     description: 'We assist founders and management teams in securing capital, structuring investments, and executing financial strategies aligned with long-term growth objectives.',
     subPoints: [],
     cta: 'Explore Funding Solutions',
     image: heroImage1,
   },
   {
-    title: ['Capital', 'Raising.'],
+    title: ['Capital', 'Raising'],
     description: 'We advise companies on raising equity capital through private placements, venture capital, private equity, and strategic investors.',
     subPoints: [],
     cta: 'Get Debt Advisory',
@@ -34,8 +34,16 @@ const slides = [
     title: ['Investment', 'Advisory'],
     description: 'Our advisory approach combines regional market expertise with access to a diversified network of investors, lenders, family offices, and financial institutions across the GCC and MENA region.',
     subPoints: [],
+    cta: 'Discover Investment Advisory',
+    image: heroImage3,
+  },
+  {
+    title: ['Virtual', 'CFO'],
+    description: 'Strategic financial leadership without the cost of a full-time CFO. We provide budgeting, cash flow management, financial reporting, KPI monitoring, and investor-ready financial oversight.',
+    subPoints: [],
     cta: 'Learn About Virtual CFO',
     image: heroImage3,
+    mav: true,
   },
 ];
 
@@ -72,8 +80,8 @@ const HeroSection = () => {
       </div>
 
       {/* Content Container */}
-      <div className='flex container flex-col sm:flex-row relative z-10'>
-        <div className="relative  lg:px-8 pt-32 pb-20">
+      <div className='grid container lg:grid-cols-3 items-end md:grid-cols-2 grid-cols-1 relative z-10'>
+        <div className="relative lg:px-8 pt-32 pb-20 lg:col-span-2 col-span-1">
           <div className="">
             {/* Main Heading with fade animation */}
             <AnimatePresence mode="wait">
@@ -92,9 +100,6 @@ const HeroSection = () => {
               </motion.div>
             </AnimatePresence>
 
-
-
-
             {/* CTA Button with fade */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -106,7 +111,7 @@ const HeroSection = () => {
                 className="flex flex-wrap gap-4"
               >
                 <MotionLink
-                  to="/contact"
+                  to={`${slides[activeIndex].mav ? "https://new.mavensadvisor.com/contact" :"/contact"}`}
                   className="bg-white text-navy px-4 xl:px-6 py-2.5 xl:py-3 rounded-md flex items-center gap-2 xl:gap-3 font-medium text-sm whitespace-nowrap flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -122,18 +127,20 @@ const HeroSection = () => {
         </div>
 
         {/* Description */}
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={`desc-${activeIndex}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="text-white text-[16px] md:text-[20px] leading-[30px] font-[500] z-10 self-end text-end hidden md:block"
-          >
-            {slides[activeIndex].description}
-          </motion.p>
-        </AnimatePresence>
+        <div>
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`desc-${activeIndex}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="text-white text-[16px] md:text-[20px] leading-[30px] font-[500] z-10 self-end text-end hidden md:block"
+            >
+              {slides[activeIndex].description}
+            </motion.p>
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Hidden Swiper for auto-rotation timing */}
